@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+using MySql.Data.MySqlClient;
 using System.Text;
 
 namespace TeraPMS
@@ -42,8 +42,16 @@ namespace TeraPMS
             sb.Append( $"pwd={password};" );
             sb.Append( $"database={database};" );
             // Handle MySqlException that may be thrown here
-            conn = new MySqlConnection(sb.ToString());
-            conn.Open();
+            try
+            {
+                conn = new MySqlConnection(sb.ToString());
+                conn.Open();
+            }
+            catch (MySqlException e)
+            {
+                conn = null;
+                throw e;
+            }
         }
 
         public void CloseDB()
@@ -54,6 +62,11 @@ namespace TeraPMS
         public MySqlCommand GetCommand()
         {
             return conn.CreateCommand();
+        }
+
+        public bool HasConnectedDB()
+        {
+            return conn != null;
         }
     }
 }
