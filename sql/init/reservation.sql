@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS Reservation (
 	adultCount INT NOT NULL,
 	childCount INT NOT NULL,
 	issuer INT NOT NULL,
+	issuedDate DATE NOT NULL,
 	
 	PRIMARY KEY (id),
 	FOREIGN KEY (issuer) REFERENCES UserInfo(id)
