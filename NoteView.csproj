@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{67260154-BDC8-466B-8B77-267496CC4AA2}</ProjectGuid>
+    <ProjectGuid>{B041FB7D-2C04-4100-96D3-2056D4CFF02E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>NoteView</RootNamespace>
     <AssemblyName>NoteView</AssemblyName>

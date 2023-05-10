@@ -1,4 +1,7 @@
 
+// string -> TEXT NOT NULL, string? -> TEXT
+// PK: id int -> id INT NOT NULL AUTO_INCREMENT, ... PRIMARY KEY (id)
+
 CREATE TABLE IF NOT EXISTS Reservation (
 	id INT NOT NULL AUTO_INCREMENT,
 	clientType TEXT NOT NULL, -- FIXME?: Create a client type table

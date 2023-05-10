@@ -121,7 +121,7 @@
   <data name="pcb_Welcome.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAyAAAAHCCAYAAAAXY63IAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EgAACxIB0t1+/AAAeqdJREFUeF7tvQm4NUV1r39vRmPiP4MZjHi9SfQmhujV6M11igl6xRiDU+JInOcJ
+        EAAACxABrSO9dQAAeqdJREFUeF7tvQm4NUV1r39vRmPiP4MZjHi9SfQmhujV6M11igl6xRiDU+JInOcJ
         FQEBccAgIoiCgkFBJlEGGUVRJpk+UJkRGWUQkEnmGUVw/9evXLVTZ5/qPVd173Pe93ne5/tOdXfVqu59
         zq7VXd3933q9HiIiIiIiYhWzhYiIiIiIiCXMFiIiIiIiIpYwW4iIiIiIiFjCbCEiIiIiImIJs4WIiIiI
         iIglzBYiIiIiIiKWMFuIiIiIiIhYwmwhIiIiIiJiCbOFiIiIiIiIJcwWIiIiIiIiljBbiIiIiIiIWMJs
@@ -647,6 +647,12 @@
         ZgsRERERERFLmC1EREREREQsYbYQERERERFx/vb+2/8P9XkBcxJ+fjoAAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="bwork_Connection.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>0, 8</value>
+  </metadata>
+  <metadata name="bwork_DatabaseChecker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>136, 10</value>
+  </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAABAAACMuAAAjLgAAAAAAAAAA

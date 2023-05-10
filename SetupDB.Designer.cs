@@ -31,6 +31,7 @@
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SetupDB));
       this.pnl_setUpDB = new System.Windows.Forms.Panel();
       this.gb_dbcnnct = new System.Windows.Forms.GroupBox();
+      this.lbl_Connecting = new System.Windows.Forms.Label();
       this.lbl_MissingInfo = new System.Windows.Forms.Label();
       this.lbl_Error = new System.Windows.Forms.Label();
       this.btn_Connect = new System.Windows.Forms.Button();
@@ -45,7 +46,8 @@
       this.lbl_port = new System.Windows.Forms.Label();
       this.lbl_Server = new System.Windows.Forms.Label();
       this.pcb_Welcome = new System.Windows.Forms.PictureBox();
-      this.lbl_Connecting = new System.Windows.Forms.Label();
+      this.bwork_Connection = new System.ComponentModel.BackgroundWorker();
+      this.bwork_DatabaseChecker = new System.ComponentModel.BackgroundWorker();
       this.pnl_setUpDB.SuspendLayout();
       this.gb_dbcnnct.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.pcb_Welcome)).BeginInit();
@@ -88,6 +90,19 @@
       this.gb_dbcnnct.TabIndex = 26;
       this.gb_dbcnnct.TabStop = false;
       this.gb_dbcnnct.Text = "Set-up Database Connection";
+      // 
+      // lbl_Connecting
+      // 
+      this.lbl_Connecting.BackColor = System.Drawing.Color.Transparent;
+      this.lbl_Connecting.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbl_Connecting.ForeColor = System.Drawing.Color.White;
+      this.lbl_Connecting.Location = new System.Drawing.Point(50, 216);
+      this.lbl_Connecting.Name = "lbl_Connecting";
+      this.lbl_Connecting.Size = new System.Drawing.Size(191, 16);
+      this.lbl_Connecting.TabIndex = 48;
+      this.lbl_Connecting.Text = "Connecting to database..";
+      this.lbl_Connecting.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.lbl_Connecting.Visible = false;
       // 
       // lbl_MissingInfo
       // 
@@ -267,18 +282,15 @@
       this.pcb_Welcome.TabIndex = 25;
       this.pcb_Welcome.TabStop = false;
       // 
-      // lbl_Connecting
+      // bwork_Connection
       // 
-      this.lbl_Connecting.BackColor = System.Drawing.Color.Transparent;
-      this.lbl_Connecting.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbl_Connecting.ForeColor = System.Drawing.Color.White;
-      this.lbl_Connecting.Location = new System.Drawing.Point(50, 216);
-      this.lbl_Connecting.Name = "lbl_Connecting";
-      this.lbl_Connecting.Size = new System.Drawing.Size(191, 16);
-      this.lbl_Connecting.TabIndex = 48;
-      this.lbl_Connecting.Text = "Connecting to database..";
-      this.lbl_Connecting.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      this.lbl_Connecting.Visible = false;
+      this.bwork_Connection.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwork_Connection_DoWork);
+      this.bwork_Connection.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwork_Connection_RunWorkerCompleted);
+      // 
+      // bwork_DatabaseChecker
+      // 
+      this.bwork_DatabaseChecker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwork_DatabaseChecker_DoWork);
+      this.bwork_DatabaseChecker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwork_DatabaseChecker_RunWorkerCompleted);
       // 
       // SetupDB
       // 
@@ -319,5 +331,7 @@
     private System.Windows.Forms.Label lbl_Error;
     private System.Windows.Forms.Label lbl_MissingInfo;
     private System.Windows.Forms.Label lbl_Connecting;
+        private System.ComponentModel.BackgroundWorker bwork_Connection;
+    private System.ComponentModel.BackgroundWorker bwork_DatabaseChecker;
   }
 }
