@@ -19,7 +19,7 @@ namespace NoteView.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -142,22 +142,35 @@ namespace NoteView.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to 
-        ///-- string -&gt; TEXT NOT NULL, string? -&gt; TEXT
-        ///-- PK: id int -&gt; id INT NOT NULL AUTO_INCREMENT, ... PRIMARY KEY (id)
+        ///-- Test database to debug the validation layer
         ///
-        ///CREATE TABLE IF NOT EXISTS Reservation (
+        ///CREATE TABLE IF NOT EXISTS Student (
         ///	id INT NOT NULL AUTO_INCREMENT,
-        ///	clientType TEXT NOT NULL, -- FIXME?: Create a client type table
-        ///	roomChargeCode TEXT NOT NULL, -- FIXME?: Create a room charge table
-        ///	arrival DATE NOT NULL,
-        ///	-- From spec, &quot;nights&quot; can be calculated in the client not in the database
-        ///	departure DATE NOT NULL,
-        ///	checkOutTime TIME NOT NULL,
-        ///	adultCount INT NOT N [rest of string was truncated]&quot;;.
+        ///	firstName TEXT NOT NULL,
+        ///	middleName TEXT,
+        ///	lastName TEXT NOT NULL,
+        ///	
+        ///	PRIMARY KEY (id)
+        ///);
+        ///
+        ///CREATE TABLE IF NOT EXISTS Elective (
+        ///	id INT NOT NULL AUTO_INCREMENT,
+        ///	name TEXT NOT NULL,
+        ///	units INT NOT NULL,
+        ///	
+        ///	PRIMARY KEY (id)
+        ///);
+        ///
+        ///CREATE TABLE IF NOT EXISTS StudentElective (
+        ///	studentId INT NOT NULL,
+        ///	electiveId INT NOT NULL,
+        ///	
+        ///	FOREIGN KEY (studentId) Student(id),
+        ///	F [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string reservation {
+        internal static string Test {
             get {
-                return ResourceManager.GetString("reservation", resourceCulture);
+                return ResourceManager.GetString("Test", resourceCulture);
             }
         }
         

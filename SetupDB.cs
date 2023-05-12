@@ -32,12 +32,28 @@ namespace NoteView
       }
     }
     
+    private void ShowMessage(string msg)
+    {
+      lbl_ErrorInfo.Hide();
+      lbl_ConnectOutput.ForeColor = Color.White;
+      lbl_ConnectOutput.Text = msg;
+      lbl_ConnectOutput.Show();
+    }
+    private void ShowError(string msg, string info = null)
+    {
+      lbl_ConnectOutput.ForeColor = Color.Maroon;
+      lbl_ConnectOutput.Text = msg;
+      lbl_ConnectOutput.Show();
+      if (info != null)
+      {
+        lbl_ErrorInfo.Text = info;
+        lbl_ErrorInfo.Show();
+      }
+    }
+
     private void btn_Connect_Click(object sender, EventArgs e)
     {
-      lbl_Connecting.Text = "Connecting to database..";
-      lbl_Connecting.Show();
-      lbl_Error.Hide();
-      lbl_MissingInfo.Hide();
+      ShowMessage("Connecting to database..");
       btn_Connect.Enabled = false;
 
       string server = txt_Server.Text,
@@ -48,8 +64,7 @@ namespace NoteView
 
       if (HasEmpty(server, username, password, db))
       {
-        lbl_Connecting.Hide();
-        lbl_MissingInfo.Show();
+        ShowError("Missing field/s");
         if (!hasEmphasizedRequiredFields)
         {
           EmphasizeRequiredFields(lbl_Server, lbl_user, lbl_password, lbl_datab);
@@ -67,7 +82,7 @@ namespace NoteView
     {
       if (e.ProgressPercentage == 50)
       {
-        lbl_Connecting.Text = $"Checking {e.UserState}..";
+        ShowMessage($"Checking {e.UserState}..");
       }
     }
 
@@ -79,22 +94,16 @@ namespace NoteView
       {
         case MySqlConnection conn:
           Program.Connection = conn;
-          lbl_Connecting.Text = "Connected";
+          ShowMessage("Connected");
           break;
         case int err when err == 0:
-          lbl_Connecting.Hide();
-          lbl_Error.Text = "Cannot connect to database";
-          lbl_Error.Show();
+          ShowError("Cannot connect to database");
           break;
         case int err when err == 1:
-          lbl_Connecting.Hide();
-          lbl_Error.Text = "Invalid value in fields";
-          lbl_Error.Show();
+          ShowError("Invalid value in fields");
           break;
         case string err:
-          lbl_Connecting.Hide();
-          lbl_Error.Text = err;
-          lbl_Error.Show();
+          ShowError("Invalid database", err + ". Please check your database configuration");
           break;
       }
 
@@ -125,11 +134,6 @@ namespace NoteView
       {
         e.Result = exc.Message;
       }
-    }
-
-    private void lbl_MissingInfo_Click(object sender, EventArgs e)
-    {
-
     }
   }
 }

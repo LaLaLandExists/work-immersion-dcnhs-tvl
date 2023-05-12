@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Resources;
+using System.IO;
 using MySql.Data.MySqlClient;
 
 namespace NoteView
@@ -16,22 +17,20 @@ namespace NoteView
     private readonly string dbName;
     private MySqlCommand command;
 
-    // See "https://stackoverflow.com/questions/8208289/list-all-embedded-resources-in-a-folder" for more information
     private List<Table> GetAllTables()
     {
       List<Table> tables = new List<Table>();
 
       Assembly executingAsm = Assembly.GetExecutingAssembly();
-      string resDir = $"{executingAsm.GetName().Name}.Resources";
-      string[] res = executingAsm.GetManifestResourceNames()
-                     .Where(r => r.StartsWith(resDir) && r.EndsWith(".sql"))
-                     .Select(r => r.Substring(resDir.Length + 1).Split('.')[0])
-                     .ToArray();
-
-      foreach (string sqlFile in res)
+      foreach (string res in executingAsm.GetManifestResourceNames())
       {
-        string sql = Properties.Resources.ResourceManager.GetString(sqlFile);
-        parser.Parse(tables, sql);
+        if (res.EndsWith(".sql"))
+        {
+          using (StreamReader r = new StreamReader(executingAsm.GetManifestResourceStream(res)))
+          {
+            parser.Parse(tables, r.ReadToEnd());
+          }
+        }
       }
       return tables;
     }
@@ -47,7 +46,7 @@ namespace NoteView
       command.CommandText = $"SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '{dbName}' AND TABLE_NAME = '{table.name}';";
       using (MySqlDataReader dr = command.ExecuteReader())
       {
-        if (!dr.HasRows) error(table.name, $"Missing table '{table.name}'");
+        if (!dr.HasRows) error(dbName, $"Missing table '{table.name}'");
       }
 
       // Check if the fields are present
@@ -67,6 +66,7 @@ namespace NoteView
           bool autoIncr = dr.GetString("EXTRA") == "auto_increment";
 
           if (table.Seek(name, type, required, autoIncr) != -1) ++foundFields;
+          else error(table.name, $"Cannot find field '{name}' of type '{type}'");
         }
 
         
@@ -75,7 +75,7 @@ namespace NoteView
 
       // Check references and primary keys
       command.CommandText = "SELECT COLUMN_NAME, CONSTRAINT_NAME, REFERENCED_TABLE_NAME, REFERENCED_COLUMN_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE "
-                            + $"WHERE REFERENCED_TABLE_SCHEMA = {dbName} AND TABLE_SCHEMA = {dbName} AND TABLE_NAME = {table.name};";
+                            + $"WHERE REFERENCED_TABLE_SCHEMA = '{dbName}' AND TABLE_SCHEMA = '{dbName}' AND TABLE_NAME = '{table.name}';";
       using (MySqlDataReader dr = command.ExecuteReader())
       {
         while (dr.Read())
