@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
@@ -68,6 +63,14 @@ namespace NoteView
       bwork_Connection.RunWorkerAsync(connString);
     }
 
+    private void bwork_Connection_ProgressChanged(object sender, ProgressChangedEventArgs e)
+    {
+      if (e.ProgressPercentage == 50)
+      {
+        lbl_Connecting.Text = $"Checking {e.UserState}..";
+      }
+    }
+
     private void bwork_Connection_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
     {
       object res = e.Result;
@@ -88,6 +91,11 @@ namespace NoteView
           lbl_Error.Text = "Invalid value in fields";
           lbl_Error.Show();
           break;
+        case string err:
+          lbl_Connecting.Hide();
+          lbl_Error.Text = err;
+          lbl_Error.Show();
+          break;
       }
 
       btn_Connect.Enabled = true;
@@ -100,7 +108,9 @@ namespace NoteView
         string connString = (string) e.Argument;
         MySqlConnection conn = new MySqlConnection(connString);
         conn.Open();
-        // TODO: Check database validity
+        string dbName = conn.Database;
+        bwork_Connection.ReportProgress(50, dbName);
+        new DatabaseChecker(dbName, conn);
         e.Result = conn;
       }
       catch (MySqlException)
@@ -111,18 +121,13 @@ namespace NoteView
       {
         e.Result = 1;
       }
+      catch (InvalidProgramException exc)
+      {
+        e.Result = exc.Message;
+      }
     }
 
-    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-     * Validity Region, to check if the loaded database works with the app.
-     * * * * * * * * */
-
-    private void bwork_DatabaseChecker_DoWork(object sender, DoWorkEventArgs e)
-    {
-      // TODO inspect the database here
-    }
-
-    private void bwork_DatabaseChecker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+    private void lbl_MissingInfo_Click(object sender, EventArgs e)
     {
 
     }

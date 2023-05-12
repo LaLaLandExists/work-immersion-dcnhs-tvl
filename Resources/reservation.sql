@@ -1,6 +1,6 @@
 
---string -> TEXT NOT NULL, string? -> TEXT
---PK: id int -> id INT NOT NULL AUTO_INCREMENT, ... PRIMARY KEY (id)
+-- string -> TEXT NOT NULL, string? -> TEXT
+-- PK: id int -> id INT NOT NULL AUTO_INCREMENT, ... PRIMARY KEY (id)
 
 CREATE TABLE IF NOT EXISTS Reservation (
 	id INT NOT NULL AUTO_INCREMENT,

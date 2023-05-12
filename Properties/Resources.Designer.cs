@@ -141,6 +141,27 @@ namespace NoteView.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 
+        ///-- string -&gt; TEXT NOT NULL, string? -&gt; TEXT
+        ///-- PK: id int -&gt; id INT NOT NULL AUTO_INCREMENT, ... PRIMARY KEY (id)
+        ///
+        ///CREATE TABLE IF NOT EXISTS Reservation (
+        ///	id INT NOT NULL AUTO_INCREMENT,
+        ///	clientType TEXT NOT NULL, -- FIXME?: Create a client type table
+        ///	roomChargeCode TEXT NOT NULL, -- FIXME?: Create a room charge table
+        ///	arrival DATE NOT NULL,
+        ///	-- From spec, &quot;nights&quot; can be calculated in the client not in the database
+        ///	departure DATE NOT NULL,
+        ///	checkOutTime TIME NOT NULL,
+        ///	adultCount INT NOT N [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string reservation {
+            get {
+                return ResourceManager.GetString("reservation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap welcome {

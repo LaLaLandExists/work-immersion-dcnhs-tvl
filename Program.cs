@@ -17,10 +17,10 @@ namespace NoteView
     [STAThread]
     static void Main()
     {
-        Application.EnableVisualStyles();
-        Application.SetCompatibleTextRenderingDefault(false);
-        // TODO: skip this step if the user has already logged in to a database
-        Application.Run(new SetupDB());
+      Application.EnableVisualStyles();
+      Application.SetCompatibleTextRenderingDefault(false);
+      // TODO: skip this step if the user has already logged in to a database
+      Application.Run(new SetupDB());
     }
   }
 }

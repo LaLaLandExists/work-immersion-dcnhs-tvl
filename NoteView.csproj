@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatabaseChecker.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SetupDB.cs">
@@ -58,6 +59,7 @@
     <Compile Include="SetupDB.Designer.cs">
       <DependentUpon>SetupDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="TableParser.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -116,6 +118,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\welcome2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\reservation.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="sql\init\reservation.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

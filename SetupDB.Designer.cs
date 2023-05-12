@@ -47,7 +47,6 @@
       this.lbl_Server = new System.Windows.Forms.Label();
       this.pcb_Welcome = new System.Windows.Forms.PictureBox();
       this.bwork_Connection = new System.ComponentModel.BackgroundWorker();
-      this.bwork_DatabaseChecker = new System.ComponentModel.BackgroundWorker();
       this.pnl_setUpDB.SuspendLayout();
       this.gb_dbcnnct.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.pcb_Welcome)).BeginInit();
@@ -96,7 +95,7 @@
       this.lbl_Connecting.BackColor = System.Drawing.Color.Transparent;
       this.lbl_Connecting.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbl_Connecting.ForeColor = System.Drawing.Color.White;
-      this.lbl_Connecting.Location = new System.Drawing.Point(50, 216);
+      this.lbl_Connecting.Location = new System.Drawing.Point(46, 226);
       this.lbl_Connecting.Name = "lbl_Connecting";
       this.lbl_Connecting.Size = new System.Drawing.Size(191, 16);
       this.lbl_Connecting.TabIndex = 48;
@@ -106,25 +105,27 @@
       // 
       // lbl_MissingInfo
       // 
+      this.lbl_MissingInfo.AutoSize = true;
       this.lbl_MissingInfo.BackColor = System.Drawing.Color.Transparent;
       this.lbl_MissingInfo.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbl_MissingInfo.ForeColor = System.Drawing.Color.Maroon;
-      this.lbl_MissingInfo.Location = new System.Drawing.Point(50, 216);
+      this.lbl_MissingInfo.Location = new System.Drawing.Point(77, 227);
       this.lbl_MissingInfo.Name = "lbl_MissingInfo";
-      this.lbl_MissingInfo.Size = new System.Drawing.Size(191, 16);
+      this.lbl_MissingInfo.Size = new System.Drawing.Size(136, 15);
       this.lbl_MissingInfo.TabIndex = 47;
       this.lbl_MissingInfo.Text = "Missing required fields";
       this.lbl_MissingInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       this.lbl_MissingInfo.Visible = false;
+      this.lbl_MissingInfo.Click += new System.EventHandler(this.lbl_MissingInfo_Click);
       // 
       // lbl_Error
       // 
       this.lbl_Error.BackColor = System.Drawing.Color.Transparent;
       this.lbl_Error.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbl_Error.ForeColor = System.Drawing.Color.Maroon;
-      this.lbl_Error.Location = new System.Drawing.Point(50, 216);
+      this.lbl_Error.Location = new System.Drawing.Point(10, 227);
       this.lbl_Error.Name = "lbl_Error";
-      this.lbl_Error.Size = new System.Drawing.Size(191, 16);
+      this.lbl_Error.Size = new System.Drawing.Size(276, 16);
       this.lbl_Error.TabIndex = 46;
       this.lbl_Error.Text = "Cannot connect to database";
       this.lbl_Error.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -284,13 +285,10 @@
       // 
       // bwork_Connection
       // 
+      this.bwork_Connection.WorkerReportsProgress = true;
       this.bwork_Connection.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwork_Connection_DoWork);
+      this.bwork_Connection.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bwork_Connection_ProgressChanged);
       this.bwork_Connection.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwork_Connection_RunWorkerCompleted);
-      // 
-      // bwork_DatabaseChecker
-      // 
-      this.bwork_DatabaseChecker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwork_DatabaseChecker_DoWork);
-      this.bwork_DatabaseChecker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwork_DatabaseChecker_RunWorkerCompleted);
       // 
       // SetupDB
       // 
@@ -332,6 +330,5 @@
     private System.Windows.Forms.Label lbl_MissingInfo;
     private System.Windows.Forms.Label lbl_Connecting;
         private System.ComponentModel.BackgroundWorker bwork_Connection;
-    private System.ComponentModel.BackgroundWorker bwork_DatabaseChecker;
   }
 }
