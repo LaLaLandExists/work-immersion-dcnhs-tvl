@@ -125,5 +125,8 @@
   <ItemGroup>
     <EmbeddedResource Include="sql\test.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="sql\another.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

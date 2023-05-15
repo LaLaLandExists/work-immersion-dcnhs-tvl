@@ -19,7 +19,7 @@ namespace NoteView.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -61,22 +61,25 @@ namespace NoteView.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized string similar to 
+        ///CREATE TABLE IF NOT EXISTS Car (
+        ///	id INT NOT NULL AUTO_INCREMENT,
+        ///	model TEXT NOT NULL,
+        ///	name TEXT NOT NULL
+        ///);
+        ///
+        ///CREATE TABLE IF NOT EXISTS Customer (
+        ///	id INT NOT NULL AUTO_INCREMENT,
+        ///	carId INT NOT NULL,
+        ///	
+        ///	PRIMARY KEY (id),
+        ///	FOREIGN KEY (carId) REFERENCES Car(id)
+        ///);
+        ///.
         /// </summary>
-        internal static System.Drawing.Bitmap _2 {
+        internal static string another {
             get {
-                object obj = ResourceManager.GetObject("2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _21 {
-            get {
-                object obj = ResourceManager.GetObject("21", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("another", resourceCulture);
             }
         }
         
@@ -131,20 +134,10 @@ namespace NoteView.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap iconvb11 {
-            get {
-                object obj = ResourceManager.GetObject("iconvb11", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to 
         ///-- Test database to debug the validation layer
         ///
-        ///CREATE TABLE IF NOT EXISTS Student (
+        ///CREATE TABLE Student (
         ///	id INT NOT NULL AUTO_INCREMENT,
         ///	firstName TEXT NOT NULL,
         ///	middleName TEXT,
@@ -153,7 +146,13 @@ namespace NoteView.Properties {
         ///	PRIMARY KEY (id)
         ///);
         ///
-        ///CREATE TABLE IF NOT EXISTS Elective (
+        ///CREATE TABLE AllNew (
+        ///	id INT NOT NULL,
+        ///
+        ///	PRIMARY KEY (id)
+        ///);
+        ///
+        ///CREATE TABLE Elective (
         ///	id INT NOT NULL AUTO_INCREMENT,
         ///	name TEXT NOT NULL,
         ///	units INT NOT NULL,
@@ -161,12 +160,11 @@ namespace NoteView.Properties {
         ///	PRIMARY KEY (id)
         ///);
         ///
-        ///CREATE TABLE IF NOT EXISTS StudentElective (
+        ///CREATE TABLE StudentElective (
         ///	studentId INT NOT NULL,
         ///	electiveId INT NOT NULL,
         ///	
-        ///	FOREIGN KEY (studentId) Student(id),
-        ///	F [rest of string was truncated]&quot;;.
+        ///	FOREIGN KEY ( [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Test {
             get {
@@ -177,29 +175,9 @@ namespace NoteView.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap welcome {
-            get {
-                object obj = ResourceManager.GetObject("welcome", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap welcome1 {
             get {
                 object obj = ResourceManager.GetObject("welcome1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap welcome2 {
-            get {
-                object obj = ResourceManager.GetObject("welcome2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

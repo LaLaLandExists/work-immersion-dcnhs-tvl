@@ -41,7 +41,7 @@ namespace NoteView
     }
     private void ShowError(string msg, string info = null)
     {
-      lbl_ConnectOutput.ForeColor = Color.Maroon;
+      lbl_ConnectOutput.ForeColor = Color.Red;
       lbl_ConnectOutput.Text = msg;
       lbl_ConnectOutput.Show();
       if (info != null)
@@ -134,6 +134,11 @@ namespace NoteView
       {
         e.Result = exc.Message;
       }
+    }
+
+    private void pnl_setUpDB_Paint(object sender, PaintEventArgs e)
+    {
+
     }
   }
 }

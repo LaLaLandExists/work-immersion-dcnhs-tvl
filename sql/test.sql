@@ -12,6 +12,7 @@ CREATE TABLE Student (
 
 CREATE TABLE AllNew (
 	id INT NOT NULL,
+
 	PRIMARY KEY (id)
 );
 

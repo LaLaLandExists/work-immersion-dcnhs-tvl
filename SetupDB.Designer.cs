@@ -70,17 +70,19 @@
       this.pnl_setUpDB.Name = "pnl_setUpDB";
       this.pnl_setUpDB.Size = new System.Drawing.Size(784, 411);
       this.pnl_setUpDB.TabIndex = 12;
+      this.pnl_setUpDB.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl_setUpDB_Paint);
       // 
       // lbl_ErrorInfo
       // 
       this.lbl_ErrorInfo.AutoSize = true;
       this.lbl_ErrorInfo.BackColor = System.Drawing.Color.Transparent;
-      this.lbl_ErrorInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbl_ErrorInfo.ForeColor = System.Drawing.Color.Maroon;
+      this.lbl_ErrorInfo.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbl_ErrorInfo.ForeColor = System.Drawing.Color.Red;
       this.lbl_ErrorInfo.Location = new System.Drawing.Point(-3, 398);
       this.lbl_ErrorInfo.Name = "lbl_ErrorInfo";
-      this.lbl_ErrorInfo.Size = new System.Drawing.Size(0, 13);
+      this.lbl_ErrorInfo.Size = new System.Drawing.Size(81, 14);
       this.lbl_ErrorInfo.TabIndex = 27;
+      this.lbl_ErrorInfo.Text = "Generic Error";
       this.lbl_ErrorInfo.Visible = false;
       // 
       // gb_dbcnnct
@@ -152,7 +154,7 @@
       this.txt_Password.Name = "txt_Password";
       this.txt_Password.Size = new System.Drawing.Size(192, 21);
       this.txt_Password.TabIndex = 43;
-      this.txt_Password.Text = "auth999";
+      this.txt_Password.Text = "password";
       this.txt_Password.UseSystemPasswordChar = true;
       // 
       // txt_Username

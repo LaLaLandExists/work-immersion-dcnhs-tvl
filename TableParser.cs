@@ -1,8 +1,6 @@
 using System;
-using System.Linq;
 using System.Collections.Generic;
 using System.Text;
-using System.Runtime.CompilerServices;
 
 namespace NoteView
 {
@@ -85,7 +83,7 @@ namespace NoteView
         int i = Seek(value);
         if (i == -1)
         {
-          throw new ArgumentException("Invalid field");
+          throw new InvalidProgramException("Invalid field");
         }
         primary = value;
       }
@@ -98,7 +96,7 @@ namespace NoteView
       sb.Append($"  primary={primary}\n");
       foreach (Field field in fields)
       {
-        sb.Append($"  {field.ToString()}\n");
+        sb.Append($"  {field}\n");
       }
       return sb.ToString();
     }
@@ -150,7 +148,7 @@ namespace NoteView
 
     private void error(string msg)
     {
-      throw new ArgumentException(msg);
+      throw new InvalidProgramException(msg);
     }
 
     // Scanning
@@ -368,7 +366,9 @@ namespace NoteView
           ExpectToken(TokenKind.Key);
           if (table.Primary != null) error("Duplicate primary key");
           ExpectToken(TokenKind.LeftParen);
-          table.Primary = ExpectToken(TokenKind.Id).lexeme;
+          string fieldName = ExpectToken(TokenKind.Id).lexeme;
+          if (table.Seek(fieldName) == -1) throw new InvalidProgramException("Invalid field");
+          table.Primary = fieldName;
           ExpectToken(TokenKind.RightParen, "Unmatched parenthesis");
         }
         else if (MatchToken(TokenKind.Foreign))
