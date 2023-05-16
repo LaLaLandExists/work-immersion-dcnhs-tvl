@@ -1,43 +1,25 @@
---Payment Method
+-- Client
 CREATE TABLE IF NOT EXISTS PaymentMethod(
-	PaymentID INT NOT NULL,
-	WalkInID INT NOT NULL,
-	
-	PRIMARY KEY (PaymentID),
-	FOREGIN KEY (WalkInID) REFERENCES Reservation(id)
-);
-
-CREATE TABLE IF NOT EXISTS Card {
-	id INT NOT NULL,
-	CardType TEXT,
+	PaymentID INT NOT NULL AUTO_INCREMENT,
+	CardType Text,
 	CardNum TEXT NOT NULL,
 	Auth TEXT NOT NULL,
 	ExpDate DATE NOT NULL,
 	CardHolder TEXT NOT NULL,
 	
-	FOREIGN KEY (id) REFERENCES PaymentMethod(PaymentID)
-}
+	PRIMARY KEY (PaymentID)
+);
 
-CREATE TABLE IF NOT EXISTS Cash {
-	id INT NOT NULL,
-	Amount INT NOT NULL,
+CREATE TABLE IF NOT EXISTS Vehicle(
+	VehicleID INT NOT NULL AUTO_INCREMENT,
 	
-	FOREIGN KEY (id) REFERENCES PaymentMethod(PaymentID)
-}
-
-CREATE TABLE IF NOT EXISTS GCash {
-	id INT NOT NULL,
+	Brand TEXT,
+	Model TEXT,
+	License TEXT NOT NULL,
 	
-	GCashNum = TEXT,
-	Name TEXT,
-	QR TEXT,
-	Amount INT NOT NULL,
-	
-	FOREIGN KEY (id) REFERENCES PaymentMethod(PaymentID)
-}
+	PRIMARY KEY(VehicleID)
+);
 
-
--- Client
 CREATE TABLE IF NOT EXISTS Client (
 	ClientID INT NOT NULL AUTO_INCREMENT,
 	
@@ -68,11 +50,9 @@ CREATE TABLE IF NOT EXISTS Client (
 	Amount INT,
 	
 	PaymentID INT NOT NULL,
-	
-	VehicleBrand TEXT,
-	VehicleModel TEXT,
-	License TEXT,
+	VehicleID INT NOT NULL,
 	
 	PRIMARY KEY (ClientID),
+	FOREIGN KEY (VehicleID) REFERENCES Vehicle(VehicleID),
 	FOREIGN KEY (PaymentID) REFERENCES PaymentMethod(PaymentID)
 ); 

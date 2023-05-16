@@ -61,21 +61,7 @@ namespace NoteView.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 
-        ///CREATE TABLE IF NOT EXISTS Car (
-        ///	id INT NOT NULL AUTO_INCREMENT,
-        ///	model TEXT NOT NULL,
-        ///	name TEXT NOT NULL
-        ///);
-        ///
-        ///CREATE TABLE IF NOT EXISTS Customer (
-        ///	id INT NOT NULL AUTO_INCREMENT,
-        ///	carId INT NOT NULL,
-        ///	
-        ///	PRIMARY KEY (id),
-        ///	FOREIGN KEY (carId) REFERENCES Car(id)
-        ///);
-        ///.
+        ///   Looks up a localized string similar to .
         /// </summary>
         internal static string another {
             get {

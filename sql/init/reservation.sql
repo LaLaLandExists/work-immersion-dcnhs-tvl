@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS Reservation (
 CREATE TABLE IF NOT EXISTS ReservationRoom (
 	id INT NOT NULL AUTO_INCREMENT,
 	reservationId INT NOT NULL,
-	roomId INT NOT NULL,
+	roomId TEXT NOT NULL,
 	
 	PRIMARY KEY (id),
 	FOREIGN KEY (reservationId) REFERENCES Reservation(id),
