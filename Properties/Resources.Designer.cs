@@ -159,6 +159,26 @@ namespace NoteView.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 
+        ///CREATE TABLE IF NOT EXISTS UserInfo (
+        ///	id INT NOT NULL AUTO_INCREMENT,
+        ///	userType TEXT NOT NULL, -- &quot;USER&quot; or &quot;ADMIN&quot;
+        ///	firstName TEXT NOT NULL,
+        ///	lastName TEXT NOT NULL,
+        ///	userName TEXT NOT NULL,
+        ///	password TEXT NOT NULL,
+        ///	
+        ///	PRIMARY KEY (id)
+        ///);
+        ///.
+        /// </summary>
+        internal static string user_info {
+            get {
+                return ResourceManager.GetString("user_info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap welcome1 {

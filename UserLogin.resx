@@ -121,7 +121,7 @@
   <data name="panel1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAyAAAAHCCAYAAAAXY63IAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EQAACxEBf2RfkQAA/7JJREFUeF7s/XffZdd53nnCkq1kRStQgRQDmDMBgmACCeYoiqTgJDnnHNttu91u
+        DgAACw4BQL7hQQAA/7JJREFUeF7s/XffZdd53nnCkq1kRStQgRQDmDMBgmACCeYoiqTgJDnnHNttu91u
         B1mSc5Bky0kOcu4eu210a2bsnumeeQMkqgBwXk7Nfa+z7nWude9rxb3PeZ6nsP74fQAUglBF1F77q2ud
         px75+sf/fw+6e3errz34ldoThd7ztQe/qtSTp77B917S+7724Bux95/7pg+4Pnjum7WnXB/62oNvwT58
         7lc/DX3k1LdqH4U+9rUH32Z9/Ny3fwL65Knv0D4FffprD74z9eKD7/zMiw++S/ts7HMvPvg11udffPDd
@@ -5431,6 +5431,12 @@
         //5/JNDGPcsTirsAAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="bwork_Authentication.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="tt_AddAccHov.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>188, 17</value>
+  </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAABAAACMuAAAjLgAAAAAAAAAA

@@ -93,7 +93,7 @@ namespace NoteView
       switch (res)
       {
         case MySqlConnection conn:
-          Program.Connection = conn;
+          Session.conn = conn;
           ShowMessage("Connected");
           break;
         case int err when err == 0:
@@ -134,11 +134,6 @@ namespace NoteView
       {
         e.Result = exc.Message;
       }
-    }
-
-    private void pnl_setUpDB_Paint(object sender, PaintEventArgs e)
-    {
-
     }
   }
 }
