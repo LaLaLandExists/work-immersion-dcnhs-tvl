@@ -15,10 +15,12 @@ namespace NoteView
     public const string AdminUType = "ADMIN";
     public const string UserUType = "USER";
 
-    private const string FetchAccountSQL = "SELECT * FROM UserInfo WHERE userName = '{0}';";
-    private const string AuthAccountSQL = "SELECT * FROM UserInfo WHERE userName = '{0}' AND password = '{1}';";
-    private const string NewAccountSQL
-      = "INSERT INTO UserInfo (userType, firstName, lastName, userName, password) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}');";
+    private const string FetchAccountSQL =
+      "SELECT * FROM UserInfo WHERE BINARY userName = '{0}';";
+    private const string AuthAccountSQL =
+      "SELECT * FROM UserInfo WHERE BINARY userName = '{0}' AND BINARY password = '{1}';";
+    private const string NewAccountSQL =
+      "INSERT INTO UserInfo (userType, addedBy, firstName, lastName, userName, password) VALUES ('{0}', {1}, '{2}', '{3}', '{4}', '{5}');";
 
     // YASSIFICATION PROCESS PLS DONT TOUCH IT WILL BE HARD TO DEBUG
     private static void AssertConnection()
@@ -80,36 +82,43 @@ namespace NoteView
       }
     }
 
-    private static void AddNewAccount(bool adminMode, string uname, string password, string firstName, string lastName)
+    private SeekResult AddNewAccount(bool adminMode, string uname, string password, string firstName, string lastName)
     {
-      if (SeekAccount(uname) != null) throw new InvalidOperationException($"User '{uname}' already exists");
+      SeekResult? r = SeekAccount(uname);
+      if (r != null) throw new InvalidOperationException($"User '{uname}' already exists");
 
       using (MySqlCommand cmd = conn.CreateCommand())
       {
-        cmd.CommandText = string.Format(NewAccountSQL, adminMode ? AdminUType : UserUType, firstName, lastName, uname, password);
+        cmd.CommandText = string.Format(NewAccountSQL, adminMode ? AdminUType : UserUType, this.userId, firstName, lastName, uname, password);
         cmd.ExecuteNonQuery();
+
+        cmd.CommandText = string.Format(FetchAccountSQL, uname);
+        
+        return (SeekResult) SeekAccount(uname);
       }
     }
 
-    // Constructor when adding new account for authentication
-    public Session(bool authoritative, string username, string password, string firstName, string lastName)
+    private Session(bool authoritative, int id, string username, string firstName, string lastName)
     {
-      AddNewAccount(authoritative, username, password, firstName, lastName);
       adminMode = authoritative;
+      userId = id;
       this.username = username;
       this.firstName = firstName;
       this.lastName = lastName;
     }
 
-    // Constructor when authenticating to an existing account
-    public Session(string username, string password)
+    // Constructor when adding new account for authentication
+    public Session RegisterAccount(bool IsAdmin, string username, string password, string firstName, string lastName)
     {
-      SeekResult sought = SeekAccount(username, password) ?? throw new InvalidOperationException($"Account username or password is invalid");
+      SeekResult r = AddNewAccount(IsAdmin, username, password, firstName, lastName);
+      return new Session(r.adminMode, r.id, r.uname, r.firstName, r.lastName);
+    }
 
-      adminMode = sought.adminMode;
-      this.username = username;
-      firstName = sought.firstName;
-      lastName = sought.lastName;
+    // Constructor when authenticating to an existing account
+    public static Session LoginAccount(string username, string password)
+    {
+      SeekResult r = SeekAccount(username, password) ?? throw new InvalidOperationException($"Account username or password is invalid");
+      return new Session(r.adminMode, r.id, r.uname, r.firstName, r.lastName);
     }
   }
 }

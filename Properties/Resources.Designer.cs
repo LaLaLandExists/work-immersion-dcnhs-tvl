@@ -61,15 +61,6 @@ namespace NoteView.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string another {
-            get {
-                return ResourceManager.GetString("another", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap bg {
@@ -121,54 +112,17 @@ namespace NoteView.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to 
-        ///-- Test database to debug the validation layer
-        ///
-        ///CREATE TABLE Student (
-        ///	id INT NOT NULL AUTO_INCREMENT,
-        ///	firstName TEXT NOT NULL,
-        ///	middleName TEXT,
-        ///	lastName TEXT NOT NULL,
-        ///	
-        ///	PRIMARY KEY (id)
-        ///);
-        ///
-        ///CREATE TABLE AllNew (
-        ///	id INT NOT NULL,
-        ///
-        ///	PRIMARY KEY (id)
-        ///);
-        ///
-        ///CREATE TABLE Elective (
-        ///	id INT NOT NULL AUTO_INCREMENT,
-        ///	name TEXT NOT NULL,
-        ///	units INT NOT NULL,
-        ///	
-        ///	PRIMARY KEY (id)
-        ///);
-        ///
-        ///CREATE TABLE StudentElective (
-        ///	studentId INT NOT NULL,
-        ///	electiveId INT NOT NULL,
-        ///	
-        ///	FOREIGN KEY ( [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string Test {
-            get {
-                return ResourceManager.GetString("Test", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 
         ///CREATE TABLE IF NOT EXISTS UserInfo (
         ///	id INT NOT NULL AUTO_INCREMENT,
+        ///	addedBy INT,
         ///	userType TEXT NOT NULL, -- &quot;USER&quot; or &quot;ADMIN&quot;
         ///	firstName TEXT NOT NULL,
         ///	lastName TEXT NOT NULL,
         ///	userName TEXT NOT NULL,
         ///	password TEXT NOT NULL,
         ///	
-        ///	PRIMARY KEY (id)
+        ///	PRIMARY KEY (id),
+        ///	FOREIGN KEY (addedBy) REFERENCES UserInfo(id) 
         ///);
         ///.
         /// </summary>

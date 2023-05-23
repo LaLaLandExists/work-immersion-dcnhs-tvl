@@ -30,6 +30,7 @@
         {
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddUser));
       this.pnl_SignUp = new System.Windows.Forms.Panel();
+      this.lbl_AdminMessage = new System.Windows.Forms.Label();
       this.gbx_AdminAuth = new System.Windows.Forms.GroupBox();
       this.lbl_AAAuthMessage = new System.Windows.Forms.Label();
       this.chb_AAshowpass = new System.Windows.Forms.CheckBox();
@@ -39,6 +40,7 @@
       this.lbl_AApass = new System.Windows.Forms.Label();
       this.lbl_AAusername = new System.Windows.Forms.Label();
       this.gbx_SignUp = new System.Windows.Forms.GroupBox();
+      this.llbl_GoBack = new System.Windows.Forms.LinkLabel();
       this.cb_AdminCheck = new System.Windows.Forms.CheckBox();
       this.lbl_SignUpMsg = new System.Windows.Forms.Label();
       this.btn_SignUp = new System.Windows.Forms.Button();
@@ -54,6 +56,7 @@
       this.lbl_SignUpPass2 = new System.Windows.Forms.Label();
       this.lbl_SignUpPass1 = new System.Windows.Forms.Label();
       this.lbl_SignUpUid = new System.Windows.Forms.Label();
+      this.linkLabel1 = new System.Windows.Forms.LinkLabel();
       this.pnl_SignUp.SuspendLayout();
       this.gbx_AdminAuth.SuspendLayout();
       this.gbx_SignUp.SuspendLayout();
@@ -62,6 +65,7 @@
       // pnl_SignUp
       // 
       this.pnl_SignUp.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnl_SignUp.BackgroundImage")));
+      this.pnl_SignUp.Controls.Add(this.lbl_AdminMessage);
       this.pnl_SignUp.Controls.Add(this.gbx_AdminAuth);
       this.pnl_SignUp.Controls.Add(this.gbx_SignUp);
       this.pnl_SignUp.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -69,6 +73,19 @@
       this.pnl_SignUp.Name = "pnl_SignUp";
       this.pnl_SignUp.Size = new System.Drawing.Size(800, 450);
       this.pnl_SignUp.TabIndex = 0;
+      // 
+      // lbl_AdminMessage
+      // 
+      this.lbl_AdminMessage.AutoSize = true;
+      this.lbl_AdminMessage.BackColor = System.Drawing.Color.Transparent;
+      this.lbl_AdminMessage.Dock = System.Windows.Forms.DockStyle.Bottom;
+      this.lbl_AdminMessage.ForeColor = System.Drawing.SystemColors.Control;
+      this.lbl_AdminMessage.Location = new System.Drawing.Point(0, 437);
+      this.lbl_AdminMessage.Name = "lbl_AdminMessage";
+      this.lbl_AdminMessage.Size = new System.Drawing.Size(95, 13);
+      this.lbl_AdminMessage.TabIndex = 15;
+      this.lbl_AdminMessage.Text = "lbl_AdminMessage";
+      this.lbl_AdminMessage.Visible = false;
       // 
       // gbx_AdminAuth
       // 
@@ -166,6 +183,8 @@
       // gbx_SignUp
       // 
       this.gbx_SignUp.BackColor = System.Drawing.Color.Transparent;
+      this.gbx_SignUp.Controls.Add(this.linkLabel1);
+      this.gbx_SignUp.Controls.Add(this.llbl_GoBack);
       this.gbx_SignUp.Controls.Add(this.cb_AdminCheck);
       this.gbx_SignUp.Controls.Add(this.lbl_SignUpMsg);
       this.gbx_SignUp.Controls.Add(this.btn_SignUp);
@@ -189,6 +208,23 @@
       this.gbx_SignUp.TabIndex = 0;
       this.gbx_SignUp.TabStop = false;
       this.gbx_SignUp.Text = "Add User";
+      this.gbx_SignUp.Visible = false;
+      // 
+      // llbl_GoBack
+      // 
+      this.llbl_GoBack.ActiveLinkColor = System.Drawing.Color.Blue;
+      this.llbl_GoBack.AutoSize = true;
+      this.llbl_GoBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.llbl_GoBack.ForeColor = System.Drawing.SystemColors.ButtonFace;
+      this.llbl_GoBack.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+      this.llbl_GoBack.LinkColor = System.Drawing.Color.White;
+      this.llbl_GoBack.Location = new System.Drawing.Point(325, 330);
+      this.llbl_GoBack.Name = "llbl_GoBack";
+      this.llbl_GoBack.Size = new System.Drawing.Size(62, 15);
+      this.llbl_GoBack.TabIndex = 17;
+      this.llbl_GoBack.TabStop = true;
+      this.llbl_GoBack.Text = "< Go back";
+      this.llbl_GoBack.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbl_GoBack_LinkClicked);
       // 
       // cb_AdminCheck
       // 
@@ -200,7 +236,6 @@
       this.cb_AdminCheck.TabIndex = 16;
       this.cb_AdminCheck.Text = "Admin Privilege";
       this.cb_AdminCheck.UseVisualStyleBackColor = true;
-      this.cb_AdminCheck.CheckedChanged += new System.EventHandler(this.cb_AdminCheck_CheckedChanged);
       // 
       // lbl_SignUpMsg
       // 
@@ -337,6 +372,22 @@
       this.lbl_SignUpUid.TabIndex = 0;
       this.lbl_SignUpUid.Text = "Username:";
       // 
+      // linkLabel1
+      // 
+      this.linkLabel1.ActiveLinkColor = System.Drawing.Color.Blue;
+      this.linkLabel1.AutoSize = true;
+      this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.linkLabel1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+      this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+      this.linkLabel1.LinkColor = System.Drawing.Color.White;
+      this.linkLabel1.Location = new System.Drawing.Point(6, 332);
+      this.linkLabel1.Name = "linkLabel1";
+      this.linkLabel1.Size = new System.Drawing.Size(31, 13);
+      this.linkLabel1.TabIndex = 18;
+      this.linkLabel1.TabStop = true;
+      this.linkLabel1.Text = "Clear";
+      this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+      // 
       // AddUser
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -349,6 +400,7 @@
       this.Name = "AddUser";
       this.Text = "Add a User";
       this.pnl_SignUp.ResumeLayout(false);
+      this.pnl_SignUp.PerformLayout();
       this.gbx_AdminAuth.ResumeLayout(false);
       this.gbx_AdminAuth.PerformLayout();
       this.gbx_SignUp.ResumeLayout(false);
@@ -384,5 +436,8 @@
         private System.Windows.Forms.Label lbl_AAusername;
         private System.Windows.Forms.Label lbl_SignUpMsg;
     private System.Windows.Forms.CheckBox cb_AdminCheck;
+    private System.Windows.Forms.Label lbl_AdminMessage;
+    private System.Windows.Forms.LinkLabel llbl_GoBack;
+    private System.Windows.Forms.LinkLabel linkLabel1;
   }
 }

@@ -1,13 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 namespace NoteView
 {
+  internal class UnexpectedException : Exception
+  {
+    public UnexpectedException(string msg) : base(msg) { }
+  }
+
   internal static class Program
   {
     public const int MinimumUsernameLength = 8;
@@ -20,9 +21,47 @@ namespace NoteView
 
     public static Session session;
 
-    public static bool IsValidUname(string uname)
+    public static string IsValidUname(string uname)
     {
-      return unameRegex.IsMatch(uname);
+      if (uname.Length < MinimumUsernameLength)
+      {
+        return "Username is too short";
+      }
+      if (uname.Length > MaximumUsernameLength)
+      {
+        return "Username is too long";
+      }
+
+      if (!unameRegex.IsMatch(uname))
+      {
+        return "Invalid username";
+      }
+
+      return null;
+    }
+
+    public static string IsValidPword(string pword)
+    {
+      if (pword.Length < MinimumPasswordLength)
+      {
+        return "Password is too short";
+      }
+      if (pword.Length > MaximumPasswordLength)
+      {
+        return "Password is too long";
+      }
+
+      return null;
+    }
+
+    public static void Assert(bool condition, string msg)
+    {
+      if (!condition) throw new UnexpectedException(msg);
+    }
+
+    public static void AssertUnreachable(string msg = "Code unreachable")
+    {
+      throw new UnexpectedException(msg);
     }
     /// <summary>
     /// The main entry point for the application.
@@ -30,11 +69,18 @@ namespace NoteView
     [STAThread]
     static void Main()
     {
-      Application.EnableVisualStyles();
-      Application.SetCompatibleTextRenderingDefault(false);
-      // TODO: skip this step if the user has already logged in to a database
-      Application.Run(new SetupDB());
-      Application.Run(new UserLogin());
+      try
+      {
+        Application.EnableVisualStyles();
+        Application.SetCompatibleTextRenderingDefault(false);
+        // TODO: skip this step if the user has already logged in to a database
+        Application.Run(new SetupDB());
+        Application.Run(new UserLogin());
+      }
+      finally
+      {
+        Session.conn?.Close();
+      }
     }
   }
 }

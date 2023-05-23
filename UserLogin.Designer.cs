@@ -88,7 +88,6 @@
       this.llbl_AddAcc.Name = "llbl_AddAcc";
       this.llbl_AddAcc.Size = new System.Drawing.Size(78, 13);
       this.llbl_AddAcc.TabIndex = 8;
-      this.llbl_AddAcc.TabStop = true;
       this.llbl_AddAcc.Text = "Add Account";
       this.llbl_AddAcc.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbl_AddAcc_LinkClicked);
       // 

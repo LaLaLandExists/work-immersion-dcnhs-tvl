@@ -28,39 +28,21 @@ namespace NoteView
     }
     private void btn_login_Click(object sender, EventArgs e)
     {
-
       string uname = tb_username.Text.Trim();
       string pword = tb_pass.Text.Trim();
+      string qres;
 
-      int unameLength = uname.Length;
-
-      if (unameLength < Program.MinimumUsernameLength)
+      qres = Program.IsValidUname(uname);
+      if (qres != null)
       {
-        ShowError("Username is too short");
-        return;
-        ;
-      }
-      if (unameLength > Program.MaximumUsernameLength)
-      {
-        ShowError("Username is too long");
+        ShowError(qres);
         return;
       }
 
-      if (!Program.IsValidUname(uname))
+      qres = Program.IsValidPword(pword);
+      if (qres != null)
       {
-        ShowError("Username contained invalid characters");
-        return;
-      }
-
-      int passLength = pword.Length;
-      if (passLength < Program.MinimumPasswordLength)
-      {
-        ShowError("Password is too short");
-        return;
-      }
-      if (passLength > Program.MaximumPasswordLength)
-      {
-        ShowError("Password is too long");
+        ShowError(qres);
         return;
       }
 
@@ -82,7 +64,7 @@ namespace NoteView
     {
       try
       {
-        Program.session = new Session(tb_username.Text.Trim(), tb_pass.Text.Trim());
+        Program.session = Session.LoginAccount(tb_username.Text.Trim(), tb_pass.Text.Trim());
       }
       catch (InvalidOperationException exc)
       {

@@ -143,12 +143,6 @@
     <None Include="sql\init\reservation.sql" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="sql\test.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="sql\another.sql" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="sql\init\user-info.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
