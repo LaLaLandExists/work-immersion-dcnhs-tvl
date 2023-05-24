@@ -11,13 +11,15 @@ namespace NoteView
 
   internal static class Program
   {
+    // TODO defer this to Util
     public const int MinimumUsernameLength = 8;
     public const int MaximumUsernameLength = 35;
 
     public const int MinimumPasswordLength = 8;
     public const int MaximumPasswordLength = 16;
 
-    public static readonly Regex unameRegex = new Regex("^[_a-zA-Z][_a-zA-Z0-9]*$");
+    public static readonly Regex unameRegex = new Regex("^[_a-zA-Z][\\._a-zA-Z0-9]*$");
+    public static readonly Regex nameRegex = new Regex("^[a-zA-Z]+( [a-zA-Z]+)*$");
 
     public static Session session;
 
@@ -73,9 +75,8 @@ namespace NoteView
       {
         Application.EnableVisualStyles();
         Application.SetCompatibleTextRenderingDefault(false);
-        // TODO: skip this step if the user has already logged in to a database
+        // TODO: Implement correct form flow
         Application.Run(new SetupDB());
-        Application.Run(new UserLogin());
       }
       finally
       {

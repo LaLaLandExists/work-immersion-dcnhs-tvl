@@ -40,6 +40,7 @@
       this.lbl_AApass = new System.Windows.Forms.Label();
       this.lbl_AAusername = new System.Windows.Forms.Label();
       this.gbx_SignUp = new System.Windows.Forms.GroupBox();
+      this.linkLabel1 = new System.Windows.Forms.LinkLabel();
       this.llbl_GoBack = new System.Windows.Forms.LinkLabel();
       this.cb_AdminCheck = new System.Windows.Forms.CheckBox();
       this.lbl_SignUpMsg = new System.Windows.Forms.Label();
@@ -56,7 +57,8 @@
       this.lbl_SignUpPass2 = new System.Windows.Forms.Label();
       this.lbl_SignUpPass1 = new System.Windows.Forms.Label();
       this.lbl_SignUpUid = new System.Windows.Forms.Label();
-      this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+      this.bwork_Auth = new System.ComponentModel.BackgroundWorker();
+      this.bwork_SignUp = new System.ComponentModel.BackgroundWorker();
       this.pnl_SignUp.SuspendLayout();
       this.gbx_AdminAuth.SuspendLayout();
       this.gbx_SignUp.SuspendLayout();
@@ -165,9 +167,9 @@
       this.lbl_AApass.ForeColor = System.Drawing.Color.White;
       this.lbl_AApass.Location = new System.Drawing.Point(81, 143);
       this.lbl_AApass.Name = "lbl_AApass";
-      this.lbl_AApass.Size = new System.Drawing.Size(73, 15);
+      this.lbl_AApass.Size = new System.Drawing.Size(69, 15);
       this.lbl_AApass.TabIndex = 9;
-      this.lbl_AApass.Text = "Password:";
+      this.lbl_AApass.Text = "Password";
       // 
       // lbl_AAusername
       // 
@@ -176,9 +178,9 @@
       this.lbl_AAusername.ForeColor = System.Drawing.Color.White;
       this.lbl_AAusername.Location = new System.Drawing.Point(77, 103);
       this.lbl_AAusername.Name = "lbl_AAusername";
-      this.lbl_AAusername.Size = new System.Drawing.Size(77, 15);
+      this.lbl_AAusername.Size = new System.Drawing.Size(73, 15);
       this.lbl_AAusername.TabIndex = 8;
-      this.lbl_AAusername.Text = "Username:";
+      this.lbl_AAusername.Text = "Username";
       // 
       // gbx_SignUp
       // 
@@ -209,6 +211,22 @@
       this.gbx_SignUp.TabStop = false;
       this.gbx_SignUp.Text = "Add User";
       this.gbx_SignUp.Visible = false;
+      // 
+      // linkLabel1
+      // 
+      this.linkLabel1.ActiveLinkColor = System.Drawing.Color.Blue;
+      this.linkLabel1.AutoSize = true;
+      this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.linkLabel1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+      this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+      this.linkLabel1.LinkColor = System.Drawing.Color.White;
+      this.linkLabel1.Location = new System.Drawing.Point(6, 332);
+      this.linkLabel1.Name = "linkLabel1";
+      this.linkLabel1.Size = new System.Drawing.Size(31, 13);
+      this.linkLabel1.TabIndex = 18;
+      this.linkLabel1.TabStop = true;
+      this.linkLabel1.Text = "Clear";
+      this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
       // 
       // llbl_GoBack
       // 
@@ -328,9 +346,9 @@
       this.lbl_SignUpLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbl_SignUpLastName.Location = new System.Drawing.Point(89, 118);
       this.lbl_SignUpLastName.Name = "lbl_SignUpLastName";
-      this.lbl_SignUpLastName.Size = new System.Drawing.Size(80, 15);
+      this.lbl_SignUpLastName.Size = new System.Drawing.Size(76, 15);
       this.lbl_SignUpLastName.TabIndex = 4;
-      this.lbl_SignUpLastName.Text = "Last Name:";
+      this.lbl_SignUpLastName.Text = "Last Name";
       // 
       // lbl_SignUpFirstName
       // 
@@ -338,9 +356,9 @@
       this.lbl_SignUpFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbl_SignUpFirstName.Location = new System.Drawing.Point(88, 83);
       this.lbl_SignUpFirstName.Name = "lbl_SignUpFirstName";
-      this.lbl_SignUpFirstName.Size = new System.Drawing.Size(81, 15);
+      this.lbl_SignUpFirstName.Size = new System.Drawing.Size(77, 15);
       this.lbl_SignUpFirstName.TabIndex = 3;
-      this.lbl_SignUpFirstName.Text = "First Name:";
+      this.lbl_SignUpFirstName.Text = "First Name";
       // 
       // lbl_SignUpPass2
       // 
@@ -348,9 +366,9 @@
       this.lbl_SignUpPass2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbl_SignUpPass2.Location = new System.Drawing.Point(42, 205);
       this.lbl_SignUpPass2.Name = "lbl_SignUpPass2";
-      this.lbl_SignUpPass2.Size = new System.Drawing.Size(127, 15);
+      this.lbl_SignUpPass2.Size = new System.Drawing.Size(123, 15);
       this.lbl_SignUpPass2.TabIndex = 2;
-      this.lbl_SignUpPass2.Text = "Confirm Password:";
+      this.lbl_SignUpPass2.Text = "Confirm Password";
       // 
       // lbl_SignUpPass1
       // 
@@ -358,9 +376,9 @@
       this.lbl_SignUpPass1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbl_SignUpPass1.Location = new System.Drawing.Point(96, 151);
       this.lbl_SignUpPass1.Name = "lbl_SignUpPass1";
-      this.lbl_SignUpPass1.Size = new System.Drawing.Size(73, 15);
+      this.lbl_SignUpPass1.Size = new System.Drawing.Size(69, 15);
       this.lbl_SignUpPass1.TabIndex = 1;
-      this.lbl_SignUpPass1.Text = "Password:";
+      this.lbl_SignUpPass1.Text = "Password";
       // 
       // lbl_SignUpUid
       // 
@@ -368,25 +386,18 @@
       this.lbl_SignUpUid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbl_SignUpUid.Location = new System.Drawing.Point(92, 49);
       this.lbl_SignUpUid.Name = "lbl_SignUpUid";
-      this.lbl_SignUpUid.Size = new System.Drawing.Size(77, 15);
+      this.lbl_SignUpUid.Size = new System.Drawing.Size(73, 15);
       this.lbl_SignUpUid.TabIndex = 0;
-      this.lbl_SignUpUid.Text = "Username:";
+      this.lbl_SignUpUid.Text = "Username";
       // 
-      // linkLabel1
+      // bwork_Auth
       // 
-      this.linkLabel1.ActiveLinkColor = System.Drawing.Color.Blue;
-      this.linkLabel1.AutoSize = true;
-      this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.linkLabel1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-      this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-      this.linkLabel1.LinkColor = System.Drawing.Color.White;
-      this.linkLabel1.Location = new System.Drawing.Point(6, 332);
-      this.linkLabel1.Name = "linkLabel1";
-      this.linkLabel1.Size = new System.Drawing.Size(31, 13);
-      this.linkLabel1.TabIndex = 18;
-      this.linkLabel1.TabStop = true;
-      this.linkLabel1.Text = "Clear";
-      this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+      this.bwork_Auth.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwork_Auth_DoWork);
+      this.bwork_Auth.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwork_Auth_RunWorkerCompleted);
+      // 
+      // bwork_SignUp
+      // 
+      this.bwork_SignUp.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwork_SignUp_DoWork);
       // 
       // AddUser
       // 
@@ -394,6 +405,7 @@
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(800, 450);
       this.Controls.Add(this.pnl_SignUp);
+      this.DoubleBuffered = true;
       this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.MaximizeBox = false;
@@ -439,5 +451,7 @@
     private System.Windows.Forms.Label lbl_AdminMessage;
     private System.Windows.Forms.LinkLabel llbl_GoBack;
     private System.Windows.Forms.LinkLabel linkLabel1;
+    private System.ComponentModel.BackgroundWorker bwork_Auth;
+    private System.ComponentModel.BackgroundWorker bwork_SignUp;
   }
 }

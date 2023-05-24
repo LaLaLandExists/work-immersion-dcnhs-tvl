@@ -88,6 +88,7 @@
       this.llbl_AddAcc.Name = "llbl_AddAcc";
       this.llbl_AddAcc.Size = new System.Drawing.Size(78, 13);
       this.llbl_AddAcc.TabIndex = 8;
+      this.llbl_AddAcc.TabStop = true;
       this.llbl_AddAcc.Text = "Add Account";
       this.llbl_AddAcc.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbl_AddAcc_LinkClicked);
       // 
@@ -160,20 +161,21 @@
       this.lbl_pass.ForeColor = System.Drawing.Color.White;
       this.lbl_pass.Location = new System.Drawing.Point(58, 238);
       this.lbl_pass.Name = "lbl_pass";
-      this.lbl_pass.Size = new System.Drawing.Size(73, 15);
+      this.lbl_pass.Size = new System.Drawing.Size(69, 15);
       this.lbl_pass.TabIndex = 1;
-      this.lbl_pass.Text = "Password:";
+      this.lbl_pass.Text = "Password";
       // 
       // lbl_username
       // 
       this.lbl_username.AutoSize = true;
+      this.lbl_username.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.lbl_username.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbl_username.ForeColor = System.Drawing.Color.White;
       this.lbl_username.Location = new System.Drawing.Point(54, 205);
       this.lbl_username.Name = "lbl_username";
-      this.lbl_username.Size = new System.Drawing.Size(77, 15);
+      this.lbl_username.Size = new System.Drawing.Size(73, 15);
       this.lbl_username.TabIndex = 0;
-      this.lbl_username.Text = "Username:";
+      this.lbl_username.Text = "Username";
       // 
       // bwork_Authentication
       // 

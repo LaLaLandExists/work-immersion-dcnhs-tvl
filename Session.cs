@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Runtime.Versioning;
 
 namespace NoteView
 {
@@ -20,10 +21,9 @@ namespace NoteView
     private const string AuthAccountSQL =
       "SELECT * FROM UserInfo WHERE BINARY userName = '{0}' AND BINARY password = '{1}';";
     private const string NewAccountSQL =
-      "INSERT INTO UserInfo (userType, addedBy, firstName, lastName, userName, password) VALUES ('{0}', {1}, '{2}', '{3}', '{4}', '{5}');";
+      "INSERT INTO UserInfo (userType, firstName, lastName, userName, password) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}');";
 
-    // YASSIFICATION PROCESS PLS DONT TOUCH IT WILL BE HARD TO DEBUG
-    private static void AssertConnection()
+    public static void AssertConnection()
     {
       if (conn == null) throw new InvalidProgramException("An unexpected error occured. Pls contact the developer");
     }
@@ -82,14 +82,14 @@ namespace NoteView
       }
     }
 
-    private SeekResult AddNewAccount(bool adminMode, string uname, string password, string firstName, string lastName)
+    private static SeekResult AddNewAccount(bool adminMode, string uname, string password, string firstName, string lastName)
     {
       SeekResult? r = SeekAccount(uname);
       if (r != null) throw new InvalidOperationException($"User '{uname}' already exists");
 
       using (MySqlCommand cmd = conn.CreateCommand())
       {
-        cmd.CommandText = string.Format(NewAccountSQL, adminMode ? AdminUType : UserUType, this.userId, firstName, lastName, uname, password);
+        cmd.CommandText = string.Format(NewAccountSQL, adminMode ? AdminUType : UserUType, firstName, lastName, uname, password);
         cmd.ExecuteNonQuery();
 
         cmd.CommandText = string.Format(FetchAccountSQL, uname);
@@ -107,16 +107,62 @@ namespace NoteView
       this.lastName = lastName;
     }
 
-    // Constructor when adding new account for authentication
-    public Session RegisterAccount(bool IsAdmin, string username, string password, string firstName, string lastName)
+    //FIXME! Defer validity here?
+    private static void AssertValidity(string uname, string pword)
     {
-      SeekResult r = AddNewAccount(IsAdmin, username, password, firstName, lastName);
+      if (uname.Length < Program.MinimumUsernameLength)
+      {
+        throw new ArgumentException("Username is too short");
+      }
+
+      if (uname.Length > Program.MaximumUsernameLength)
+      {
+        throw new ArgumentException("Username is too long");
+      }
+
+      if (pword.Length < Program.MinimumPasswordLength)
+      {
+        throw new ArgumentException("Password is too short");
+      }
+
+      if (pword.Length > Program.MaximumPasswordLength)
+      {
+        throw new ArgumentException("Password is too long");
+      }
+
+      if (!Program.unameRegex.IsMatch(uname))
+      {
+        throw new ArgumentException("Username has invalid character/s");
+      }
+    }
+
+    private static void AssertValidity(string uname, string pword, string fname, string lname)
+    {
+      AssertValidity(uname, pword);
+
+      if (!Program.nameRegex.IsMatch(fname))
+      {
+        throw new ArgumentException("First name has invalid character/s");
+      }
+
+      if (!Program.nameRegex.IsMatch(lname))
+      {
+        throw new ArgumentException("Last name has invalid character/s");
+      }
+    }
+
+    // Constructor when adding new account for authentication
+    public static Session RegisterAccount(bool isAdmin, string username, string password, string firstName, string lastName)
+    {
+      AssertValidity(username, password, firstName, lastName);
+      SeekResult r = AddNewAccount(isAdmin, username, password, firstName, lastName);
       return new Session(r.adminMode, r.id, r.uname, r.firstName, r.lastName);
     }
 
     // Constructor when authenticating to an existing account
     public static Session LoginAccount(string username, string password)
     {
+      AssertValidity(username, password);
       SeekResult r = SeekAccount(username, password) ?? throw new InvalidOperationException($"Account username or password is invalid");
       return new Session(r.adminMode, r.id, r.uname, r.firstName, r.lastName);
     }

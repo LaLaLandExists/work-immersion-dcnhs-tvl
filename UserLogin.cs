@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Drawing;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace NoteView
 {
   public partial class UserLogin : Form
   {
+    private bool hasEmphasizedFields = false;
+
     private AddUser addUserForm;
     public UserLogin()
     {
@@ -28,21 +29,14 @@ namespace NoteView
     }
     private void btn_login_Click(object sender, EventArgs e)
     {
-      string uname = tb_username.Text.Trim();
-      string pword = tb_pass.Text.Trim();
-      string qres;
-
-      qres = Program.IsValidUname(uname);
-      if (qres != null)
+      if (Util.HasEmpty(tb_pass.Text, tb_username.Text))
       {
-        ShowError(qres);
-        return;
-      }
-
-      qres = Program.IsValidPword(pword);
-      if (qres != null)
-      {
-        ShowError(qres);
+        ShowError("Missing required field/s");
+        if (!hasEmphasizedFields)
+        {
+          Util.EmphasizeRequiredFields(lbl_username, lbl_pass);
+          hasEmphasizedFields = true; 
+        }
         return;
       }
 
@@ -62,25 +56,18 @@ namespace NoteView
 
     private void bwork_Authentication_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
     {
-      try
-      {
-        Program.session = Session.LoginAccount(tb_username.Text.Trim(), tb_pass.Text.Trim());
-      }
-      catch (InvalidOperationException exc)
-      {
-        e.Result = exc.Message;
-      }
+      Program.session = Session.LoginAccount(tb_username.Text.Trim(), tb_pass.Text.Trim());
     }
 
     private void bwork_Authentication_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
     {
-      if (e.Result != null)
-      {
-        ShowError((string) e.Result);
-      }
-      else
+      if (e.Error == null)
       {
         ShowMessage("Authenticated");
+      }
+      else if (e.Error is InvalidOperationException || e.Error is ArgumentException)
+      {
+        ShowError(e.Error.Message);
       }
     }
   }

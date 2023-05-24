@@ -6,6 +6,9 @@ namespace NoteView
 {
   public partial class AddUser : Form
   {
+    private bool sd_hasEmphasizedFields = false;
+    private bool su_hasEmphasizedFields = false;
+
     private Session session;
 
     public AddUser()
@@ -25,13 +28,6 @@ namespace NoteView
     {
       string uname = tb_AAusername.Text.Trim();
       string pword = tb_AApass.Text;
-      string res;
-
-      res = Program.IsValidUname(uname);
-      if (res != null) throw new ArgumentException(res);
-
-      res = Program.IsValidPword(pword);
-      if (res != null) throw new ArgumentException(res);
 
       session = Session.LoginAccount(uname, pword);
 
@@ -54,18 +50,19 @@ namespace NoteView
 
     private void btn_AAlogin_Click(object sender, EventArgs e)
     {
-      try
+      if (Util.HasEmpty(tb_AAusername.Text, tb_AApass.Text))
       {
-        TryAAAuth();
-        AAShowMessage("Welcome admin");
-        SwapBoxes();
-        lbl_AdminMessage.Text = $"Authenticated as {session.lastName}, {session.firstName} ({session.username})";
-        lbl_AdminMessage.Visible = true;
+        AAShowError("Missing required field/s");
+        if (!sd_hasEmphasizedFields)
+        {
+          Util.EmphasizeRequiredFields(lbl_AAusername, lbl_AApass);
+          sd_hasEmphasizedFields = true;
+        }
+        return;
       }
-      catch (Exception ex) when (ex is ArgumentException || ex is InvalidOperationException)
-      {
-        AAShowError(ex.Message);
-      }
+
+      btn_AAlogin.Enabled = false;
+      bwork_Auth.RunWorkerAsync();
     }
 
     private void chb_AAshowpass_CheckedChanged(object sender, EventArgs e)
@@ -93,6 +90,7 @@ namespace NoteView
       tbx_SignUpPass1.Text = "";
       tbx_SignUpPass2.Text = "";
       cb_AdminCheck.Checked = false;
+      lbl_SignUpMsg.Hide();
     }
 
     private void SUTrySignUp()
@@ -104,30 +102,12 @@ namespace NoteView
       string confirmPword = tbx_SignUpPass2.Text;
       bool isAdmin = cb_AdminCheck.Checked;
 
-      // TODO: IMPLEMENT CONSTRAINTS ON NAMES
-      if (string.IsNullOrEmpty(fname)) throw new ArgumentException("Invalid first name");
-      if (string.IsNullOrEmpty(lname)) throw new ArgumentException("Invalid last name");
-
-      string qres;
-
-      qres = Program.IsValidUname(uname);
-      if (qres != null)
-      {
-        throw new ArgumentException(qres);
-      }
-
-      qres = Program.IsValidPword(pword);
-      if (qres != null)
-      {
-        throw new ArgumentException(qres);
-      }
-
       if (pword != confirmPword)
       {
         throw new ArgumentException("Password does not match");
       }
 
-      session.RegisterAccount(isAdmin, uname, pword, fname, lname);
+      Session.RegisterAccount(isAdmin, uname, pword, fname, lname);
     }
 
     private void SUShowError(string msg)
@@ -146,15 +126,20 @@ namespace NoteView
 
     private void btn_SignUp_Click(object sender, EventArgs e)
     {
-      try
+      // TODO: Check for empty fields
+      if (Util.HasEmpty(tbx_SignUpUid.Text, tbx_SignUpFirstName.Text, tbx_SignUpLastName.Text, tbx_SignUpPass1.Text, tbx_SignUpPass2.Text))
       {
-        SUTrySignUp();
-        SUShowMessage("Account added");
+        SUShowError("Missing required field/s");
+        if (!su_hasEmphasizedFields)
+        {
+          Util.EmphasizeRequiredFields(lbl_SignUpUid, lbl_SignUpFirstName, lbl_SignUpLastName, lbl_SignUpPass1, lbl_SignUpPass2 );
+          su_hasEmphasizedFields = true;
+        }
+        return;
       }
-      catch (Exception ex) when (ex is ArgumentException || ex is InvalidOperationException)
-      {
-        SUShowError(ex.Message);
-      }
+
+      btn_SignUp.Enabled = false;
+      bwork_SignUp.RunWorkerAsync();
     }
 
     private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -175,6 +160,48 @@ namespace NoteView
     private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
     {
       SUClearFields();
+    }
+
+    private void bwork_Auth_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+    {
+      TryAAAuth();
+    }
+
+    private void bwork_Auth_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+    {
+      if (e.Error == null)
+      {
+        AAShowMessage("Welcome admin");
+        SwapBoxes();
+        lbl_AdminMessage.Text = $"Authenticated as {session.lastName}, {session.firstName} ({session.username})";
+        lbl_AdminMessage.Visible = true;
+      }
+      else
+      {
+        if (e.Error is ArgumentException || e.Error is InvalidOperationException)
+        {
+          AAShowError(e.Error.Message);
+        }
+      }
+      btn_AAlogin.Enabled = true;
+    }
+
+    private void bwork_SignUp_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+    {
+      SUTrySignUp();
+    }
+
+    private void bwork_SignUp_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+    {
+      if (e.Error == null)
+      {
+        SUShowMessage("Account added");
+      }
+      else if (e.Error is ArgumentException || e.Error is InvalidOperationException)
+      {
+        SUShowError(e.Error.Message);
+      }
+      btn_SignUp.Enabled = true;
     }
   }
 }

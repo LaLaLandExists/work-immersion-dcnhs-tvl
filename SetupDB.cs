@@ -2,44 +2,30 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Threading;
 using MySql.Data.MySqlClient;
 
 namespace NoteView
 {
   public partial class SetupDB : Form
   {
-    private bool hasEmphasizedRequiredFields = false;
+    // Connect DB Set-up
+    private bool sd_hasEmphasizedRequiredFields = false;
 
     public SetupDB()
     {
       InitializeComponent();
     }
 
-    private static bool HasEmpty(params string[] strs)
-    {
-      foreach (string str in strs)
-      {
-        if (str.Trim().Length == 0) return true;
-      }
-      return false;
-    }
-    private static void EmphasizeRequiredFields(params Label[] lbls)
-    {
-      foreach (Label lbl in lbls)
-      {
-        lbl.Text += "*";
-        lbl.ForeColor = Color.Maroon;
-      }
-    }
-    
-    private void ShowMessage(string msg)
+
+    private void SDShowMessage(string msg)
     {
       lbl_ErrorInfo.Hide();
       lbl_ConnectOutput.ForeColor = Color.White;
       lbl_ConnectOutput.Text = msg;
       lbl_ConnectOutput.Show();
     }
-    private void ShowError(string msg, string info = null)
+    private void SDShowError(string msg, string info = null)
     {
       lbl_ConnectOutput.ForeColor = Color.Red;
       lbl_ConnectOutput.Text = msg;
@@ -53,8 +39,7 @@ namespace NoteView
 
     private void btn_Connect_Click(object sender, EventArgs e)
     {
-      ShowMessage("Connecting to database..");
-      btn_Connect.Enabled = false;
+      SDShowMessage("Connecting to database..");
 
       string server = txt_Server.Text,
              port = txt_Port.Text,
@@ -62,19 +47,20 @@ namespace NoteView
              password = txt_Password.Text,
              db = txt_DB.Text;
 
-      if (HasEmpty(server, username, password, db))
+      if (Util.HasEmpty(server, username, password, db))
       {
-        ShowError("Missing field/s");
-        if (!hasEmphasizedRequiredFields)
+        SDShowError("Missing field/s");
+        if (!sd_hasEmphasizedRequiredFields)
         {
-          EmphasizeRequiredFields(lbl_Server, lbl_user, lbl_password, lbl_datab);
-          hasEmphasizedRequiredFields = true;
+          Util.EmphasizeRequiredFields(lbl_Server, lbl_user, lbl_password, lbl_datab);
+          sd_hasEmphasizedRequiredFields = true;
         }
-        btn_Connect.Enabled = true;
         return;
       }
 
-      string connString = $"server={server};{(HasEmpty(port) ? "" : $"port={port};")}uid={username};pwd={password};database={db};";
+      btn_Connect.Enabled = false;
+
+      string connString = $"server={server};{(Util.HasEmpty(port) ? "" : $"port={port};")}uid={username};pwd={password};database={db};";
       bwork_Connection.RunWorkerAsync(connString);
     }
 
@@ -82,7 +68,7 @@ namespace NoteView
     {
       if (e.ProgressPercentage == 50)
       {
-        ShowMessage($"Checking {e.UserState}..");
+        SDShowMessage($"Checking {e.UserState}..");
       }
     }
 
@@ -90,24 +76,37 @@ namespace NoteView
     {
       object res = e.Result;
 
-      switch (res)
+      if (res is MySqlConnection connection)
       {
-        case MySqlConnection conn:
-          Session.conn = conn;
-          ShowMessage("Connected");
-          break;
-        case int err when err == 0:
-          ShowError("Cannot connect to database");
-          break;
-        case int err when err == 1:
-          ShowError("Invalid value in fields");
-          break;
-        case string err:
-          ShowError("Invalid database", err + ". Please check your database configuration");
-          break;
+        Session.conn = connection;
+        SDShowMessage("Connected");
+
+        if (CountAccounts() == 0)
+        {
+          SUSwapBoxes();
+        }
+        else
+        {
+          bwork_Staller.RunWorkerAsync((StallerDone)(() => Close()));
+        }
+      }
+      else
+      {
+        btn_Connect.Enabled = true;
       }
 
-      btn_Connect.Enabled = true;
+      switch (res)
+      {
+        case int err when err == 0:
+          SDShowError("Cannot connect to database");
+          break;
+        case int err when err == 1:
+          SDShowError("Invalid value in fields");
+          break;
+        case string err:
+          SDShowError("Invalid database", err + ". Please check your database configuration");
+          break;
+      }
     }
 
     private void bwork_Connection_DoWork(object sender, DoWorkEventArgs e)
@@ -133,6 +132,124 @@ namespace NoteView
       catch (InvalidProgramException exc)
       {
         e.Result = exc.Message;
+      }
+    }
+
+    // First Account Set-up
+    private delegate void StallerDone();
+    private bool su_hasEmphasizedRequiredFields = false;
+
+    private const string AccountCounterSQL = "SELECT COUNT(id) AS numAccounts FROM UserInfo;";
+
+    private static int CountAccounts()
+    {
+      Session.AssertConnection();
+
+      using (MySqlCommand cmd = Session.conn.CreateCommand())
+      {
+        cmd.CommandText = AccountCounterSQL;
+        using (MySqlDataReader rd = cmd.ExecuteReader())
+        {
+          rd.Read();
+          return rd.GetInt32(0);
+        }
+      }
+    }
+
+    private void SUShowMessage(string msg)
+    {
+      lbl_SignUpOutput.Text = msg;
+      lbl_SignUpOutput.ForeColor = Color.White;
+      lbl_SignUpOutput.Show();
+    }
+
+    private void SUShowError(string msg)
+    {
+      lbl_SignUpOutput.Text = msg;
+      lbl_SignUpOutput.ForeColor = Color.Red;
+      lbl_SignUpOutput.Show();
+    }
+
+    private void SUSwapBoxes()
+    {
+      gbx_FASetup.Visible = !gbx_FASetup.Visible;
+      gb_dbcnnct.Visible = !gb_dbcnnct.Visible;
+    }
+
+    private void cb_ShowPass_CheckedChanged(object sender, EventArgs e)
+    {
+      txt_SU_Pword.UseSystemPasswordChar = !txt_SU_Pword.UseSystemPasswordChar;
+    }
+
+    private void cb_ShowPass2_CheckedChanged(object sender, EventArgs e)
+    {
+      txt_SU_Pword2.UseSystemPasswordChar = !txt_SU_Pword2.UseSystemPasswordChar;
+    }
+
+    private void cmd_SignUp_Click(object sender, EventArgs e)
+    {
+      if (Util.HasEmpty(txt_SU_Username.Text, txt_SU_Fname.Text, txt_SU_Lname.Text, txt_SU_Pword.Text, txt_SU_Pword2.Text))
+      {
+        SUShowError("Missing required field/s");
+        if (!su_hasEmphasizedRequiredFields)
+        {
+          Util.EmphasizeRequiredFields(lbl_SU_Uname, lbl_SU_Fname, lbl_SU_Lname, lbl_SU_Pword, lbl_SU_Pword2);
+          su_hasEmphasizedRequiredFields = true;
+        }
+        return;
+      }
+      
+      string uname = txt_SU_Username.Text;
+      string fname = txt_SU_Fname.Text;
+      string lname = txt_SU_Lname.Text;
+      string pword = txt_SU_Pword.Text;
+      
+      if (txt_SU_Pword2.Text != pword)
+      {
+        SUShowError("Password does not match");
+        return;
+      }
+
+      cmd_SignUp.Enabled = false;
+      bwork_SignUp.RunWorkerAsync(new object[] { true, uname, pword, fname, lname });
+    }
+
+    private void bwork_SignUp_DoWork(object sender, DoWorkEventArgs e)
+    {
+      object[] args = (object[]) e.Argument;
+      Session.RegisterAccount((bool)args[0], (string)args[1], (string)args[2], (string)args[3], (string)args[4]);
+    }
+
+    private void bwork_SignUp_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+    {
+      if (e.Error != null)
+      {
+        if (e.Error is ArgumentException || e.Error is InvalidOperationException)
+        {
+          SUShowError(e.Error.Message);
+        }
+      }
+      else
+      {
+        SUShowMessage("Account added");
+        bwork_Staller.RunWorkerAsync((StallerDone) (() => Close()));
+        return;
+      }
+
+      cmd_SignUp.Enabled = true;
+    }
+
+    private void bwork_Staller_DoWork(object sender, DoWorkEventArgs e)
+    {
+      Thread.Sleep(500);
+      e.Result = e.Argument;
+    }
+
+    private void bwork_Staller_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+    {
+      if (e.Error == null && e.Result != null)
+      {
+        ((StallerDone) e.Result)(); 
       }
     }
   }
