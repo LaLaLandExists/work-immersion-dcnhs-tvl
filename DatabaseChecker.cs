@@ -6,8 +6,6 @@ using MySql.Data.MySqlClient;
 
 namespace NoteView
 {
-  using ValidationException = InvalidProgramException;
-
   internal class DatabaseChecker
   {
     private readonly TableParser parser = new TableParser();
@@ -19,17 +17,11 @@ namespace NoteView
     {
       List<Table> tables = new List<Table>();
 
-      Assembly executingAsm = Assembly.GetExecutingAssembly();
-      foreach (string res in executingAsm.GetManifestResourceNames())
+      foreach (Util.TableInfo info in Util.tableOrder)
       {
-        if (res.EndsWith(".sql"))
-        {
-          using (StreamReader r = new StreamReader(executingAsm.GetManifestResourceStream(res)))
-          {
-            parser.Parse(tables, r.ReadToEnd());
-          }
-        }
+        parser.Parse(tables, info.schema);
       }
+
       return tables;
     }
 
@@ -50,7 +42,7 @@ namespace NoteView
       // Check if the fields are present
       command.CommandText = "SELECT COLUMN_NAME, DATA_TYPE, IS_NULLABLE, EXTRA FROM INFORMATION_SCHEMA.COLUMNS "
                             + $"WHERE TABLE_SCHEMA = '{dbName}' AND TABLE_NAME = '{table.name}';";
-      // TODO inspect later
+
       using (MySqlDataReader dr = command.ExecuteReader())
       {
         int numFields = table.fields.Count;
@@ -117,9 +109,9 @@ namespace NoteView
       }
     }
 
-    public DatabaseChecker(string dbName, MySqlConnection conn)
+    private DatabaseChecker(MySqlConnection conn)
     {
-      this.dbName = dbName;
+      dbName = conn.Database;
       this.conn = conn;
       List<Table> tables = GetAllTables();
 
@@ -130,6 +122,11 @@ namespace NoteView
           AssertTableEquality(table);
         }
       }
+    }
+
+    public static void Check(MySqlConnection conn)
+    {
+      new DatabaseChecker(conn);
     }
   }
 }

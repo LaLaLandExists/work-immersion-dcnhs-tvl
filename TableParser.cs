@@ -4,7 +4,6 @@ using System.Text;
 
 namespace NoteView
 {
-
   internal struct Field
   {
     public readonly string type;
@@ -83,7 +82,7 @@ namespace NoteView
         int i = Seek(value);
         if (i == -1)
         {
-          throw new InvalidProgramException("Invalid field");
+          throw new ValidationException("Invalid field");
         }
         primary = value;
       }
@@ -148,7 +147,7 @@ namespace NoteView
 
     private void error(string msg)
     {
-      throw new InvalidProgramException(msg);
+      throw new ValidationException(msg);
     }
 
     // Scanning

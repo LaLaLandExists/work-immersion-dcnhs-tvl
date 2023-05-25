@@ -398,6 +398,7 @@
       // bwork_SignUp
       // 
       this.bwork_SignUp.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwork_SignUp_DoWork);
+      this.bwork_SignUp.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwork_SignUp_RunWorkerCompleted);
       // 
       // AddUser
       // 

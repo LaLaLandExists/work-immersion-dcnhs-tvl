@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Runtime.Versioning;
+using System.Security.Cryptography;
 
 namespace NoteView
 {

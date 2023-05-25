@@ -28,10 +28,12 @@
     /// </summary>
     private void InitializeComponent()
     {
+      this.components = new System.ComponentModel.Container();
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SetupDB));
       this.bwork_Connection = new System.ComponentModel.BackgroundWorker();
       this.pcb_Welcome = new System.Windows.Forms.PictureBox();
       this.gb_dbcnnct = new System.Windows.Forms.GroupBox();
+      this.cb_ForceConnect = new System.Windows.Forms.CheckBox();
       this.lbl_ConnectOutput = new System.Windows.Forms.Label();
       this.btn_Connect = new System.Windows.Forms.Button();
       this.txt_DB = new System.Windows.Forms.TextBox();
@@ -44,7 +46,6 @@
       this.lbl_user = new System.Windows.Forms.Label();
       this.lbl_port = new System.Windows.Forms.Label();
       this.lbl_Server = new System.Windows.Forms.Label();
-      this.lbl_ErrorInfo = new System.Windows.Forms.Label();
       this.pnl_setUpDB = new System.Windows.Forms.Panel();
       this.gbx_FASetup = new System.Windows.Forms.GroupBox();
       this.cb_ShowPass2 = new System.Windows.Forms.CheckBox();
@@ -63,6 +64,7 @@
       this.lbl_SU_Uname = new System.Windows.Forms.Label();
       this.bwork_SignUp = new System.ComponentModel.BackgroundWorker();
       this.bwork_Staller = new System.ComponentModel.BackgroundWorker();
+      this.tt_ForceConnectHint = new System.Windows.Forms.ToolTip(this.components);
       ((System.ComponentModel.ISupportInitialize)(this.pcb_Welcome)).BeginInit();
       this.gb_dbcnnct.SuspendLayout();
       this.pnl_setUpDB.SuspendLayout();
@@ -90,6 +92,7 @@
       // gb_dbcnnct
       // 
       this.gb_dbcnnct.BackColor = System.Drawing.Color.Transparent;
+      this.gb_dbcnnct.Controls.Add(this.cb_ForceConnect);
       this.gb_dbcnnct.Controls.Add(this.lbl_ConnectOutput);
       this.gb_dbcnnct.Controls.Add(this.btn_Connect);
       this.gb_dbcnnct.Controls.Add(this.txt_DB);
@@ -111,12 +114,27 @@
       this.gb_dbcnnct.TabStop = false;
       this.gb_dbcnnct.Text = "Set-up Database Connection";
       // 
+      // cb_ForceConnect
+      // 
+      this.cb_ForceConnect.AutoSize = true;
+      this.cb_ForceConnect.Checked = true;
+      this.cb_ForceConnect.CheckState = System.Windows.Forms.CheckState.Checked;
+      this.cb_ForceConnect.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.cb_ForceConnect.Location = new System.Drawing.Point(162, 188);
+      this.cb_ForceConnect.Name = "cb_ForceConnect";
+      this.cb_ForceConnect.Size = new System.Drawing.Size(97, 18);
+      this.cb_ForceConnect.TabIndex = 47;
+      this.cb_ForceConnect.Text = "Force Connect";
+      this.tt_ForceConnectHint.SetToolTip(this.cb_ForceConnect, "Uncheck to create a database if it does not exist");
+      this.cb_ForceConnect.UseVisualStyleBackColor = true;
+      this.cb_ForceConnect.CheckedChanged += new System.EventHandler(this.cb_ForceConnect_CheckedChanged);
+      // 
       // lbl_ConnectOutput
       // 
       this.lbl_ConnectOutput.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbl_ConnectOutput.Location = new System.Drawing.Point(49, 228);
+      this.lbl_ConnectOutput.Location = new System.Drawing.Point(0, 228);
       this.lbl_ConnectOutput.Name = "lbl_ConnectOutput";
-      this.lbl_ConnectOutput.Size = new System.Drawing.Size(278, 15);
+      this.lbl_ConnectOutput.Size = new System.Drawing.Size(376, 15);
       this.lbl_ConnectOutput.TabIndex = 46;
       this.lbl_ConnectOutput.Text = "lbl_ConnectOutput";
       this.lbl_ConnectOutput.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -146,7 +164,7 @@
       this.txt_DB.Name = "txt_DB";
       this.txt_DB.Size = new System.Drawing.Size(204, 21);
       this.txt_DB.TabIndex = 44;
-      this.txt_DB.Text = "test";
+      this.txt_DB.Text = "noteview";
       // 
       // txt_Password
       // 
@@ -157,7 +175,6 @@
       this.txt_Password.Name = "txt_Password";
       this.txt_Password.Size = new System.Drawing.Size(204, 21);
       this.txt_Password.TabIndex = 43;
-      this.txt_Password.Text = "password";
       this.txt_Password.UseSystemPasswordChar = true;
       // 
       // txt_Username
@@ -169,7 +186,6 @@
       this.txt_Username.Name = "txt_Username";
       this.txt_Username.Size = new System.Drawing.Size(204, 21);
       this.txt_Username.TabIndex = 42;
-      this.txt_Username.Text = "root";
       // 
       // txt_Port
       // 
@@ -190,7 +206,6 @@
       this.txt_Server.Name = "txt_Server";
       this.txt_Server.Size = new System.Drawing.Size(204, 21);
       this.txt_Server.TabIndex = 40;
-      this.txt_Server.Text = "localhost";
       // 
       // lbl_datab
       // 
@@ -267,24 +282,10 @@
       this.lbl_Server.TabIndex = 35;
       this.lbl_Server.Text = "Server";
       // 
-      // lbl_ErrorInfo
-      // 
-      this.lbl_ErrorInfo.AutoSize = true;
-      this.lbl_ErrorInfo.BackColor = System.Drawing.Color.Transparent;
-      this.lbl_ErrorInfo.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbl_ErrorInfo.ForeColor = System.Drawing.Color.Red;
-      this.lbl_ErrorInfo.Location = new System.Drawing.Point(-3, 398);
-      this.lbl_ErrorInfo.Name = "lbl_ErrorInfo";
-      this.lbl_ErrorInfo.Size = new System.Drawing.Size(81, 14);
-      this.lbl_ErrorInfo.TabIndex = 27;
-      this.lbl_ErrorInfo.Text = "Generic Error";
-      this.lbl_ErrorInfo.Visible = false;
-      // 
       // pnl_setUpDB
       // 
       this.pnl_setUpDB.BackgroundImage = global::NoteView.Properties.Resources.bg1;
       this.pnl_setUpDB.Controls.Add(this.gbx_FASetup);
-      this.pnl_setUpDB.Controls.Add(this.lbl_ErrorInfo);
       this.pnl_setUpDB.Controls.Add(this.gb_dbcnnct);
       this.pnl_setUpDB.Controls.Add(this.pcb_Welcome);
       this.pnl_setUpDB.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -348,9 +349,9 @@
       // lbl_SignUpOutput
       // 
       this.lbl_SignUpOutput.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbl_SignUpOutput.Location = new System.Drawing.Point(52, 236);
+      this.lbl_SignUpOutput.Location = new System.Drawing.Point(0, 236);
       this.lbl_SignUpOutput.Name = "lbl_SignUpOutput";
-      this.lbl_SignUpOutput.Size = new System.Drawing.Size(278, 15);
+      this.lbl_SignUpOutput.Size = new System.Drawing.Size(376, 15);
       this.lbl_SignUpOutput.TabIndex = 46;
       this.lbl_SignUpOutput.Text = "lbl_SignUpOutput";
       this.lbl_SignUpOutput.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -513,6 +514,11 @@
       this.bwork_Staller.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwork_Staller_DoWork);
       this.bwork_Staller.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwork_Staller_RunWorkerCompleted);
       // 
+      // tt_ForceConnectHint
+      // 
+      this.tt_ForceConnectHint.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+      this.tt_ForceConnectHint.ToolTipTitle = "Force Connect?";
+      // 
       // SetupDB
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -530,7 +536,6 @@
       this.gb_dbcnnct.ResumeLayout(false);
       this.gb_dbcnnct.PerformLayout();
       this.pnl_setUpDB.ResumeLayout(false);
-      this.pnl_setUpDB.PerformLayout();
       this.gbx_FASetup.ResumeLayout(false);
       this.gbx_FASetup.PerformLayout();
       this.ResumeLayout(false);
@@ -553,7 +558,6 @@
     private System.Windows.Forms.Label lbl_user;
     private System.Windows.Forms.Label lbl_port;
     private System.Windows.Forms.Label lbl_Server;
-    private System.Windows.Forms.Label lbl_ErrorInfo;
     private System.Windows.Forms.Panel pnl_setUpDB;
     private System.Windows.Forms.GroupBox gbx_FASetup;
     private System.Windows.Forms.Label lbl_SignUpOutput;
@@ -572,5 +576,7 @@
     private System.Windows.Forms.CheckBox cb_ShowPass;
     private System.ComponentModel.BackgroundWorker bwork_SignUp;
     private System.ComponentModel.BackgroundWorker bwork_Staller;
+    private System.Windows.Forms.CheckBox cb_ForceConnect;
+    private System.Windows.Forms.ToolTip tt_ForceConnectHint;
   }
 }

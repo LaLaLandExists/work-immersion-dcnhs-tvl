@@ -126,7 +126,6 @@ namespace NoteView
 
     private void btn_SignUp_Click(object sender, EventArgs e)
     {
-      // TODO: Check for empty fields
       if (Util.HasEmpty(tbx_SignUpUid.Text, tbx_SignUpFirstName.Text, tbx_SignUpLastName.Text, tbx_SignUpPass1.Text, tbx_SignUpPass2.Text))
       {
         SUShowError("Missing required field/s");

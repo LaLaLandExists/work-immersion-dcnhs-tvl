@@ -77,6 +77,7 @@ namespace NoteView
         Application.SetCompatibleTextRenderingDefault(false);
         // TODO: Implement correct form flow
         Application.Run(new SetupDB());
+        Application.Run(new UserLogin());
       }
       finally
       {
