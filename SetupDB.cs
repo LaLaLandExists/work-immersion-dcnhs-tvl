@@ -4,114 +4,12 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Threading;
 using MySql.Data.MySqlClient;
-using System.Runtime.InteropServices;
-using System.Text;
+using System.IO;
 
 namespace NoteView
 {
   public partial class SetupDB : Form
   {
-    internal struct ConnectionArgs
-    {
-      public readonly string server;
-      public readonly string port;
-      public readonly string username;
-      public readonly string password;
-      public readonly string database;
-
-      public ConnectionArgs(string server, string port, string username, string password, string database = null)
-      {
-        this.server = server;
-        this.port = port;
-        this.username = username;
-        this.password = password;
-        this.database = database;
-      }
-
-      public string ConnectionString(bool includeDB)
-      {
-        StringBuilder sb = new StringBuilder();
-        sb.Append($"server={server};");
-        if (port != null)
-        {
-          sb.Append($"port={port};");
-        }
-        sb.Append($"uid={username};");
-        sb.Append($"pwd={password};");
-        if (includeDB)
-        {
-          sb.Append($"database={database};");
-        }
-        return sb.ToString();
-      }
-    };
-
-    private readonly struct CreateOrConnectDBResult
-    {
-      public readonly bool hasAccount;
-      public readonly MySqlConnection conn;
-
-      public CreateOrConnectDBResult(bool hasAccount, MySqlConnection conn)
-      {
-        this.hasAccount = hasAccount;
-        this.conn = conn;
-      }
-    }
-
-    private delegate void CreateOrConnectProgressReporter(int percent, object indicator);
-
-    private CreateOrConnectDBResult CreateOrConnectDB(ConnectionArgs args, CreateOrConnectProgressReporter progress = null)
-    {
-      // Test if db exists first.
-      var conn = new MySqlConnection(args.ConnectionString(false));
-      conn.Open();
-      progress?.Invoke(20, "Checking database");
-
-      if (cb_ForceConnect.Checked || conn.DBExists(args.database))
-      {
-        // DB exists. Validate and connect
-        conn.ChangeDatabase(args.database);
-        progress?.Invoke(50, $"Found '{args.database}'. Validating database");
-        DatabaseChecker.Check(conn);
-      }
-      else
-      {
-        // DB does not exist. Create db
-        progress?.Invoke(30, "No database found. Creating database");
-        using (MySqlCommand cmd = conn.CreateCommand())
-        {
-          cmd.CommandText = $"CREATE DATABASE {args.database};";
-          cmd.ExecuteNonQuery();
-          cmd.CommandText = $"USE {args.database};";
-          cmd.ExecuteNonQuery();
-        }
-        progress?.Invoke(40, "Database created. Creating tables");
-
-        int percent = 40;
-        int step = 60 / Util.tableOrder.Length;
-        using (MySqlCommand cmd = conn.CreateCommand())
-        {
-          foreach (Util.TableInfo info in Util.tableOrder)
-          {
-            progress?.Invoke(percent, $"Creating {info.name}");
-            percent += step;
-            cmd.CommandText = info.schema;
-            cmd.ExecuteNonQuery();
-          }
-        }
-      }
-
-      using (MySqlCommand cmd = conn.CreateCommand())
-      {
-        cmd.CommandText = $"SELECT COUNT(id) AS numAcc FROM UserInfo;";
-        using (MySqlDataReader rd = cmd.ExecuteReader())
-        {
-          rd.Read();
-          return new CreateOrConnectDBResult(rd.GetInt32(0) != 0, conn);
-        }
-      }
-    }
-
     // Connect DB Set-up
     private bool sd_hasEmphasizedRequiredFields = false;
 
@@ -120,17 +18,55 @@ namespace NoteView
       InitializeComponent();
     }
 
+    private void SetupDB_Shown(object sender, EventArgs e)
+    {
+      try
+      {
+        if (File.Exists(DBConnectionSave.GetSavePath()))
+        {
+          DBConnectionSave sav = DBConnectionSave.Deserialize();
+
+          SDShowMessage("Save file detected");
+          SDSetControls(false);
+
+          bwork_Connection.RunWorkerAsync(sav.connData);
+          return;
+        }
+      }
+      catch (Exception ex)
+      {
+        SDShowError("Cannot load save", ex.Message);
+      }
+    }
+
     private void SDShowMessage(string msg)
     {
       lbl_ConnectOutput.ForeColor = Color.White;
       lbl_ConnectOutput.Text = msg;
       lbl_ConnectOutput.Show();
+      lbl_ErrorDetails.Hide();
     }
-    private void SDShowError(string msg)
+    private void SDShowError(string msg, string details = null)
     {
       lbl_ConnectOutput.ForeColor = Color.Red;
       lbl_ConnectOutput.Text = msg;
       lbl_ConnectOutput.Show();
+      if (details != null)
+      {
+        lbl_ErrorDetails.Text = details;
+        lbl_ErrorDetails.Show();
+      }
+    }
+
+    private void SDSetControls(bool state)
+    {
+      txt_Server.Enabled = state;
+      txt_Port.Enabled = state;
+      txt_Username.Enabled = state;
+      txt_Password.Enabled = state;
+      txt_DB.Enabled = state;
+      btn_Connect.Enabled = state;
+      cb_ForceConnect.Enabled = state;
     }
 
     private void btn_Connect_Click(object sender, EventArgs e)
@@ -139,28 +75,28 @@ namespace NoteView
 
       ConnectionArgs cargs = new ConnectionArgs(
         txt_Server.Text, string.IsNullOrEmpty(txt_Port.Text) ? null : txt_Port.Text,
-        txt_Username.Text, txt_Password.Text, txt_DB.Text
+        txt_Username.Text, txt_Password.Text, string.IsNullOrEmpty(txt_DB.Text) ? "noteview" : txt_DB.Text
       );
 
-      if (Util.HasEmpty(cargs.server, cargs.username, cargs.password, cargs.database))
+      if (Util.HasEmpty(cargs.server, cargs.username, cargs.password))
       {
         SDShowError("Missing field/s");
         if (!sd_hasEmphasizedRequiredFields)
         {
-          Util.EmphasizeRequiredFields(lbl_Server, lbl_user, lbl_password, lbl_datab);
+          Util.EmphasizeRequiredFields(lbl_Server, lbl_user, lbl_password);
           sd_hasEmphasizedRequiredFields = true;
         }
         return;
       }
 
-      btn_Connect.Enabled = false;
+      SDSetControls(false);
       bwork_Connection.RunWorkerAsync(cargs);
     }
 
     private void bwork_Connection_DoWork(object sender, DoWorkEventArgs e)
     {
-      ConnectionArgs cargs = (ConnectionArgs) e.Argument;
-      e.Result = CreateOrConnectDB(cargs, (p, msg) => bwork_Connection.ReportProgress(p, msg));
+      var cargs = (ConnectionArgs) e.Argument;
+      e.Result = Util.CreateOrConnectDB(cargs, cb_ForceConnect.Checked, (p, msg) => bwork_Connection.ReportProgress(p, msg));
     }
 
     private void bwork_Connection_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -173,9 +109,17 @@ namespace NoteView
 
       if (e.Error == null)
       {
-        var res = (CreateOrConnectDBResult) e.Result;
+        var res = (Util.CreateOrConnectDBResult) e.Result;
+
         Session.conn = res.conn;
         SDShowMessage("Connected");
+
+        var sav = new DBConnectionSave
+        {
+          connData = res.args
+        };
+
+        sav.Serialize();
 
         if (res.hasAccount)
         {
@@ -191,39 +135,22 @@ namespace NoteView
         switch (e.Error)
         {
           case MySqlException exc:
-            SDShowError($"Database connection error: {exc.Message}");
+            SDShowError($"Database connection error", exc.Message);
             break;
           case ValidationException exc:
-            SDShowError($"Validation failed: {exc.Message}");
+            SDShowError($"Validation failed", exc.Message);
             break;
           case ArgumentException exc:
             SDShowError("A field contained invalid value");
             break;
         }
-        btn_Connect.Enabled = true;
+        SDSetControls(true);
       }
     }
 
     // First Account Set-up
     private delegate void StallerDone();
     private bool su_hasEmphasizedRequiredFields = false;
-
-    private const string AccountCounterSQL = "SELECT COUNT(id) AS numAccounts FROM UserInfo;";
-
-    private static int CountAccounts()
-    {
-      Session.AssertConnection();
-
-      using (MySqlCommand cmd = Session.conn.CreateCommand())
-      {
-        cmd.CommandText = AccountCounterSQL;
-        using (MySqlDataReader rd = cmd.ExecuteReader())
-        {
-          rd.Read();
-          return rd.GetInt32(0);
-        }
-      }
-    }
 
     private void SUShowMessage(string msg)
     {
@@ -243,6 +170,18 @@ namespace NoteView
     {
       gbx_FASetup.Visible = !gbx_FASetup.Visible;
       gb_dbcnnct.Visible = !gb_dbcnnct.Visible;
+    }
+
+    private void SUSetControls(bool state)
+    {
+      txt_SU_Username.Enabled = state;
+      txt_SU_Fname.Enabled = state;
+      txt_SU_Lname.Enabled = state;
+      txt_SU_Pword.Enabled = state;
+      txt_SU_Pword2.Enabled = state;
+      cb_ShowPass.Enabled = state;
+      cb_ShowPass2.Enabled = state;
+      cmd_SignUp.Enabled = state;
     }
 
     private void cb_ShowPass_CheckedChanged(object sender, EventArgs e)
@@ -279,7 +218,7 @@ namespace NoteView
         return;
       }
 
-      cmd_SignUp.Enabled = false;
+      SUSetControls(false);
       bwork_SignUp.RunWorkerAsync(new object[] { true, uname, pword, fname, lname });
     }
 
@@ -305,7 +244,7 @@ namespace NoteView
         return;
       }
 
-      cmd_SignUp.Enabled = true;
+      SUSetControls(true);
     }
 
     private void bwork_Staller_DoWork(object sender, DoWorkEventArgs e)

@@ -33,6 +33,7 @@
       this.bwork_Connection = new System.ComponentModel.BackgroundWorker();
       this.pcb_Welcome = new System.Windows.Forms.PictureBox();
       this.gb_dbcnnct = new System.Windows.Forms.GroupBox();
+      this.label1 = new System.Windows.Forms.Label();
       this.cb_ForceConnect = new System.Windows.Forms.CheckBox();
       this.lbl_ConnectOutput = new System.Windows.Forms.Label();
       this.btn_Connect = new System.Windows.Forms.Button();
@@ -47,6 +48,7 @@
       this.lbl_port = new System.Windows.Forms.Label();
       this.lbl_Server = new System.Windows.Forms.Label();
       this.pnl_setUpDB = new System.Windows.Forms.Panel();
+      this.lbl_ErrorDetails = new System.Windows.Forms.Label();
       this.gbx_FASetup = new System.Windows.Forms.GroupBox();
       this.cb_ShowPass2 = new System.Windows.Forms.CheckBox();
       this.cb_ShowPass = new System.Windows.Forms.CheckBox();
@@ -92,6 +94,7 @@
       // gb_dbcnnct
       // 
       this.gb_dbcnnct.BackColor = System.Drawing.Color.Transparent;
+      this.gb_dbcnnct.Controls.Add(this.label1);
       this.gb_dbcnnct.Controls.Add(this.cb_ForceConnect);
       this.gb_dbcnnct.Controls.Add(this.lbl_ConnectOutput);
       this.gb_dbcnnct.Controls.Add(this.btn_Connect);
@@ -114,13 +117,23 @@
       this.gb_dbcnnct.TabStop = false;
       this.gb_dbcnnct.Text = "Set-up Database Connection";
       // 
+      // label1
+      // 
+      this.label1.AutoSize = true;
+      this.label1.Font = new System.Drawing.Font("Arial", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label1.Location = new System.Drawing.Point(162, 189);
+      this.label1.Name = "label1";
+      this.label1.Size = new System.Drawing.Size(175, 12);
+      this.label1.TabIndex = 48;
+      this.label1.Text = "Defaults to \"noteview\" if left unspecified";
+      // 
       // cb_ForceConnect
       // 
       this.cb_ForceConnect.AutoSize = true;
       this.cb_ForceConnect.Checked = true;
       this.cb_ForceConnect.CheckState = System.Windows.Forms.CheckState.Checked;
       this.cb_ForceConnect.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.cb_ForceConnect.Location = new System.Drawing.Point(162, 188);
+      this.cb_ForceConnect.Location = new System.Drawing.Point(161, 201);
       this.cb_ForceConnect.Name = "cb_ForceConnect";
       this.cb_ForceConnect.Size = new System.Drawing.Size(97, 18);
       this.cb_ForceConnect.TabIndex = 47;
@@ -164,7 +177,6 @@
       this.txt_DB.Name = "txt_DB";
       this.txt_DB.Size = new System.Drawing.Size(204, 21);
       this.txt_DB.TabIndex = 44;
-      this.txt_DB.Text = "noteview";
       // 
       // txt_Password
       // 
@@ -285,6 +297,7 @@
       // pnl_setUpDB
       // 
       this.pnl_setUpDB.BackgroundImage = global::NoteView.Properties.Resources.bg1;
+      this.pnl_setUpDB.Controls.Add(this.lbl_ErrorDetails);
       this.pnl_setUpDB.Controls.Add(this.gbx_FASetup);
       this.pnl_setUpDB.Controls.Add(this.gb_dbcnnct);
       this.pnl_setUpDB.Controls.Add(this.pcb_Welcome);
@@ -294,6 +307,19 @@
       this.pnl_setUpDB.Name = "pnl_setUpDB";
       this.pnl_setUpDB.Size = new System.Drawing.Size(784, 411);
       this.pnl_setUpDB.TabIndex = 12;
+      // 
+      // lbl_ErrorDetails
+      // 
+      this.lbl_ErrorDetails.AutoSize = true;
+      this.lbl_ErrorDetails.BackColor = System.Drawing.Color.Transparent;
+      this.lbl_ErrorDetails.Dock = System.Windows.Forms.DockStyle.Bottom;
+      this.lbl_ErrorDetails.ForeColor = System.Drawing.Color.White;
+      this.lbl_ErrorDetails.Location = new System.Drawing.Point(0, 398);
+      this.lbl_ErrorDetails.Name = "lbl_ErrorDetails";
+      this.lbl_ErrorDetails.Size = new System.Drawing.Size(77, 13);
+      this.lbl_ErrorDetails.TabIndex = 48;
+      this.lbl_ErrorDetails.Text = "lbl_ErrorDetails";
+      this.lbl_ErrorDetails.Visible = false;
       // 
       // gbx_FASetup
       // 
@@ -349,9 +375,9 @@
       // lbl_SignUpOutput
       // 
       this.lbl_SignUpOutput.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbl_SignUpOutput.Location = new System.Drawing.Point(0, 236);
+      this.lbl_SignUpOutput.Location = new System.Drawing.Point(0, 228);
       this.lbl_SignUpOutput.Name = "lbl_SignUpOutput";
-      this.lbl_SignUpOutput.Size = new System.Drawing.Size(376, 15);
+      this.lbl_SignUpOutput.Size = new System.Drawing.Size(376, 30);
       this.lbl_SignUpOutput.TabIndex = 46;
       this.lbl_SignUpOutput.Text = "lbl_SignUpOutput";
       this.lbl_SignUpOutput.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -532,10 +558,12 @@
       this.Name = "SetupDB";
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "Connect to a Database";
+      this.Shown += new System.EventHandler(this.SetupDB_Shown);
       ((System.ComponentModel.ISupportInitialize)(this.pcb_Welcome)).EndInit();
       this.gb_dbcnnct.ResumeLayout(false);
       this.gb_dbcnnct.PerformLayout();
       this.pnl_setUpDB.ResumeLayout(false);
+      this.pnl_setUpDB.PerformLayout();
       this.gbx_FASetup.ResumeLayout(false);
       this.gbx_FASetup.PerformLayout();
       this.ResumeLayout(false);
@@ -578,5 +606,7 @@
     private System.ComponentModel.BackgroundWorker bwork_Staller;
     private System.Windows.Forms.CheckBox cb_ForceConnect;
     private System.Windows.Forms.ToolTip tt_ForceConnectHint;
+    private System.Windows.Forms.Label lbl_ErrorDetails;
+    private System.Windows.Forms.Label label1;
   }
 }

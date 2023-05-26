@@ -60,6 +60,7 @@
     <Compile Include="DatabaseChecker.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Save.cs" />
     <Compile Include="Session.cs" />
     <Compile Include="SetupDB.cs">
       <SubType>Form</SubType>

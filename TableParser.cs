@@ -145,7 +145,7 @@ namespace NoteView
     private int lexStart = 0;
     private int lexCurrent = 0;
 
-    private void error(string msg)
+    private void Error(string msg)
     {
       throw new ValidationException(msg);
     }
@@ -296,7 +296,7 @@ namespace NoteView
           default:
             if (char.IsDigit(ch)) return IntToken;
             else if (char.IsLetter(ch) || ch == '_') return IdentifierToken;
-            else error("Invalid character");
+            else Error("Invalid character");
             break;
         }
 
@@ -334,7 +334,7 @@ namespace NoteView
 
     private Token ExpectToken(TokenKind kind, string msg = "Expected token")
     {
-      if (!CheckToken(kind)) error($"Near '{thisToken.lexeme}': {msg}");
+      if (!CheckToken(kind)) Error($"Near '{thisToken.lexeme}': {msg}");
       AdvanceToken();
       return prevToken;
     }
@@ -363,7 +363,7 @@ namespace NoteView
         else if (MatchToken(TokenKind.Primary))
         {
           ExpectToken(TokenKind.Key);
-          if (table.Primary != null) error("Duplicate primary key");
+          if (table.Primary != null) Error("Duplicate primary key");
           ExpectToken(TokenKind.LeftParen);
           string fieldName = ExpectToken(TokenKind.Id).lexeme;
           if (table.Seek(fieldName) == -1) throw new InvalidProgramException("Invalid field");
@@ -385,7 +385,7 @@ namespace NoteView
           int i = table.Seek(field.lexeme);
           if (i == -1)
           {
-            error("Invalid field");
+            Error("Invalid field");
           }
 
           Field newField = table.fields[i];
@@ -444,7 +444,7 @@ namespace NoteView
           ExpectToken(TokenKind.Key);
           if (table.Primary != null)
           {
-            error("Duplicate primary key");
+            Error("Duplicate primary key");
           }
           table.Primary = name.lexeme;
         }

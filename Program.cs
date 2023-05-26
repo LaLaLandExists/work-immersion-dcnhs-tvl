@@ -65,6 +65,7 @@ namespace NoteView
     {
       throw new UnexpectedException(msg);
     }
+
     /// <summary>
     /// The main entry point for the application.
     /// </summary>
@@ -77,6 +78,7 @@ namespace NoteView
         Application.SetCompatibleTextRenderingDefault(false);
         // TODO: Implement correct form flow
         Application.Run(new SetupDB());
+        if (Session.conn == null) return;
         Application.Run(new UserLogin());
       }
       finally
