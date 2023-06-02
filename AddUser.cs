@@ -202,5 +202,10 @@ namespace NoteView
       }
       btn_SignUp.Enabled = true;
     }
+
+    private void llbl_AA_GoBack_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+    {
+      Close();
+    }
   }
 }

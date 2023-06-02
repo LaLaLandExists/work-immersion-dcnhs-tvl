@@ -83,7 +83,7 @@
       // pcb_Welcome
       // 
       this.pcb_Welcome.BackColor = System.Drawing.Color.Transparent;
-      this.pcb_Welcome.Image = ((System.Drawing.Image)(resources.GetObject("pcb_Welcome.Image")));
+      this.pcb_Welcome.Image = global::NoteView.Properties.Resources.willkommen;
       this.pcb_Welcome.Location = new System.Drawing.Point(12, 102);
       this.pcb_Welcome.Name = "pcb_Welcome";
       this.pcb_Welcome.Size = new System.Drawing.Size(372, 206);
@@ -296,7 +296,8 @@
       // 
       // pnl_setUpDB
       // 
-      this.pnl_setUpDB.BackgroundImage = global::NoteView.Properties.Resources.bg1;
+      this.pnl_setUpDB.BackgroundImage = global::NoteView.Properties.Resources.bg_noteview;
+      this.pnl_setUpDB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
       this.pnl_setUpDB.Controls.Add(this.lbl_ErrorDetails);
       this.pnl_setUpDB.Controls.Add(this.gbx_FASetup);
       this.pnl_setUpDB.Controls.Add(this.gb_dbcnnct);

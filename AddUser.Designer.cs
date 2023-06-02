@@ -32,6 +32,7 @@
       this.pnl_SignUp = new System.Windows.Forms.Panel();
       this.lbl_AdminMessage = new System.Windows.Forms.Label();
       this.gbx_AdminAuth = new System.Windows.Forms.GroupBox();
+      this.llbl_AA_GoBack = new System.Windows.Forms.LinkLabel();
       this.lbl_AAAuthMessage = new System.Windows.Forms.Label();
       this.chb_AAshowpass = new System.Windows.Forms.CheckBox();
       this.btn_AAlogin = new System.Windows.Forms.Button();
@@ -66,7 +67,8 @@
       // 
       // pnl_SignUp
       // 
-      this.pnl_SignUp.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnl_SignUp.BackgroundImage")));
+      this.pnl_SignUp.BackgroundImage = global::NoteView.Properties.Resources.bg_admin;
+      this.pnl_SignUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
       this.pnl_SignUp.Controls.Add(this.lbl_AdminMessage);
       this.pnl_SignUp.Controls.Add(this.gbx_AdminAuth);
       this.pnl_SignUp.Controls.Add(this.gbx_SignUp);
@@ -92,6 +94,7 @@
       // gbx_AdminAuth
       // 
       this.gbx_AdminAuth.BackColor = System.Drawing.Color.Transparent;
+      this.gbx_AdminAuth.Controls.Add(this.llbl_AA_GoBack);
       this.gbx_AdminAuth.Controls.Add(this.lbl_AAAuthMessage);
       this.gbx_AdminAuth.Controls.Add(this.chb_AAshowpass);
       this.gbx_AdminAuth.Controls.Add(this.btn_AAlogin);
@@ -107,6 +110,22 @@
       this.gbx_AdminAuth.TabIndex = 14;
       this.gbx_AdminAuth.TabStop = false;
       this.gbx_AdminAuth.Text = "Admin Authentication";
+      // 
+      // llbl_AA_GoBack
+      // 
+      this.llbl_AA_GoBack.ActiveLinkColor = System.Drawing.Color.Blue;
+      this.llbl_AA_GoBack.AutoSize = true;
+      this.llbl_AA_GoBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.llbl_AA_GoBack.ForeColor = System.Drawing.SystemColors.ButtonFace;
+      this.llbl_AA_GoBack.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+      this.llbl_AA_GoBack.LinkColor = System.Drawing.Color.White;
+      this.llbl_AA_GoBack.Location = new System.Drawing.Point(325, 330);
+      this.llbl_AA_GoBack.Name = "llbl_AA_GoBack";
+      this.llbl_AA_GoBack.Size = new System.Drawing.Size(62, 15);
+      this.llbl_AA_GoBack.TabIndex = 18;
+      this.llbl_AA_GoBack.TabStop = true;
+      this.llbl_AA_GoBack.Text = "< Go back";
+      this.llbl_AA_GoBack.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbl_AA_GoBack_LinkClicked);
       // 
       // lbl_AAAuthMessage
       // 
@@ -454,5 +473,6 @@
     private System.Windows.Forms.LinkLabel linkLabel1;
     private System.ComponentModel.BackgroundWorker bwork_Auth;
     private System.ComponentModel.BackgroundWorker bwork_SignUp;
+    private System.Windows.Forms.LinkLabel llbl_AA_GoBack;
   }
 }

@@ -73,9 +73,9 @@ namespace NoteView.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap bg1 {
+        internal static System.Drawing.Bitmap bg_admin {
             get {
-                object obj = ResourceManager.GetObject("bg1", resourceCulture);
+                object obj = ResourceManager.GetObject("bg_admin", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace NoteView.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icon1 {
+        internal static System.Drawing.Bitmap bg_noteview {
             get {
-                object obj = ResourceManager.GetObject("icon1", resourceCulture);
+                object obj = ResourceManager.GetObject("bg_noteview", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace NoteView.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap iconvb {
+        internal static System.Drawing.Bitmap noteview_icon {
             get {
-                object obj = ResourceManager.GetObject("iconvb", resourceCulture);
+                object obj = ResourceManager.GetObject("noteview_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace NoteView.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap iconvb1 {
+        internal static System.Drawing.Bitmap noteview_superlabel {
             get {
-                object obj = ResourceManager.GetObject("iconvb1", resourceCulture);
+                object obj = ResourceManager.GetObject("noteview_superlabel", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -114,15 +114,13 @@ namespace NoteView.Properties {
         ///   Looks up a localized string similar to 
         ///CREATE TABLE IF NOT EXISTS UserInfo (
         ///	id INT NOT NULL AUTO_INCREMENT,
-        ///	addedBy INT,
-        ///	userType TEXT NOT NULL, -- &quot;USER&quot; or &quot;ADMIN&quot;
         ///	firstName TEXT NOT NULL,
         ///	lastName TEXT NOT NULL,
+        ///	userType TEXT NOT NULL,
         ///	userName TEXT NOT NULL,
         ///	password TEXT NOT NULL,
         ///	
-        ///	PRIMARY KEY (id),
-        ///	FOREIGN KEY (addedBy) REFERENCES UserInfo(id) 
+        ///	PRIMARY KEY (id)
         ///);
         ///.
         /// </summary>
@@ -135,9 +133,9 @@ namespace NoteView.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap welcome1 {
+        internal static System.Drawing.Bitmap willkommen {
             get {
-                object obj = ResourceManager.GetObject("welcome1", resourceCulture);
+                object obj = ResourceManager.GetObject("willkommen", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

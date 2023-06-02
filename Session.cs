@@ -2,11 +2,21 @@
 using System;
 using System.Runtime.Versioning;
 using System.Security.Cryptography;
+using System.Text.RegularExpressions;
 
 namespace NoteView
 {
   internal class Session
   {
+    public const int MinimumUsernameLength = 8;
+    public const int MaximumUsernameLength = 35;
+
+    public const int MinimumPasswordLength = 8;
+    public const int MaximumPasswordLength = 16;
+
+    public static readonly Regex unameRegex = new Regex("^[_a-zA-Z][\\._a-zA-Z0-9]*$");
+    public static readonly Regex nameRegex = new Regex("^[a-zA-Z]+( [a-zA-Z]+)*$");
+
     public static MySqlConnection conn;
     public readonly bool adminMode;
     public readonly string username;
@@ -111,27 +121,27 @@ namespace NoteView
     //FIXME! Defer validity here?
     private static void AssertValidity(string uname, string pword)
     {
-      if (uname.Length < Program.MinimumUsernameLength)
+      if (uname.Length < MinimumUsernameLength)
       {
         throw new ArgumentException("Username is too short");
       }
 
-      if (uname.Length > Program.MaximumUsernameLength)
+      if (uname.Length > MaximumUsernameLength)
       {
         throw new ArgumentException("Username is too long");
       }
 
-      if (pword.Length < Program.MinimumPasswordLength)
+      if (pword.Length < MinimumPasswordLength)
       {
         throw new ArgumentException("Password is too short");
       }
 
-      if (pword.Length > Program.MaximumPasswordLength)
+      if (pword.Length > MaximumPasswordLength)
       {
         throw new ArgumentException("Password is too long");
       }
 
-      if (!Program.unameRegex.IsMatch(uname))
+      if (!unameRegex.IsMatch(uname))
       {
         throw new ArgumentException("Username has invalid character/s");
       }
@@ -141,12 +151,12 @@ namespace NoteView
     {
       AssertValidity(uname, pword);
 
-      if (!Program.nameRegex.IsMatch(fname))
+      if (!nameRegex.IsMatch(fname))
       {
         throw new ArgumentException("First name has invalid character/s");
       }
 
-      if (!Program.nameRegex.IsMatch(lname))
+      if (!nameRegex.IsMatch(lname))
       {
         throw new ArgumentException("Last name has invalid character/s");
       }
