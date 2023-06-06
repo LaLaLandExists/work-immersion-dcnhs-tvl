@@ -430,6 +430,7 @@
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.MaximizeBox = false;
       this.Name = "AddUser";
+      this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
       this.Text = "Add a User";
       this.pnl_SignUp.ResumeLayout(false);
       this.pnl_SignUp.PerformLayout();

@@ -192,6 +192,7 @@
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.MaximizeBox = false;
       this.Name = "UserLogin";
+      this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "User Log-In";
       this.panel1.ResumeLayout(false);
       this.gb_login.ResumeLayout(false);

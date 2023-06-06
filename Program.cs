@@ -11,8 +11,8 @@ namespace NoteView
 
   internal static class Program
   {
-    // TODO defer this to Util
     public static Session session;
+    public static bool dbConnOk = false;
 
     public static void Assert(bool condition, string msg)
     {
@@ -34,11 +34,12 @@ namespace NoteView
       {
         Application.EnableVisualStyles();
         Application.SetCompatibleTextRenderingDefault(false);
-        Application.Run(new FrontDesk());
         // TODO: Implement correct form flow
-        // Application.Run(new SetupDB());
-        // if (Session.conn == null) return;
-        // Application.Run(new UserLogin());
+        Application.Run(new SetupDB());
+        if (!dbConnOk) return;
+        Application.Run(new UserLogin());
+        if (session == null || session.username == null) return;
+        Application.Run(new HomeForm());
       }
       finally
       {

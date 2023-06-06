@@ -65,7 +65,6 @@
       this.lbl_SU_Fname = new System.Windows.Forms.Label();
       this.lbl_SU_Uname = new System.Windows.Forms.Label();
       this.bwork_SignUp = new System.ComponentModel.BackgroundWorker();
-      this.bwork_Staller = new System.ComponentModel.BackgroundWorker();
       this.tt_ForceConnectHint = new System.Windows.Forms.ToolTip(this.components);
       ((System.ComponentModel.ISupportInitialize)(this.pcb_Welcome)).BeginInit();
       this.gb_dbcnnct.SuspendLayout();
@@ -536,11 +535,6 @@
       this.bwork_SignUp.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwork_SignUp_DoWork);
       this.bwork_SignUp.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwork_SignUp_RunWorkerCompleted);
       // 
-      // bwork_Staller
-      // 
-      this.bwork_Staller.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwork_Staller_DoWork);
-      this.bwork_Staller.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwork_Staller_RunWorkerCompleted);
-      // 
       // tt_ForceConnectHint
       // 
       this.tt_ForceConnectHint.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
@@ -604,7 +598,6 @@
     private System.Windows.Forms.CheckBox cb_ShowPass2;
     private System.Windows.Forms.CheckBox cb_ShowPass;
     private System.ComponentModel.BackgroundWorker bwork_SignUp;
-    private System.ComponentModel.BackgroundWorker bwork_Staller;
     private System.Windows.Forms.CheckBox cb_ForceConnect;
     private System.Windows.Forms.ToolTip tt_ForceConnectHint;
     private System.Windows.Forms.Label lbl_ErrorDetails;

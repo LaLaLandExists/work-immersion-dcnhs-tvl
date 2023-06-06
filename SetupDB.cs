@@ -12,6 +12,7 @@ namespace NoteView
   {
     // Connect DB Set-up
     private bool sd_hasEmphasizedRequiredFields = false;
+    private readonly Staller staller = new Staller();
 
     public SetupDB()
     {
@@ -128,7 +129,8 @@ namespace NoteView
 
         if (res.hasAccount)
         {
-          bwork_Staller.RunWorkerAsync((StallerDone)(() => Close()));
+          staller.RunWorkerAsync((Staller.Done)(() => Close()));
+          Program.dbConnOk = true;
         }
         else
         {
@@ -154,7 +156,6 @@ namespace NoteView
     }
 
     // First Account Set-up
-    private delegate void StallerDone();
     private bool su_hasEmphasizedRequiredFields = false;
 
     private void SUShowMessage(string msg)
@@ -237,7 +238,7 @@ namespace NoteView
     {
       if (e.Error != null)
       {
-        if (e.Error is ArgumentException || e.Error is InvalidOperationException)
+        if (e.Error is ArgumentException || e.Error is InvalidOperationException || e.Error is MySqlException)
         {
           SUShowError(e.Error.Message);
         }
@@ -245,25 +246,12 @@ namespace NoteView
       else
       {
         SUShowMessage("Account added");
-        bwork_Staller.RunWorkerAsync((StallerDone)(() => Close()));
+        staller.RunWorkerAsync((Staller.Done)(() => Close()));
+        Program.dbConnOk = true;
         return;
       }
 
       SUSetControls(true);
-    }
-
-    private void bwork_Staller_DoWork(object sender, DoWorkEventArgs e)
-    {
-      Thread.Sleep(500);
-      e.Result = e.Argument;
-    }
-
-    private void bwork_Staller_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-    {
-      if (e.Error == null && e.Result != null)
-      {
-        ((StallerDone)e.Result)();
-      }
     }
 
     private void cb_ForceConnect_CheckedChanged(object sender, EventArgs e)

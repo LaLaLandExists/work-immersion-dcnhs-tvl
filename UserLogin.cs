@@ -6,9 +6,10 @@ namespace NoteView
 {
   public partial class UserLogin : Form
   {
+    private readonly Staller staller = new Staller();
     private bool hasEmphasizedFields = false;
+    private readonly AddUser addUserForm = new AddUser();
 
-    private AddUser addUserForm;
     public UserLogin()
     {
       InitializeComponent();
@@ -50,7 +51,6 @@ namespace NoteView
 
     private void llbl_AddAcc_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
     {
-      addUserForm = new AddUser();
       addUserForm.ShowDialog();
     }
 
@@ -64,6 +64,7 @@ namespace NoteView
       if (e.Error == null)
       {
         ShowMessage("Authenticated");
+        staller.RunWorkerAsync((Staller.Done) (() => Close()));
       }
       else if (e.Error is InvalidOperationException || e.Error is ArgumentException)
       {
