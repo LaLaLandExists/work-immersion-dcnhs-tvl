@@ -28,6 +28,11 @@ namespace NoteView
 
           SDShowMessage("Save file detected");
           SDSetControls(false);
+          txt_Server.Text = sav.connData.server;
+          if (sav.connData.port != null) txt_Port.Text = sav.connData.port;
+          txt_Username.Text = sav.connData.username;
+          txt_Password.Text = sav.connData.password;
+          txt_DB.Text = sav.connData.database;
 
           bwork_Connection.RunWorkerAsync(sav.connData);
           return;
