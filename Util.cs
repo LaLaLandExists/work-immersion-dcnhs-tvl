@@ -2,6 +2,7 @@
 using System;
 using System.Drawing;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace NoteView
@@ -49,6 +50,15 @@ namespace NoteView
 
   internal static class Util
   {
+    public const int MinimumUsernameLength = 8;
+    public const int MaximumUsernameLength = 35;
+
+    public const int MinimumPasswordLength = 8;
+    public const int MaximumPasswordLength = 16;
+
+    public static readonly Regex unameRegex = new Regex("^[_a-zA-Z][\\._a-zA-Z0-9]*$");
+    public static readonly Regex nameRegex = new Regex("^[a-zA-Z]+( [a-zA-Z]+)*$");
+
     public static bool HasEmpty(params string[] strs)
     {
       foreach (string str in strs)
@@ -76,6 +86,54 @@ namespace NoteView
           return rd.HasRows;
         }
       }
+    }
+
+    public static void AssertValidity(string uname, string pword)
+    {
+      if (uname.Length < MinimumUsernameLength)
+      {
+        throw new ArgumentException("Username is too short");
+      }
+
+      if (uname.Length > MaximumUsernameLength)
+      {
+        throw new ArgumentException("Username is too long");
+      }
+
+      if (pword.Length < MinimumPasswordLength)
+      {
+        throw new ArgumentException("Password is too short");
+      }
+
+      if (pword.Length > MaximumPasswordLength)
+      {
+        throw new ArgumentException("Password is too long");
+      }
+
+      if (!unameRegex.IsMatch(uname))
+      {
+        throw new ArgumentException("Username has invalid character/s");
+      }
+    }
+
+    public static void AssertValidity(string uname, string pword, string fname, string lname)
+    {
+      AssertValidity(uname, pword);
+
+      if (!nameRegex.IsMatch(fname))
+      {
+        throw new ArgumentException("First name has invalid character/s");
+      }
+
+      if (!nameRegex.IsMatch(lname))
+      {
+        throw new ArgumentException("Last name has invalid character/s");
+      }
+    }
+
+    public static bool IsValidPassword(string password)
+    {
+      return MinimumPasswordLength <= password.Length && password.Length <= MaximumPasswordLength; 
     }
 
     internal readonly struct CreateOrConnectDBResult

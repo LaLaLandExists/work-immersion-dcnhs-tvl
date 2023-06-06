@@ -15,6 +15,13 @@ namespace NoteView
       InitializeComponent();
     }
 
+    private void SetControls(bool state)
+    {
+      tb_username.Enabled = state;
+      tb_pass.Enabled = state;
+      btn_login.Enabled = state;
+    }
+
     private void ShowMessage(string msg)
     {
       lbl_AuthMessage.ForeColor = Color.White;
@@ -41,6 +48,7 @@ namespace NoteView
         return;
       }
 
+      SetControls(false);
       bwork_Authentication.RunWorkerAsync();
     }
 
@@ -64,11 +72,12 @@ namespace NoteView
       if (e.Error == null)
       {
         ShowMessage("Authenticated");
-        staller.RunWorkerAsync((Staller.Done) (() => Close()));
+        staller.RunWorkerAsync((Staller.Done)(() => Close()));
       }
       else if (e.Error is InvalidOperationException || e.Error is ArgumentException)
       {
         ShowError(e.Error.Message);
+        SetControls(true);
       }
     }
   }

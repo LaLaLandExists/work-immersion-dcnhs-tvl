@@ -8,21 +8,13 @@ namespace NoteView
 {
   internal class Session
   {
-    public const int MinimumUsernameLength = 8;
-    public const int MaximumUsernameLength = 35;
-
-    public const int MinimumPasswordLength = 8;
-    public const int MaximumPasswordLength = 16;
-
-    public static readonly Regex unameRegex = new Regex("^[_a-zA-Z][\\._a-zA-Z0-9]*$");
-    public static readonly Regex nameRegex = new Regex("^[a-zA-Z]+( [a-zA-Z]+)*$");
-
     public static MySqlConnection conn;
     public readonly bool adminMode;
     public readonly string username;
     public readonly string firstName;
     public readonly string lastName;
     public readonly int userId;
+    public readonly string password;
 
     public const string AdminUType = "ADMIN";
     public const string UserUType = "USER";
@@ -34,6 +26,10 @@ namespace NoteView
     private const string NewAccountSQL =
       "INSERT INTO UserInfo (userType, firstName, lastName, userName, password) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}');";
 
+    public Session ChangePassword(string password)
+    {
+      return new Session(adminMode, userId, username, firstName, lastName, password);
+    }
     public static void AssertConnection()
     {
       if (conn == null) throw new InvalidProgramException("An unexpected error occured. Pls contact the developer");
@@ -105,77 +101,34 @@ namespace NoteView
 
         cmd.CommandText = string.Format(FetchAccountSQL, uname);
         
-        return (SeekResult) SeekAccount(uname);
+        return (SeekResult) SeekAccount(uname, password);
       }
     }
 
-    private Session(bool authoritative, int id, string username, string firstName, string lastName)
+    private Session(bool authoritative, int id, string username, string firstName, string lastName, string password)
     {
       adminMode = authoritative;
       userId = id;
       this.username = username;
       this.firstName = firstName;
       this.lastName = lastName;
-    }
-
-    //FIXME! Defer validity here?
-    private static void AssertValidity(string uname, string pword)
-    {
-      if (uname.Length < MinimumUsernameLength)
-      {
-        throw new ArgumentException("Username is too short");
-      }
-
-      if (uname.Length > MaximumUsernameLength)
-      {
-        throw new ArgumentException("Username is too long");
-      }
-
-      if (pword.Length < MinimumPasswordLength)
-      {
-        throw new ArgumentException("Password is too short");
-      }
-
-      if (pword.Length > MaximumPasswordLength)
-      {
-        throw new ArgumentException("Password is too long");
-      }
-
-      if (!unameRegex.IsMatch(uname))
-      {
-        throw new ArgumentException("Username has invalid character/s");
-      }
-    }
-
-    private static void AssertValidity(string uname, string pword, string fname, string lname)
-    {
-      AssertValidity(uname, pword);
-
-      if (!nameRegex.IsMatch(fname))
-      {
-        throw new ArgumentException("First name has invalid character/s");
-      }
-
-      if (!nameRegex.IsMatch(lname))
-      {
-        throw new ArgumentException("Last name has invalid character/s");
-      }
+      this.password = password;
     }
 
     // Constructor when adding new account for authentication
     public static Session RegisterAccount(bool isAdmin, string username, string password, string firstName, string lastName)
     {
-      AssertValidity(username, password, firstName, lastName);
+      Util.AssertValidity(username, password, firstName, lastName);
       SeekResult r = AddNewAccount(isAdmin, username, password, firstName, lastName);
-      return new Session(r.adminMode, r.id, r.uname, r.firstName, r.lastName);
+      return new Session(r.adminMode, r.id, r.uname, r.firstName, r.lastName, r.pword);
     }
 
     // Constructor when authenticating to an existing account
     public static Session LoginAccount(string username, string password)
     {
-      AssertValidity(username, password);
+      Util.AssertValidity(username, password);
       SeekResult r = SeekAccount(username, password) ?? throw new InvalidOperationException($"Account username or password is invalid");
-      return new Session(r.adminMode, r.id, r.uname, r.firstName, r.lastName);
+      return new Session(r.adminMode, r.id, r.uname, r.firstName, r.lastName, password);
     }
   }
 }

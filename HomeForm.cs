@@ -174,6 +174,12 @@ namespace NoteView
       lbl_Username.Text = $"({sesh.username})";
     }
 
+    private bool AskExitConfirmation()
+    {
+      var res = MessageBox.Show("Do you want to exit?", "Confirm Exit", MessageBoxButtons.YesNo);
+      return res == DialogResult.Yes;
+    }
+
     private void lbl_InHouse_Click(object sender, EventArgs e)
     {
       EmphasizeTableIndicator(lbl_InHouse);
@@ -212,6 +218,21 @@ namespace NoteView
     private void lbl_WaitList_Click(object sender, EventArgs e)
     {
       EmphasizeTableIndicator(lbl_WaitList);
+    }
+
+    private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      Close();
+    }
+
+    private void HomeForm_FormClosing(object sender, FormClosingEventArgs e)
+    {
+      e.Cancel = !AskExitConfirmation();
+    }
+
+    private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      new ChangePassword().ShowDialog();
     }
   }
 }
