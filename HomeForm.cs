@@ -234,5 +234,7 @@ namespace NoteView
     {
       new ChangePassword().ShowDialog();
     }
+
+    
   }
 }

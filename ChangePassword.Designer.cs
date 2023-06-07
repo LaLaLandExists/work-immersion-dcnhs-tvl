@@ -48,9 +48,10 @@
       this.lbl_OldPassword.BackColor = System.Drawing.Color.Transparent;
       this.lbl_OldPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbl_OldPassword.ForeColor = System.Drawing.SystemColors.Control;
-      this.lbl_OldPassword.Location = new System.Drawing.Point(63, 111);
+      this.lbl_OldPassword.Location = new System.Drawing.Point(47, 90);
+      this.lbl_OldPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.lbl_OldPassword.Name = "lbl_OldPassword";
-      this.lbl_OldPassword.Size = new System.Drawing.Size(114, 18);
+      this.lbl_OldPassword.Size = new System.Drawing.Size(95, 15);
       this.lbl_OldPassword.TabIndex = 0;
       this.lbl_OldPassword.Text = "Old Password";
       // 
@@ -60,9 +61,10 @@
       this.lbl_NewPassword.BackColor = System.Drawing.Color.Transparent;
       this.lbl_NewPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbl_NewPassword.ForeColor = System.Drawing.SystemColors.Control;
-      this.lbl_NewPassword.Location = new System.Drawing.Point(56, 168);
+      this.lbl_NewPassword.Location = new System.Drawing.Point(42, 136);
+      this.lbl_NewPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.lbl_NewPassword.Name = "lbl_NewPassword";
-      this.lbl_NewPassword.Size = new System.Drawing.Size(121, 18);
+      this.lbl_NewPassword.Size = new System.Drawing.Size(101, 15);
       this.lbl_NewPassword.TabIndex = 1;
       this.lbl_NewPassword.Text = "New Password";
       // 
@@ -72,18 +74,20 @@
       this.lbl_ConfirmPassword.BackColor = System.Drawing.Color.Transparent;
       this.lbl_ConfirmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbl_ConfirmPassword.ForeColor = System.Drawing.SystemColors.Control;
-      this.lbl_ConfirmPassword.Location = new System.Drawing.Point(29, 225);
+      this.lbl_ConfirmPassword.Location = new System.Drawing.Point(22, 183);
+      this.lbl_ConfirmPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.lbl_ConfirmPassword.Name = "lbl_ConfirmPassword";
-      this.lbl_ConfirmPassword.Size = new System.Drawing.Size(148, 18);
+      this.lbl_ConfirmPassword.Size = new System.Drawing.Size(123, 15);
       this.lbl_ConfirmPassword.TabIndex = 2;
       this.lbl_ConfirmPassword.Text = "Confirm Password";
       // 
       // txt_OldPassword
       // 
       this.txt_OldPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txt_OldPassword.Location = new System.Drawing.Point(214, 111);
+      this.txt_OldPassword.Location = new System.Drawing.Point(160, 90);
+      this.txt_OldPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.txt_OldPassword.Name = "txt_OldPassword";
-      this.txt_OldPassword.Size = new System.Drawing.Size(234, 22);
+      this.txt_OldPassword.Size = new System.Drawing.Size(176, 19);
       this.txt_OldPassword.TabIndex = 3;
       this.txt_OldPassword.UseSystemPasswordChar = true;
       this.txt_OldPassword.TextChanged += new System.EventHandler(this.txt_OldPassword_TextChanged);
@@ -91,9 +95,10 @@
       // cmd_ChangePassword
       // 
       this.cmd_ChangePassword.Enabled = false;
-      this.cmd_ChangePassword.Location = new System.Drawing.Point(166, 322);
+      this.cmd_ChangePassword.Location = new System.Drawing.Point(124, 262);
+      this.cmd_ChangePassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.cmd_ChangePassword.Name = "cmd_ChangePassword";
-      this.cmd_ChangePassword.Size = new System.Drawing.Size(150, 30);
+      this.cmd_ChangePassword.Size = new System.Drawing.Size(112, 24);
       this.cmd_ChangePassword.TabIndex = 4;
       this.cmd_ChangePassword.Text = "Change Password";
       this.cmd_ChangePassword.UseVisualStyleBackColor = true;
@@ -102,9 +107,10 @@
       // txt_NewPassword
       // 
       this.txt_NewPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txt_NewPassword.Location = new System.Drawing.Point(214, 168);
+      this.txt_NewPassword.Location = new System.Drawing.Point(160, 136);
+      this.txt_NewPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.txt_NewPassword.Name = "txt_NewPassword";
-      this.txt_NewPassword.Size = new System.Drawing.Size(234, 22);
+      this.txt_NewPassword.Size = new System.Drawing.Size(176, 19);
       this.txt_NewPassword.TabIndex = 5;
       this.txt_NewPassword.UseSystemPasswordChar = true;
       this.txt_NewPassword.TextChanged += new System.EventHandler(this.txt_NewPassword_TextChanged);
@@ -112,9 +118,10 @@
       // txt_ConfirmPassword
       // 
       this.txt_ConfirmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txt_ConfirmPassword.Location = new System.Drawing.Point(214, 225);
+      this.txt_ConfirmPassword.Location = new System.Drawing.Point(160, 183);
+      this.txt_ConfirmPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.txt_ConfirmPassword.Name = "txt_ConfirmPassword";
-      this.txt_ConfirmPassword.Size = new System.Drawing.Size(234, 22);
+      this.txt_ConfirmPassword.Size = new System.Drawing.Size(176, 19);
       this.txt_ConfirmPassword.TabIndex = 6;
       this.txt_ConfirmPassword.UseSystemPasswordChar = true;
       this.txt_ConfirmPassword.TextChanged += new System.EventHandler(this.txt_ConfirmPassword_TextChanged);
@@ -124,9 +131,10 @@
       this.lbl_Error.BackColor = System.Drawing.Color.Transparent;
       this.lbl_Error.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbl_Error.ForeColor = System.Drawing.Color.Red;
-      this.lbl_Error.Location = new System.Drawing.Point(0, 286);
+      this.lbl_Error.Location = new System.Drawing.Point(0, 232);
+      this.lbl_Error.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.lbl_Error.Name = "lbl_Error";
-      this.lbl_Error.Size = new System.Drawing.Size(482, 23);
+      this.lbl_Error.Size = new System.Drawing.Size(362, 19);
       this.lbl_Error.TabIndex = 7;
       this.lbl_Error.Text = "<content>";
       this.lbl_Error.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -141,9 +149,10 @@
       // 
       this.cb_ShowPass1.AutoSize = true;
       this.cb_ShowPass1.BackColor = System.Drawing.Color.Transparent;
-      this.cb_ShowPass1.Location = new System.Drawing.Point(214, 133);
+      this.cb_ShowPass1.Location = new System.Drawing.Point(160, 108);
+      this.cb_ShowPass1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.cb_ShowPass1.Name = "cb_ShowPass1";
-      this.cb_ShowPass1.Size = new System.Drawing.Size(125, 20);
+      this.cb_ShowPass1.Size = new System.Drawing.Size(102, 17);
       this.cb_ShowPass1.TabIndex = 8;
       this.cb_ShowPass1.Text = "Show Password";
       this.cb_ShowPass1.UseVisualStyleBackColor = false;
@@ -153,9 +162,10 @@
       // 
       this.cb_ShowPass2.AutoSize = true;
       this.cb_ShowPass2.BackColor = System.Drawing.Color.Transparent;
-      this.cb_ShowPass2.Location = new System.Drawing.Point(214, 190);
+      this.cb_ShowPass2.Location = new System.Drawing.Point(160, 154);
+      this.cb_ShowPass2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.cb_ShowPass2.Name = "cb_ShowPass2";
-      this.cb_ShowPass2.Size = new System.Drawing.Size(125, 20);
+      this.cb_ShowPass2.Size = new System.Drawing.Size(102, 17);
       this.cb_ShowPass2.TabIndex = 9;
       this.cb_ShowPass2.Text = "Show Password";
       this.cb_ShowPass2.UseVisualStyleBackColor = false;
@@ -165,9 +175,10 @@
       // 
       this.cb_ShowPass3.AutoSize = true;
       this.cb_ShowPass3.BackColor = System.Drawing.Color.Transparent;
-      this.cb_ShowPass3.Location = new System.Drawing.Point(214, 247);
+      this.cb_ShowPass3.Location = new System.Drawing.Point(160, 201);
+      this.cb_ShowPass3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.cb_ShowPass3.Name = "cb_ShowPass3";
-      this.cb_ShowPass3.Size = new System.Drawing.Size(125, 20);
+      this.cb_ShowPass3.Size = new System.Drawing.Size(102, 17);
       this.cb_ShowPass3.TabIndex = 10;
       this.cb_ShowPass3.Text = "Show Password";
       this.cb_ShowPass3.UseVisualStyleBackColor = false;
@@ -175,11 +186,11 @@
       // 
       // ChangePassword
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BackgroundImage = global::NoteView.Properties.Resources.bg;
       this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-      this.ClientSize = new System.Drawing.Size(483, 450);
+      this.ClientSize = new System.Drawing.Size(362, 366);
       this.Controls.Add(this.cb_ShowPass3);
       this.Controls.Add(this.cb_ShowPass2);
       this.Controls.Add(this.cb_ShowPass1);
@@ -193,6 +204,9 @@
       this.Controls.Add(this.lbl_OldPassword);
       this.DoubleBuffered = true;
       this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+      this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.MaximizeBox = false;
+      this.MinimizeBox = false;
       this.Name = "ChangePassword";
       this.Text = "Change Password";
       this.ResumeLayout(false);

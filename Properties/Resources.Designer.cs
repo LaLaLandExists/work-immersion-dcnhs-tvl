@@ -93,6 +93,26 @@ namespace NoteView.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap new_booking {
+            get {
+                object obj = ResourceManager.GetObject("new_booking", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap new_booking1 {
+            get {
+                object obj = ResourceManager.GetObject("new_booking1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap noteview_icon {
             get {
                 object obj = ResourceManager.GetObject("noteview_icon", resourceCulture);

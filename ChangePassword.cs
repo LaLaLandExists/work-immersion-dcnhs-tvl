@@ -48,6 +48,13 @@ namespace NoteView
         cmd_ChangePassword.Enabled = false;
         return;
       }
+
+      if (txt_OldPassword.Text == txt_NewPassword.Text)
+      {
+        ShowError("Enter a new password");
+        cmd_ChangePassword.Enabled = false;
+        return;
+      }
       
       if (txt_NewPassword.Text.Length > Util.MaximumPasswordLength)
       {
@@ -133,6 +140,10 @@ namespace NoteView
     private void cb_ShowPass3_CheckedChanged(object sender, EventArgs e)
     {
       txt_ConfirmPassword.UseSystemPasswordChar = ! txt_ConfirmPassword.UseSystemPasswordChar;
+    }
+    private void ChangePassword_MouseLeave(object sender, EventArgs e)
+    {
+      Close();
     }
   }
 }
