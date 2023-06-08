@@ -84,6 +84,12 @@
       <DependentUpon>ChangePassword.cs</DependentUpon>
     </Compile>
     <Compile Include="DatabaseChecker.cs" />
+    <Compile Include="NewReservation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewReservation.Designer.cs">
+      <DependentUpon>NewReservation.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrontDesk.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,9 +103,6 @@
       <DependentUpon>HomeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="PictureButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="PictureLabel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Program.cs" />
@@ -128,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ChangePassword.resx">
       <DependentUpon>ChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewReservation.resx">
+      <DependentUpon>NewReservation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrontDesk.resx">
       <DependentUpon>FrontDesk.cs</DependentUpon>
@@ -193,6 +199,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\new_booking.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

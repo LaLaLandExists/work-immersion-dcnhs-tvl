@@ -235,6 +235,9 @@ namespace NoteView
       new ChangePassword().ShowDialog();
     }
 
-    
+    private void pcmd_NewBooking_Click(object sender, EventArgs e)
+    {
+     new NewReservation().ShowDialog();
+    }
   }
 }
