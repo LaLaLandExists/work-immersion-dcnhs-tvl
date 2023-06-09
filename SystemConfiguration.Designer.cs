@@ -28,24 +28,24 @@
     /// </summary>
     private void InitializeComponent()
     {
-      this.gb_RoomConfiguration = new System.Windows.Forms.GroupBox();
+      this.components = new System.ComponentModel.Container();
+      this.groupBox1 = new System.Windows.Forms.GroupBox();
       this.panel1 = new System.Windows.Forms.Panel();
-      this.cmd_Add = new System.Windows.Forms.Button();
-      this.txt_Capacity = new System.Windows.Forms.TextBox();
+      this.pcmd_RoomClear = new NoteView.PictureButton();
+      this.cmd_RoomAdd = new System.Windows.Forms.Button();
+      this.txt_RoomCapacity = new System.Windows.Forms.TextBox();
       this.label4 = new System.Windows.Forms.Label();
-      this.txt_Rate = new System.Windows.Forms.TextBox();
+      this.txt_RoomRate = new System.Windows.Forms.TextBox();
       this.txt_RoomType = new System.Windows.Forms.TextBox();
       this.txt_RoomNo = new System.Windows.Forms.TextBox();
       this.label3 = new System.Windows.Forms.Label();
       this.label2 = new System.Windows.Forms.Label();
       this.label1 = new System.Windows.Forms.Label();
-      this.cmd_Remove = new System.Windows.Forms.Button();
+      this.cmd_RoomRemove = new System.Windows.Forms.Button();
       this.groupBox2 = new System.Windows.Forms.GroupBox();
       this.pcmd_RoomSearch = new NoteView.PictureButton();
       this.txt_RoomSearch = new System.Windows.Forms.TextBox();
       this.gb_RoomTable = new System.Windows.Forms.GroupBox();
-      this.sstrip_Indicator = new System.Windows.Forms.StatusStrip();
-      this.tsstrip_Indicator = new System.Windows.Forms.ToolStripStatusLabel();
       this.dgv_Rooms = new System.Windows.Forms.DataGridView();
       this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.roomNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,35 +54,81 @@
       this.roomCapacity = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.bwork_RoomFetcher = new System.ComponentModel.BackgroundWorker();
       this.bwork_RoomDeleter = new System.ComponentModel.BackgroundWorker();
-      this.gb_RoomConfiguration.SuspendLayout();
+      this.sc_SysConfig = new System.Windows.Forms.SplitContainer();
+      this.fpnl_SysConfigChooser = new System.Windows.Forms.FlowLayoutPanel();
+      this.lbl_Room = new System.Windows.Forms.Label();
+      this.lbl_Service = new System.Windows.Forms.Label();
+      this.pnl_Room = new System.Windows.Forms.Panel();
+      this.bwork_RoomAdder = new System.ComponentModel.BackgroundWorker();
+      this.ttip_Tip = new System.Windows.Forms.ToolTip(this.components);
+      this.pnl_Service = new System.Windows.Forms.Panel();
+      this.gb_Services = new System.Windows.Forms.GroupBox();
+      this.panel2 = new System.Windows.Forms.Panel();
+      this.pcmd_ServiceClear = new NoteView.PictureButton();
+      this.cmd_ServiceAdd = new System.Windows.Forms.Button();
+      this.txt_ServiceCapacity = new System.Windows.Forms.TextBox();
+      this.label5 = new System.Windows.Forms.Label();
+      this.txt_ServiceRate = new System.Windows.Forms.TextBox();
+      this.txt_ServiceGroup = new System.Windows.Forms.TextBox();
+      this.txt_ServiceName = new System.Windows.Forms.TextBox();
+      this.label6 = new System.Windows.Forms.Label();
+      this.label7 = new System.Windows.Forms.Label();
+      this.label8 = new System.Windows.Forms.Label();
+      this.cmd_ServiceRemove = new System.Windows.Forms.Button();
+      this.groupBox3 = new System.Windows.Forms.GroupBox();
+      this.pcmd_ServiceSearch = new NoteView.PictureButton();
+      this.txt_ServiceSearch = new System.Windows.Forms.TextBox();
+      this.gb_ServiceTable = new System.Windows.Forms.GroupBox();
+      this.dgv_Services = new System.Windows.Forms.DataGridView();
+      this.ServiceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.ServiceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.ServiceGroup = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.ServiceRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.ServiceQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.groupBox1.SuspendLayout();
       this.panel1.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.pcmd_RoomClear)).BeginInit();
       this.groupBox2.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.pcmd_RoomSearch)).BeginInit();
       this.gb_RoomTable.SuspendLayout();
-      this.sstrip_Indicator.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dgv_Rooms)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.sc_SysConfig)).BeginInit();
+      this.sc_SysConfig.Panel1.SuspendLayout();
+      this.sc_SysConfig.Panel2.SuspendLayout();
+      this.sc_SysConfig.SuspendLayout();
+      this.fpnl_SysConfigChooser.SuspendLayout();
+      this.pnl_Room.SuspendLayout();
+      this.pnl_Service.SuspendLayout();
+      this.gb_Services.SuspendLayout();
+      this.panel2.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.pcmd_ServiceClear)).BeginInit();
+      this.groupBox3.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.pcmd_ServiceSearch)).BeginInit();
+      this.gb_ServiceTable.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.dgv_Services)).BeginInit();
       this.SuspendLayout();
       // 
-      // gb_RoomConfiguration
+      // groupBox1
       // 
-      this.gb_RoomConfiguration.Controls.Add(this.panel1);
-      this.gb_RoomConfiguration.Controls.Add(this.cmd_Remove);
-      this.gb_RoomConfiguration.Controls.Add(this.groupBox2);
-      this.gb_RoomConfiguration.Controls.Add(this.gb_RoomTable);
-      this.gb_RoomConfiguration.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.gb_RoomConfiguration.Location = new System.Drawing.Point(0, 0);
-      this.gb_RoomConfiguration.Name = "gb_RoomConfiguration";
-      this.gb_RoomConfiguration.Size = new System.Drawing.Size(785, 494);
-      this.gb_RoomConfiguration.TabIndex = 0;
-      this.gb_RoomConfiguration.TabStop = false;
-      this.gb_RoomConfiguration.Text = "Room";
+      this.groupBox1.Controls.Add(this.panel1);
+      this.groupBox1.Controls.Add(this.cmd_RoomRemove);
+      this.groupBox1.Controls.Add(this.groupBox2);
+      this.groupBox1.Controls.Add(this.gb_RoomTable);
+      this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.groupBox1.Location = new System.Drawing.Point(0, 0);
+      this.groupBox1.Name = "groupBox1";
+      this.groupBox1.Size = new System.Drawing.Size(109, 74);
+      this.groupBox1.TabIndex = 0;
+      this.groupBox1.TabStop = false;
+      this.groupBox1.Text = "Room";
       // 
       // panel1
       // 
-      this.panel1.Controls.Add(this.cmd_Add);
-      this.panel1.Controls.Add(this.txt_Capacity);
+      this.panel1.Controls.Add(this.pcmd_RoomClear);
+      this.panel1.Controls.Add(this.cmd_RoomAdd);
+      this.panel1.Controls.Add(this.txt_RoomCapacity);
       this.panel1.Controls.Add(this.label4);
-      this.panel1.Controls.Add(this.txt_Rate);
+      this.panel1.Controls.Add(this.txt_RoomRate);
       this.panel1.Controls.Add(this.txt_RoomType);
       this.panel1.Controls.Add(this.txt_RoomNo);
       this.panel1.Controls.Add(this.label3);
@@ -90,24 +136,37 @@
       this.panel1.Controls.Add(this.label1);
       this.panel1.Location = new System.Drawing.Point(12, 19);
       this.panel1.Name = "panel1";
-      this.panel1.Size = new System.Drawing.Size(214, 161);
+      this.panel1.Size = new System.Drawing.Size(214, 153);
       this.panel1.TabIndex = 5;
       // 
-      // cmd_Add
+      // pcmd_RoomClear
       // 
-      this.cmd_Add.Location = new System.Drawing.Point(70, 125);
-      this.cmd_Add.Name = "cmd_Add";
-      this.cmd_Add.Size = new System.Drawing.Size(75, 23);
-      this.cmd_Add.TabIndex = 8;
-      this.cmd_Add.Text = "Add Room";
-      this.cmd_Add.UseVisualStyleBackColor = true;
+      this.pcmd_RoomClear.BackgroundImage = global::NoteView.Properties.Resources.close;
+      this.pcmd_RoomClear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+      this.pcmd_RoomClear.Location = new System.Drawing.Point(14, 124);
+      this.pcmd_RoomClear.Name = "pcmd_RoomClear";
+      this.pcmd_RoomClear.Size = new System.Drawing.Size(22, 22);
+      this.pcmd_RoomClear.TabIndex = 9;
+      this.pcmd_RoomClear.TabStop = false;
+      this.ttip_Tip.SetToolTip(this.pcmd_RoomClear, "Clear fields");
+      this.pcmd_RoomClear.Click += new System.EventHandler(this.pcmd_RoomClear_Click);
       // 
-      // txt_Capacity
+      // cmd_RoomAdd
       // 
-      this.txt_Capacity.Location = new System.Drawing.Point(79, 88);
-      this.txt_Capacity.Name = "txt_Capacity";
-      this.txt_Capacity.Size = new System.Drawing.Size(121, 20);
-      this.txt_Capacity.TabIndex = 7;
+      this.cmd_RoomAdd.Location = new System.Drawing.Point(70, 124);
+      this.cmd_RoomAdd.Name = "cmd_RoomAdd";
+      this.cmd_RoomAdd.Size = new System.Drawing.Size(75, 23);
+      this.cmd_RoomAdd.TabIndex = 8;
+      this.cmd_RoomAdd.Text = "Add Room";
+      this.cmd_RoomAdd.UseVisualStyleBackColor = true;
+      this.cmd_RoomAdd.Click += new System.EventHandler(this.cmd_RoomAdd_Click);
+      // 
+      // txt_RoomCapacity
+      // 
+      this.txt_RoomCapacity.Location = new System.Drawing.Point(79, 88);
+      this.txt_RoomCapacity.Name = "txt_RoomCapacity";
+      this.txt_RoomCapacity.Size = new System.Drawing.Size(121, 20);
+      this.txt_RoomCapacity.TabIndex = 7;
       // 
       // label4
       // 
@@ -118,12 +177,12 @@
       this.label4.TabIndex = 6;
       this.label4.Text = "Capacity";
       // 
-      // txt_Rate
+      // txt_RoomRate
       // 
-      this.txt_Rate.Location = new System.Drawing.Point(79, 62);
-      this.txt_Rate.Name = "txt_Rate";
-      this.txt_Rate.Size = new System.Drawing.Size(121, 20);
-      this.txt_Rate.TabIndex = 5;
+      this.txt_RoomRate.Location = new System.Drawing.Point(79, 62);
+      this.txt_RoomRate.Name = "txt_RoomRate";
+      this.txt_RoomRate.Size = new System.Drawing.Size(121, 20);
+      this.txt_RoomRate.TabIndex = 5;
       // 
       // txt_RoomType
       // 
@@ -160,29 +219,29 @@
       // label1
       // 
       this.label1.AutoSize = true;
-      this.label1.Location = new System.Drawing.Point(18, 16);
+      this.label1.Location = new System.Drawing.Point(18, 12);
       this.label1.Name = "label1";
       this.label1.Size = new System.Drawing.Size(55, 13);
       this.label1.TabIndex = 0;
       this.label1.Text = "Room No.";
       // 
-      // cmd_Remove
+      // cmd_RoomRemove
       // 
-      this.cmd_Remove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-      this.cmd_Remove.Location = new System.Drawing.Point(511, 230);
-      this.cmd_Remove.Name = "cmd_Remove";
-      this.cmd_Remove.Size = new System.Drawing.Size(75, 23);
-      this.cmd_Remove.TabIndex = 9;
-      this.cmd_Remove.Text = "Remove";
-      this.cmd_Remove.UseVisualStyleBackColor = true;
-      this.cmd_Remove.Click += new System.EventHandler(this.cmd_Remove_Click);
+      this.cmd_RoomRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+      this.cmd_RoomRemove.Location = new System.Drawing.Point(-165, -265);
+      this.cmd_RoomRemove.Name = "cmd_RoomRemove";
+      this.cmd_RoomRemove.Size = new System.Drawing.Size(75, 23);
+      this.cmd_RoomRemove.TabIndex = 9;
+      this.cmd_RoomRemove.Text = "Remove";
+      this.cmd_RoomRemove.UseVisualStyleBackColor = true;
+      this.cmd_RoomRemove.Click += new System.EventHandler(this.cmd_RoomRemove_Click);
       // 
       // groupBox2
       // 
       this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
       this.groupBox2.Controls.Add(this.pcmd_RoomSearch);
       this.groupBox2.Controls.Add(this.txt_RoomSearch);
-      this.groupBox2.Location = new System.Drawing.Point(593, 218);
+      this.groupBox2.Location = new System.Drawing.Point(-83, -277);
       this.groupBox2.Name = "groupBox2";
       this.groupBox2.Size = new System.Drawing.Size(186, 41);
       this.groupBox2.TabIndex = 4;
@@ -209,30 +268,14 @@
       // 
       // gb_RoomTable
       // 
-      this.gb_RoomTable.Controls.Add(this.sstrip_Indicator);
       this.gb_RoomTable.Controls.Add(this.dgv_Rooms);
       this.gb_RoomTable.Dock = System.Windows.Forms.DockStyle.Bottom;
-      this.gb_RoomTable.Location = new System.Drawing.Point(3, 256);
+      this.gb_RoomTable.Location = new System.Drawing.Point(3, -234);
       this.gb_RoomTable.Name = "gb_RoomTable";
-      this.gb_RoomTable.Size = new System.Drawing.Size(779, 235);
+      this.gb_RoomTable.Size = new System.Drawing.Size(103, 305);
       this.gb_RoomTable.TabIndex = 1;
       this.gb_RoomTable.TabStop = false;
       this.gb_RoomTable.Text = "Existing Rooms";
-      // 
-      // sstrip_Indicator
-      // 
-      this.sstrip_Indicator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsstrip_Indicator});
-      this.sstrip_Indicator.Location = new System.Drawing.Point(3, 210);
-      this.sstrip_Indicator.Name = "sstrip_Indicator";
-      this.sstrip_Indicator.Size = new System.Drawing.Size(773, 22);
-      this.sstrip_Indicator.TabIndex = 1;
-      this.sstrip_Indicator.Text = "<status>";
-      // 
-      // tsstrip_Indicator
-      // 
-      this.tsstrip_Indicator.Name = "tsstrip_Indicator";
-      this.tsstrip_Indicator.Size = new System.Drawing.Size(0, 17);
       // 
       // dgv_Rooms
       // 
@@ -250,13 +293,11 @@
             this.roomCapacity});
       this.dgv_Rooms.Dock = System.Windows.Forms.DockStyle.Fill;
       this.dgv_Rooms.Location = new System.Drawing.Point(3, 16);
-      this.dgv_Rooms.MultiSelect = false;
       this.dgv_Rooms.Name = "dgv_Rooms";
       this.dgv_Rooms.ReadOnly = true;
       this.dgv_Rooms.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.dgv_Rooms.Size = new System.Drawing.Size(773, 216);
+      this.dgv_Rooms.Size = new System.Drawing.Size(97, 286);
       this.dgv_Rooms.TabIndex = 0;
-      this.dgv_Rooms.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Rooms_RowEnter);
       // 
       // id
       // 
@@ -305,33 +346,349 @@
       this.bwork_RoomDeleter.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwork_RoomDeleter_DoWork);
       this.bwork_RoomDeleter.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwork_RoomDeleter_RunWorkerCompleted);
       // 
+      // sc_SysConfig
+      // 
+      this.sc_SysConfig.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.sc_SysConfig.IsSplitterFixed = true;
+      this.sc_SysConfig.Location = new System.Drawing.Point(0, 0);
+      this.sc_SysConfig.Name = "sc_SysConfig";
+      // 
+      // sc_SysConfig.Panel1
+      // 
+      this.sc_SysConfig.Panel1.Controls.Add(this.fpnl_SysConfigChooser);
+      // 
+      // sc_SysConfig.Panel2
+      // 
+      this.sc_SysConfig.Panel2.Controls.Add(this.pnl_Service);
+      this.sc_SysConfig.Panel2.Controls.Add(this.pnl_Room);
+      this.sc_SysConfig.Size = new System.Drawing.Size(785, 494);
+      this.sc_SysConfig.SplitterDistance = 140;
+      this.sc_SysConfig.SplitterWidth = 1;
+      this.sc_SysConfig.TabIndex = 10;
+      // 
+      // fpnl_SysConfigChooser
+      // 
+      this.fpnl_SysConfigChooser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.fpnl_SysConfigChooser.AutoScroll = true;
+      this.fpnl_SysConfigChooser.Controls.Add(this.lbl_Room);
+      this.fpnl_SysConfigChooser.Controls.Add(this.lbl_Service);
+      this.fpnl_SysConfigChooser.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+      this.fpnl_SysConfigChooser.Location = new System.Drawing.Point(0, 28);
+      this.fpnl_SysConfigChooser.Name = "fpnl_SysConfigChooser";
+      this.fpnl_SysConfigChooser.Size = new System.Drawing.Size(140, 466);
+      this.fpnl_SysConfigChooser.TabIndex = 0;
+      // 
+      // lbl_Room
+      // 
+      this.lbl_Room.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+      this.lbl_Room.AutoSize = true;
+      this.lbl_Room.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbl_Room.Location = new System.Drawing.Point(3, 0);
+      this.lbl_Room.Name = "lbl_Room";
+      this.lbl_Room.Padding = new System.Windows.Forms.Padding(5);
+      this.lbl_Room.Size = new System.Drawing.Size(89, 26);
+      this.lbl_Room.TabIndex = 1;
+      this.lbl_Room.Text = "<rooms>";
+      this.lbl_Room.Click += new System.EventHandler(this.lbl_Room_Click);
+      // 
+      // lbl_Service
+      // 
+      this.lbl_Service.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+      this.lbl_Service.AutoSize = true;
+      this.lbl_Service.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbl_Service.Location = new System.Drawing.Point(3, 26);
+      this.lbl_Service.Name = "lbl_Service";
+      this.lbl_Service.Padding = new System.Windows.Forms.Padding(5);
+      this.lbl_Service.Size = new System.Drawing.Size(89, 26);
+      this.lbl_Service.TabIndex = 2;
+      this.lbl_Service.Text = "<services>";
+      this.lbl_Service.Click += new System.EventHandler(this.lbl_Service_Click);
+      // 
+      // pnl_Room
+      // 
+      this.pnl_Room.Controls.Add(this.groupBox1);
+      this.pnl_Room.Location = new System.Drawing.Point(126, 7);
+      this.pnl_Room.Name = "pnl_Room";
+      this.pnl_Room.Size = new System.Drawing.Size(109, 74);
+      this.pnl_Room.TabIndex = 1;
+      // 
+      // bwork_RoomAdder
+      // 
+      this.bwork_RoomAdder.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwork_RoomAdder_DoWork);
+      this.bwork_RoomAdder.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwork_RoomAdder_RunWorkerCompleted);
+      // 
+      // pnl_Service
+      // 
+      this.pnl_Service.Controls.Add(this.gb_Services);
+      this.pnl_Service.Location = new System.Drawing.Point(8, 6);
+      this.pnl_Service.Name = "pnl_Service";
+      this.pnl_Service.Size = new System.Drawing.Size(112, 74);
+      this.pnl_Service.TabIndex = 5;
+      // 
+      // gb_Services
+      // 
+      this.gb_Services.Controls.Add(this.panel2);
+      this.gb_Services.Controls.Add(this.cmd_ServiceRemove);
+      this.gb_Services.Controls.Add(this.groupBox3);
+      this.gb_Services.Controls.Add(this.gb_ServiceTable);
+      this.gb_Services.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.gb_Services.Location = new System.Drawing.Point(0, 0);
+      this.gb_Services.Name = "gb_Services";
+      this.gb_Services.Size = new System.Drawing.Size(112, 74);
+      this.gb_Services.TabIndex = 0;
+      this.gb_Services.TabStop = false;
+      this.gb_Services.Text = "Service";
+      // 
+      // panel2
+      // 
+      this.panel2.Controls.Add(this.pcmd_ServiceClear);
+      this.panel2.Controls.Add(this.cmd_ServiceAdd);
+      this.panel2.Controls.Add(this.txt_ServiceCapacity);
+      this.panel2.Controls.Add(this.label5);
+      this.panel2.Controls.Add(this.txt_ServiceRate);
+      this.panel2.Controls.Add(this.txt_ServiceGroup);
+      this.panel2.Controls.Add(this.txt_ServiceName);
+      this.panel2.Controls.Add(this.label6);
+      this.panel2.Controls.Add(this.label7);
+      this.panel2.Controls.Add(this.label8);
+      this.panel2.Location = new System.Drawing.Point(12, 19);
+      this.panel2.Name = "panel2";
+      this.panel2.Size = new System.Drawing.Size(213, 153);
+      this.panel2.TabIndex = 5;
+      // 
+      // pcmd_ServiceClear
+      // 
+      this.pcmd_ServiceClear.BackgroundImage = global::NoteView.Properties.Resources.close;
+      this.pcmd_ServiceClear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+      this.pcmd_ServiceClear.Location = new System.Drawing.Point(20, 124);
+      this.pcmd_ServiceClear.Name = "pcmd_ServiceClear";
+      this.pcmd_ServiceClear.Size = new System.Drawing.Size(22, 22);
+      this.pcmd_ServiceClear.TabIndex = 9;
+      this.pcmd_ServiceClear.TabStop = false;
+      // 
+      // cmd_ServiceAdd
+      // 
+      this.cmd_ServiceAdd.Location = new System.Drawing.Point(76, 124);
+      this.cmd_ServiceAdd.Name = "cmd_ServiceAdd";
+      this.cmd_ServiceAdd.Size = new System.Drawing.Size(75, 23);
+      this.cmd_ServiceAdd.TabIndex = 8;
+      this.cmd_ServiceAdd.Text = "Add Service";
+      this.cmd_ServiceAdd.UseVisualStyleBackColor = true;
+      // 
+      // txt_ServiceCapacity
+      // 
+      this.txt_ServiceCapacity.Location = new System.Drawing.Point(85, 88);
+      this.txt_ServiceCapacity.Name = "txt_ServiceCapacity";
+      this.txt_ServiceCapacity.Size = new System.Drawing.Size(121, 20);
+      this.txt_ServiceCapacity.TabIndex = 7;
+      // 
+      // label5
+      // 
+      this.label5.AutoSize = true;
+      this.label5.Location = new System.Drawing.Point(33, 91);
+      this.label5.Name = "label5";
+      this.label5.Size = new System.Drawing.Size(46, 13);
+      this.label5.TabIndex = 6;
+      this.label5.Text = "Quantity";
+      // 
+      // txt_ServiceRate
+      // 
+      this.txt_ServiceRate.Location = new System.Drawing.Point(85, 62);
+      this.txt_ServiceRate.Name = "txt_ServiceRate";
+      this.txt_ServiceRate.Size = new System.Drawing.Size(121, 20);
+      this.txt_ServiceRate.TabIndex = 5;
+      // 
+      // txt_ServiceGroup
+      // 
+      this.txt_ServiceGroup.Location = new System.Drawing.Point(85, 36);
+      this.txt_ServiceGroup.Name = "txt_ServiceGroup";
+      this.txt_ServiceGroup.Size = new System.Drawing.Size(121, 20);
+      this.txt_ServiceGroup.TabIndex = 4;
+      // 
+      // txt_ServiceName
+      // 
+      this.txt_ServiceName.Location = new System.Drawing.Point(85, 9);
+      this.txt_ServiceName.Name = "txt_ServiceName";
+      this.txt_ServiceName.Size = new System.Drawing.Size(121, 20);
+      this.txt_ServiceName.TabIndex = 3;
+      // 
+      // label6
+      // 
+      this.label6.AutoSize = true;
+      this.label6.Location = new System.Drawing.Point(49, 65);
+      this.label6.Name = "label6";
+      this.label6.Size = new System.Drawing.Size(30, 13);
+      this.label6.TabIndex = 2;
+      this.label6.Text = "Rate";
+      // 
+      // label7
+      // 
+      this.label7.AutoSize = true;
+      this.label7.Location = new System.Drawing.Point(43, 39);
+      this.label7.Name = "label7";
+      this.label7.Size = new System.Drawing.Size(36, 13);
+      this.label7.TabIndex = 1;
+      this.label7.Text = "Group";
+      // 
+      // label8
+      // 
+      this.label8.AutoSize = true;
+      this.label8.Location = new System.Drawing.Point(6, 12);
+      this.label8.Name = "label8";
+      this.label8.Size = new System.Drawing.Size(74, 13);
+      this.label8.TabIndex = 0;
+      this.label8.Text = "Service Name";
+      // 
+      // cmd_ServiceRemove
+      // 
+      this.cmd_ServiceRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+      this.cmd_ServiceRemove.Location = new System.Drawing.Point(-162, -265);
+      this.cmd_ServiceRemove.Name = "cmd_ServiceRemove";
+      this.cmd_ServiceRemove.Size = new System.Drawing.Size(75, 23);
+      this.cmd_ServiceRemove.TabIndex = 9;
+      this.cmd_ServiceRemove.Text = "Remove";
+      this.cmd_ServiceRemove.UseVisualStyleBackColor = true;
+      // 
+      // groupBox3
+      // 
+      this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+      this.groupBox3.Controls.Add(this.pcmd_ServiceSearch);
+      this.groupBox3.Controls.Add(this.txt_ServiceSearch);
+      this.groupBox3.Location = new System.Drawing.Point(-80, -277);
+      this.groupBox3.Name = "groupBox3";
+      this.groupBox3.Size = new System.Drawing.Size(186, 41);
+      this.groupBox3.TabIndex = 4;
+      this.groupBox3.TabStop = false;
+      this.groupBox3.Text = "Search Group or Service";
+      // 
+      // pcmd_ServiceSearch
+      // 
+      this.pcmd_ServiceSearch.BackgroundImage = global::NoteView.Properties.Resources.search;
+      this.pcmd_ServiceSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+      this.pcmd_ServiceSearch.Location = new System.Drawing.Point(11, 19);
+      this.pcmd_ServiceSearch.Name = "pcmd_ServiceSearch";
+      this.pcmd_ServiceSearch.Size = new System.Drawing.Size(18, 18);
+      this.pcmd_ServiceSearch.TabIndex = 3;
+      this.pcmd_ServiceSearch.TabStop = false;
+      // 
+      // txt_ServiceSearch
+      // 
+      this.txt_ServiceSearch.Location = new System.Drawing.Point(35, 17);
+      this.txt_ServiceSearch.Name = "txt_ServiceSearch";
+      this.txt_ServiceSearch.Size = new System.Drawing.Size(145, 20);
+      this.txt_ServiceSearch.TabIndex = 2;
+      // 
+      // gb_ServiceTable
+      // 
+      this.gb_ServiceTable.Controls.Add(this.dgv_Services);
+      this.gb_ServiceTable.Dock = System.Windows.Forms.DockStyle.Bottom;
+      this.gb_ServiceTable.Location = new System.Drawing.Point(3, -234);
+      this.gb_ServiceTable.Name = "gb_ServiceTable";
+      this.gb_ServiceTable.Size = new System.Drawing.Size(106, 305);
+      this.gb_ServiceTable.TabIndex = 1;
+      this.gb_ServiceTable.TabStop = false;
+      this.gb_ServiceTable.Text = "<service_table>";
+      // 
+      // dgv_Services
+      // 
+      this.dgv_Services.AllowUserToAddRows = false;
+      this.dgv_Services.AllowUserToDeleteRows = false;
+      this.dgv_Services.AllowUserToResizeColumns = false;
+      this.dgv_Services.AllowUserToResizeRows = false;
+      this.dgv_Services.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+      this.dgv_Services.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+      this.dgv_Services.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ServiceID,
+            this.ServiceName,
+            this.ServiceGroup,
+            this.ServiceRate,
+            this.ServiceQuantity});
+      this.dgv_Services.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.dgv_Services.Location = new System.Drawing.Point(3, 16);
+      this.dgv_Services.Name = "dgv_Services";
+      this.dgv_Services.ReadOnly = true;
+      this.dgv_Services.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+      this.dgv_Services.Size = new System.Drawing.Size(100, 286);
+      this.dgv_Services.TabIndex = 0;
+      // 
+      // ServiceID
+      // 
+      this.ServiceID.HeaderText = "Service ID";
+      this.ServiceID.Name = "ServiceID";
+      this.ServiceID.ReadOnly = true;
+      this.ServiceID.Width = 82;
+      // 
+      // ServiceName
+      // 
+      this.ServiceName.HeaderText = "Service Name";
+      this.ServiceName.Name = "ServiceName";
+      this.ServiceName.ReadOnly = true;
+      this.ServiceName.Width = 99;
+      // 
+      // ServiceGroup
+      // 
+      this.ServiceGroup.HeaderText = "Service Group";
+      this.ServiceGroup.Name = "ServiceGroup";
+      this.ServiceGroup.ReadOnly = true;
+      // 
+      // ServiceRate
+      // 
+      this.ServiceRate.HeaderText = "Rate";
+      this.ServiceRate.Name = "ServiceRate";
+      this.ServiceRate.ReadOnly = true;
+      this.ServiceRate.Width = 55;
+      // 
+      // ServiceQuantity
+      // 
+      this.ServiceQuantity.HeaderText = "Quantity";
+      this.ServiceQuantity.Name = "ServiceQuantity";
+      this.ServiceQuantity.ReadOnly = true;
+      this.ServiceQuantity.Width = 71;
+      // 
       // SystemConfiguration
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(785, 494);
-      this.Controls.Add(this.gb_RoomConfiguration);
+      this.Controls.Add(this.sc_SysConfig);
+      this.DoubleBuffered = true;
       this.Name = "SystemConfiguration";
       this.Text = "Configure System";
       this.Load += new System.EventHandler(this.SystemConfiguration_Load);
-      this.gb_RoomConfiguration.ResumeLayout(false);
+      this.groupBox1.ResumeLayout(false);
       this.panel1.ResumeLayout(false);
       this.panel1.PerformLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.pcmd_RoomClear)).EndInit();
       this.groupBox2.ResumeLayout(false);
       this.groupBox2.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(this.pcmd_RoomSearch)).EndInit();
       this.gb_RoomTable.ResumeLayout(false);
-      this.gb_RoomTable.PerformLayout();
-      this.sstrip_Indicator.ResumeLayout(false);
-      this.sstrip_Indicator.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dgv_Rooms)).EndInit();
+      this.sc_SysConfig.Panel1.ResumeLayout(false);
+      this.sc_SysConfig.Panel2.ResumeLayout(false);
+      ((System.ComponentModel.ISupportInitialize)(this.sc_SysConfig)).EndInit();
+      this.sc_SysConfig.ResumeLayout(false);
+      this.fpnl_SysConfigChooser.ResumeLayout(false);
+      this.fpnl_SysConfigChooser.PerformLayout();
+      this.pnl_Room.ResumeLayout(false);
+      this.pnl_Service.ResumeLayout(false);
+      this.gb_Services.ResumeLayout(false);
+      this.panel2.ResumeLayout(false);
+      this.panel2.PerformLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.pcmd_ServiceClear)).EndInit();
+      this.groupBox3.ResumeLayout(false);
+      this.groupBox3.PerformLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.pcmd_ServiceSearch)).EndInit();
+      this.gb_ServiceTable.ResumeLayout(false);
+      ((System.ComponentModel.ISupportInitialize)(this.dgv_Services)).EndInit();
       this.ResumeLayout(false);
 
     }
 
     #endregion
 
-    private System.Windows.Forms.GroupBox gb_RoomConfiguration;
+    private System.Windows.Forms.GroupBox groupBox1;
     private System.Windows.Forms.DataGridView dgv_Rooms;
     private System.Windows.Forms.GroupBox gb_RoomTable;
     private System.Windows.Forms.DataGridViewTextBoxColumn id;
@@ -344,19 +701,49 @@
     private PictureButton pcmd_RoomSearch;
     private System.ComponentModel.BackgroundWorker bwork_RoomFetcher;
     private System.Windows.Forms.Panel panel1;
-    private System.Windows.Forms.TextBox txt_Rate;
+    private System.Windows.Forms.TextBox txt_RoomRate;
     private System.Windows.Forms.TextBox txt_RoomType;
     private System.Windows.Forms.TextBox txt_RoomNo;
     private System.Windows.Forms.Label label3;
     private System.Windows.Forms.Label label2;
     private System.Windows.Forms.Label label1;
-    private System.Windows.Forms.TextBox txt_Capacity;
+    private System.Windows.Forms.TextBox txt_RoomCapacity;
     private System.Windows.Forms.Label label4;
-    private System.Windows.Forms.Button cmd_Remove;
-    private System.Windows.Forms.Button cmd_Add;
-    private System.Windows.Forms.StatusStrip sstrip_Indicator;
-    private System.Windows.Forms.ToolStripStatusLabel tsstrip_Indicator;
+    private System.Windows.Forms.Button cmd_RoomRemove;
+    private System.Windows.Forms.Button cmd_RoomAdd;
     private System.ComponentModel.BackgroundWorker bwork_RoomDeleter;
     private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+    private System.Windows.Forms.SplitContainer sc_SysConfig;
+    private System.Windows.Forms.FlowLayoutPanel fpnl_SysConfigChooser;
+    private System.Windows.Forms.Label lbl_Room;
+    private System.Windows.Forms.Panel pnl_Room;
+    private System.ComponentModel.BackgroundWorker bwork_RoomAdder;
+    private PictureButton pcmd_RoomClear;
+    private System.Windows.Forms.ToolTip ttip_Tip;
+    private System.Windows.Forms.Label lbl_Service;
+    private System.Windows.Forms.Panel pnl_Service;
+    private System.Windows.Forms.GroupBox gb_Services;
+    private System.Windows.Forms.Panel panel2;
+    private PictureButton pcmd_ServiceClear;
+    private System.Windows.Forms.Button cmd_ServiceAdd;
+    private System.Windows.Forms.TextBox txt_ServiceCapacity;
+    private System.Windows.Forms.Label label5;
+    private System.Windows.Forms.TextBox txt_ServiceRate;
+    private System.Windows.Forms.TextBox txt_ServiceGroup;
+    private System.Windows.Forms.TextBox txt_ServiceName;
+    private System.Windows.Forms.Label label6;
+    private System.Windows.Forms.Label label7;
+    private System.Windows.Forms.Label label8;
+    private System.Windows.Forms.Button cmd_ServiceRemove;
+    private System.Windows.Forms.GroupBox groupBox3;
+    private PictureButton pcmd_ServiceSearch;
+    private System.Windows.Forms.TextBox txt_ServiceSearch;
+    private System.Windows.Forms.GroupBox gb_ServiceTable;
+    private System.Windows.Forms.DataGridView dgv_Services;
+    private System.Windows.Forms.DataGridViewTextBoxColumn ServiceID;
+    private System.Windows.Forms.DataGridViewTextBoxColumn ServiceName;
+    private System.Windows.Forms.DataGridViewTextBoxColumn ServiceGroup;
+    private System.Windows.Forms.DataGridViewTextBoxColumn ServiceRate;
+    private System.Windows.Forms.DataGridViewTextBoxColumn ServiceQuantity;
   }
 }
