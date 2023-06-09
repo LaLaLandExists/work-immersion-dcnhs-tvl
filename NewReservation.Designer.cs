@@ -34,8 +34,7 @@ namespace NoteView
       this.tb_Info = new System.Windows.Forms.TabControl();
       this.tp_Calendar = new System.Windows.Forms.TabPage();
       this.GuestInfoPage = new System.Windows.Forms.TabPage();
-      this.pictureButton1 = new NoteView.PictureButton();
-      this.tb_SoB = new System.Windows.Forms.TextBox();
+      this.pictureButton4 = new NoteView.PictureButton();
       this.tb_State_Province = new System.Windows.Forms.TextBox();
       this.btn_Clear = new System.Windows.Forms.Button();
       this.tb_Amount = new System.Windows.Forms.TextBox();
@@ -61,21 +60,14 @@ namespace NoteView
       this.lbl_Model = new System.Windows.Forms.Label();
       this.lbl_License = new System.Windows.Forms.Label();
       this.tb_License = new System.Windows.Forms.TextBox();
-      this.tb_VIP = new System.Windows.Forms.TextBox();
-      this.cb_VIP = new System.Windows.Forms.CheckBox();
-      this.cb_AGE = new System.Windows.Forms.CheckBox();
-      this.cb_Opt = new System.Windows.Forms.CheckBox();
       this.tb_GuestNote = new System.Windows.Forms.TextBox();
       this.lbl_GuestNote = new System.Windows.Forms.Label();
-      this.lbl_Sob = new System.Windows.Forms.Label();
       this.tb_Email = new System.Windows.Forms.TextBox();
       this.lbl_Email = new System.Windows.Forms.Label();
       this.tb_TelephoneNum = new System.Windows.Forms.TextBox();
       this.tb_MobileNum = new System.Windows.Forms.TextBox();
       this.lbl_MobileNum = new System.Windows.Forms.Label();
       this.lbl_TelephoneNum = new System.Windows.Forms.Label();
-      this.tb_PONumber = new System.Windows.Forms.TextBox();
-      this.lbl_PONumber = new System.Windows.Forms.Label();
       this.lbl_Province_State = new System.Windows.Forms.Label();
       this.tb_City = new System.Windows.Forms.TextBox();
       this.lbl_City = new System.Windows.Forms.Label();
@@ -92,17 +84,14 @@ namespace NoteView
       this.lbl_LastName = new System.Windows.Forms.Label();
       this.lbl_FirstName = new System.Windows.Forms.Label();
       this.Services = new System.Windows.Forms.TabPage();
-      this.btn_DeleteService = new NoteView.PictureButton();
-      this.btn_AddService = new NoteView.PictureButton();
-      this.listView1 = new System.Windows.Forms.ListView();
+      this.dataGridView2 = new System.Windows.Forms.DataGridView();
+      this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.lbl_ServiceTotalCost = new System.Windows.Forms.Label();
       this.lbl_SericeTaxesCost = new System.Windows.Forms.Label();
       this.lbl_ServiceChargeCost = new System.Windows.Forms.Label();
       this.lbl_ServiceTotal = new System.Windows.Forms.Label();
       this.lbl_ServiceTaxes = new System.Windows.Forms.Label();
       this.lbl_ServiceCharges = new System.Windows.Forms.Label();
-      this.lbl_FetchResID = new System.Windows.Forms.Label();
-      this.lbl_ResID = new System.Windows.Forms.Label();
       this.dataGridView1 = new System.Windows.Forms.DataGridView();
       this.clm_ServiceNames = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.clm_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -111,6 +100,10 @@ namespace NoteView
       this.lbl_Grouping = new System.Windows.Forms.Label();
       this.cb_Style = new System.Windows.Forms.ComboBox();
       this.lbl_Style = new System.Windows.Forms.Label();
+      this.pictureButton3 = new NoteView.PictureButton();
+      this.pictureButton2 = new NoteView.PictureButton();
+      this.lbl_FetchResID = new System.Windows.Forms.Label();
+      this.lbl_ResID = new System.Windows.Forms.Label();
       this.TopPanel = new System.Windows.Forms.Panel();
       this.tb_Total = new System.Windows.Forms.TextBox();
       this.tb_Other = new System.Windows.Forms.TextBox();
@@ -127,8 +120,6 @@ namespace NoteView
       this.nud_Child = new System.Windows.Forms.NumericUpDown();
       this.lbl_Child = new System.Windows.Forms.Label();
       this.nud_Adult = new System.Windows.Forms.NumericUpDown();
-      this.cb_Departure = new System.Windows.Forms.ComboBox();
-      this.cb_Arrival = new System.Windows.Forms.ComboBox();
       this.cb_RoomCharge = new System.Windows.Forms.ComboBox();
       this.cb_ClientType = new System.Windows.Forms.ComboBox();
       this.cb_WaitList = new System.Windows.Forms.CheckBox();
@@ -140,21 +131,26 @@ namespace NoteView
       this.lbl_RoomCharge = new System.Windows.Forms.Label();
       this.lbl_ClientType = new System.Windows.Forms.Label();
       this.RightSidePanel = new System.Windows.Forms.Panel();
+      this.cb_RoomNumber = new System.Windows.Forms.ComboBox();
       this.btn_submit = new System.Windows.Forms.Button();
       this.btn_Cancel = new System.Windows.Forms.Button();
       this.cb_LockOff = new System.Windows.Forms.CheckBox();
       this.cb_EnableAssignment = new System.Windows.Forms.CheckBox();
-      this.cb_RoomNumber = new System.Windows.Forms.ComboBox();
       this.lbl_RoomNumber = new System.Windows.Forms.Label();
+      this.label1 = new System.Windows.Forms.Label();
+      this.label2 = new System.Windows.Forms.Label();
+      this.dtp_Arrival = new System.Windows.Forms.DateTimePicker();
+      this.dtp_Departure = new System.Windows.Forms.DateTimePicker();
       this.tb_Info.SuspendLayout();
       this.GuestInfoPage.SuspendLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.pictureButton1)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.pictureButton4)).BeginInit();
       this.gb_PaymentMethod.SuspendLayout();
       this.gb_Vehicle.SuspendLayout();
       this.Services.SuspendLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.btn_DeleteService)).BeginInit();
-      ((System.ComponentModel.ISupportInitialize)(this.btn_AddService)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.pictureButton3)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.pictureButton2)).BeginInit();
       this.TopPanel.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.nud_Nights)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.nud_Child)).BeginInit();
@@ -188,8 +184,7 @@ namespace NoteView
       // 
       // GuestInfoPage
       // 
-      this.GuestInfoPage.Controls.Add(this.pictureButton1);
-      this.GuestInfoPage.Controls.Add(this.tb_SoB);
+      this.GuestInfoPage.Controls.Add(this.pictureButton4);
       this.GuestInfoPage.Controls.Add(this.tb_State_Province);
       this.GuestInfoPage.Controls.Add(this.btn_Clear);
       this.GuestInfoPage.Controls.Add(this.tb_Amount);
@@ -197,21 +192,14 @@ namespace NoteView
       this.GuestInfoPage.Controls.Add(this.lbl_PostDepo);
       this.GuestInfoPage.Controls.Add(this.gb_PaymentMethod);
       this.GuestInfoPage.Controls.Add(this.gb_Vehicle);
-      this.GuestInfoPage.Controls.Add(this.tb_VIP);
-      this.GuestInfoPage.Controls.Add(this.cb_VIP);
-      this.GuestInfoPage.Controls.Add(this.cb_AGE);
-      this.GuestInfoPage.Controls.Add(this.cb_Opt);
       this.GuestInfoPage.Controls.Add(this.tb_GuestNote);
       this.GuestInfoPage.Controls.Add(this.lbl_GuestNote);
-      this.GuestInfoPage.Controls.Add(this.lbl_Sob);
       this.GuestInfoPage.Controls.Add(this.tb_Email);
       this.GuestInfoPage.Controls.Add(this.lbl_Email);
       this.GuestInfoPage.Controls.Add(this.tb_TelephoneNum);
       this.GuestInfoPage.Controls.Add(this.tb_MobileNum);
       this.GuestInfoPage.Controls.Add(this.lbl_MobileNum);
       this.GuestInfoPage.Controls.Add(this.lbl_TelephoneNum);
-      this.GuestInfoPage.Controls.Add(this.tb_PONumber);
-      this.GuestInfoPage.Controls.Add(this.lbl_PONumber);
       this.GuestInfoPage.Controls.Add(this.lbl_Province_State);
       this.GuestInfoPage.Controls.Add(this.tb_City);
       this.GuestInfoPage.Controls.Add(this.lbl_City);
@@ -235,26 +223,16 @@ namespace NoteView
       this.GuestInfoPage.Text = "Guest Info";
       this.GuestInfoPage.UseVisualStyleBackColor = true;
       // 
-      // pictureButton1
+      // pictureButton4
       // 
-      this.pictureButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-      this.pictureButton1.BackgroundImage = global::NoteView.Properties.Resources.search;
-      this.pictureButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-      this.pictureButton1.Image = global::NoteView.Properties.Resources.search;
-      this.pictureButton1.Location = new System.Drawing.Point(853, 6);
-      this.pictureButton1.Name = "pictureButton1";
-      this.pictureButton1.Size = new System.Drawing.Size(34, 34);
-      this.pictureButton1.TabIndex = 55;
-      this.pictureButton1.TabStop = false;
-      // 
-      // tb_SoB
-      // 
-      this.tb_SoB.Anchor = System.Windows.Forms.AnchorStyles.Left;
-      this.tb_SoB.Location = new System.Drawing.Point(113, 248);
-      this.tb_SoB.Multiline = true;
-      this.tb_SoB.Name = "tb_SoB";
-      this.tb_SoB.Size = new System.Drawing.Size(337, 24);
-      this.tb_SoB.TabIndex = 54;
+      this.pictureButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+      this.pictureButton4.BackgroundImage = global::NoteView.Properties.Resources.search1;
+      this.pictureButton4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+      this.pictureButton4.Location = new System.Drawing.Point(853, 5);
+      this.pictureButton4.Name = "pictureButton4";
+      this.pictureButton4.Size = new System.Drawing.Size(37, 35);
+      this.pictureButton4.TabIndex = 54;
+      this.pictureButton4.TabStop = false;
       // 
       // tb_State_Province
       // 
@@ -281,7 +259,7 @@ namespace NoteView
       // 
       this.tb_Amount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
       this.tb_Amount.Enabled = false;
-      this.tb_Amount.Location = new System.Drawing.Point(669, 250);
+      this.tb_Amount.Location = new System.Drawing.Point(669, 201);
       this.tb_Amount.Name = "tb_Amount";
       this.tb_Amount.Size = new System.Drawing.Size(111, 20);
       this.tb_Amount.TabIndex = 50;
@@ -291,7 +269,7 @@ namespace NoteView
       this.cb_PostDepo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
       this.cb_PostDepo.AutoSize = true;
       this.cb_PostDepo.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.cb_PostDepo.Location = new System.Drawing.Point(580, 249);
+      this.cb_PostDepo.Location = new System.Drawing.Point(580, 200);
       this.cb_PostDepo.Name = "cb_PostDepo";
       this.cb_PostDepo.Size = new System.Drawing.Size(98, 22);
       this.cb_PostDepo.TabIndex = 49;
@@ -304,7 +282,7 @@ namespace NoteView
       this.lbl_PostDepo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
       this.lbl_PostDepo.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbl_PostDepo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-      this.lbl_PostDepo.Location = new System.Drawing.Point(538, 250);
+      this.lbl_PostDepo.Location = new System.Drawing.Point(538, 201);
       this.lbl_PostDepo.Name = "lbl_PostDepo";
       this.lbl_PostDepo.Size = new System.Drawing.Size(57, 18);
       this.lbl_PostDepo.TabIndex = 48;
@@ -325,9 +303,9 @@ namespace NoteView
       this.gb_PaymentMethod.Controls.Add(this.lbl_CardType);
       this.gb_PaymentMethod.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
       this.gb_PaymentMethod.ForeColor = System.Drawing.SystemColors.WindowFrame;
-      this.gb_PaymentMethod.Location = new System.Drawing.Point(523, 295);
+      this.gb_PaymentMethod.Location = new System.Drawing.Point(523, 237);
       this.gb_PaymentMethod.Name = "gb_PaymentMethod";
-      this.gb_PaymentMethod.Size = new System.Drawing.Size(390, 163);
+      this.gb_PaymentMethod.Size = new System.Drawing.Size(338, 163);
       this.gb_PaymentMethod.TabIndex = 44;
       this.gb_PaymentMethod.TabStop = false;
       this.gb_PaymentMethod.Text = "Payment Method";
@@ -337,7 +315,7 @@ namespace NoteView
       this.btn_CreditCards.AutoSize = true;
       this.btn_CreditCards.Font = new System.Drawing.Font("Verdana", 9.75F);
       this.btn_CreditCards.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-      this.btn_CreditCards.Location = new System.Drawing.Point(286, 127);
+      this.btn_CreditCards.Location = new System.Drawing.Point(226, 118);
       this.btn_CreditCards.Name = "btn_CreditCards";
       this.btn_CreditCards.Size = new System.Drawing.Size(98, 26);
       this.btn_CreditCards.TabIndex = 33;
@@ -437,7 +415,7 @@ namespace NoteView
       this.gb_Vehicle.Controls.Add(this.tb_License);
       this.gb_Vehicle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
       this.gb_Vehicle.ForeColor = System.Drawing.SystemColors.WindowFrame;
-      this.gb_Vehicle.Location = new System.Drawing.Point(42, 363);
+      this.gb_Vehicle.Location = new System.Drawing.Point(42, 314);
       this.gb_Vehicle.Name = "gb_Vehicle";
       this.gb_Vehicle.Size = new System.Drawing.Size(409, 85);
       this.gb_Vehicle.TabIndex = 43;
@@ -512,85 +490,29 @@ namespace NoteView
       this.tb_License.Size = new System.Drawing.Size(121, 25);
       this.tb_License.TabIndex = 37;
       // 
-      // tb_VIP
-      // 
-      this.tb_VIP.Anchor = System.Windows.Forms.AnchorStyles.Right;
-      this.tb_VIP.Enabled = false;
-      this.tb_VIP.Location = new System.Drawing.Point(576, 176);
-      this.tb_VIP.Name = "tb_VIP";
-      this.tb_VIP.Size = new System.Drawing.Size(168, 20);
-      this.tb_VIP.TabIndex = 42;
-      // 
-      // cb_VIP
-      // 
-      this.cb_VIP.Anchor = System.Windows.Forms.AnchorStyles.Right;
-      this.cb_VIP.AutoSize = true;
-      this.cb_VIP.Font = new System.Drawing.Font("Segoe UI", 12F);
-      this.cb_VIP.Location = new System.Drawing.Point(523, 173);
-      this.cb_VIP.Name = "cb_VIP";
-      this.cb_VIP.Size = new System.Drawing.Size(52, 25);
-      this.cb_VIP.TabIndex = 41;
-      this.cb_VIP.Text = "VIP";
-      this.cb_VIP.UseVisualStyleBackColor = true;
-      this.cb_VIP.CheckedChanged += new System.EventHandler(this.cb_VIP_CheckedChanged);
-      // 
-      // cb_AGE
-      // 
-      this.cb_AGE.Anchor = System.Windows.Forms.AnchorStyles.Right;
-      this.cb_AGE.AutoSize = true;
-      this.cb_AGE.Font = new System.Drawing.Font("Segoe UI", 12F);
-      this.cb_AGE.Location = new System.Drawing.Point(523, 149);
-      this.cb_AGE.Name = "cb_AGE";
-      this.cb_AGE.Size = new System.Drawing.Size(175, 25);
-      this.cb_AGE.TabIndex = 40;
-      this.cb_AGE.Text = "Accept General Email";
-      this.cb_AGE.UseVisualStyleBackColor = true;
-      // 
-      // cb_Opt
-      // 
-      this.cb_Opt.Anchor = System.Windows.Forms.AnchorStyles.Right;
-      this.cb_Opt.AutoSize = true;
-      this.cb_Opt.Font = new System.Drawing.Font("Segoe UI", 12F);
-      this.cb_Opt.Location = new System.Drawing.Point(523, 126);
-      this.cb_Opt.Name = "cb_Opt";
-      this.cb_Opt.Size = new System.Drawing.Size(243, 25);
-      this.cb_Opt.TabIndex = 39;
-      this.cb_Opt.Text = "Opt into Marketing Campaigns";
-      this.cb_Opt.UseVisualStyleBackColor = true;
-      // 
       // tb_GuestNote
       // 
       this.tb_GuestNote.Anchor = System.Windows.Forms.AnchorStyles.Left;
-      this.tb_GuestNote.Location = new System.Drawing.Point(113, 283);
+      this.tb_GuestNote.Location = new System.Drawing.Point(114, 223);
       this.tb_GuestNote.Multiline = true;
       this.tb_GuestNote.Name = "tb_GuestNote";
-      this.tb_GuestNote.Size = new System.Drawing.Size(337, 48);
+      this.tb_GuestNote.Size = new System.Drawing.Size(337, 63);
       this.tb_GuestNote.TabIndex = 29;
       // 
       // lbl_GuestNote
       // 
       this.lbl_GuestNote.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.lbl_GuestNote.Font = new System.Drawing.Font("Verdana", 9.75F);
-      this.lbl_GuestNote.Location = new System.Drawing.Point(29, 285);
+      this.lbl_GuestNote.Location = new System.Drawing.Point(30, 229);
       this.lbl_GuestNote.Name = "lbl_GuestNote";
       this.lbl_GuestNote.Size = new System.Drawing.Size(91, 21);
       this.lbl_GuestNote.TabIndex = 28;
       this.lbl_GuestNote.Text = "Guest Note";
       // 
-      // lbl_Sob
-      // 
-      this.lbl_Sob.Anchor = System.Windows.Forms.AnchorStyles.Left;
-      this.lbl_Sob.Font = new System.Drawing.Font("Verdana", 9.75F);
-      this.lbl_Sob.Location = new System.Drawing.Point(36, 244);
-      this.lbl_Sob.Name = "lbl_Sob";
-      this.lbl_Sob.Size = new System.Drawing.Size(71, 43);
-      this.lbl_Sob.TabIndex = 26;
-      this.lbl_Sob.Text = "Source of Business";
-      // 
       // tb_Email
       // 
       this.tb_Email.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-      this.tb_Email.Location = new System.Drawing.Point(562, 68);
+      this.tb_Email.Location = new System.Drawing.Point(563, 68);
       this.tb_Email.Name = "tb_Email";
       this.tb_Email.Size = new System.Drawing.Size(171, 20);
       this.tb_Email.TabIndex = 25;
@@ -600,7 +522,7 @@ namespace NoteView
       this.lbl_Email.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
       this.lbl_Email.AutoSize = true;
       this.lbl_Email.Font = new System.Drawing.Font("Verdana", 9.75F);
-      this.lbl_Email.Location = new System.Drawing.Point(520, 72);
+      this.lbl_Email.Location = new System.Drawing.Point(521, 72);
       this.lbl_Email.Name = "lbl_Email";
       this.lbl_Email.Size = new System.Drawing.Size(40, 16);
       this.lbl_Email.TabIndex = 24;
@@ -609,7 +531,7 @@ namespace NoteView
       // tb_TelephoneNum
       // 
       this.tb_TelephoneNum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-      this.tb_TelephoneNum.Location = new System.Drawing.Point(562, 44);
+      this.tb_TelephoneNum.Location = new System.Drawing.Point(563, 44);
       this.tb_TelephoneNum.Name = "tb_TelephoneNum";
       this.tb_TelephoneNum.Size = new System.Drawing.Size(171, 20);
       this.tb_TelephoneNum.TabIndex = 23;
@@ -617,7 +539,7 @@ namespace NoteView
       // tb_MobileNum
       // 
       this.tb_MobileNum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-      this.tb_MobileNum.Location = new System.Drawing.Point(562, 19);
+      this.tb_MobileNum.Location = new System.Drawing.Point(563, 19);
       this.tb_MobileNum.Name = "tb_MobileNum";
       this.tb_MobileNum.Size = new System.Drawing.Size(171, 20);
       this.tb_MobileNum.TabIndex = 22;
@@ -627,7 +549,7 @@ namespace NoteView
       this.lbl_MobileNum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
       this.lbl_MobileNum.AutoSize = true;
       this.lbl_MobileNum.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold);
-      this.lbl_MobileNum.Location = new System.Drawing.Point(507, 21);
+      this.lbl_MobileNum.Location = new System.Drawing.Point(508, 21);
       this.lbl_MobileNum.Name = "lbl_MobileNum";
       this.lbl_MobileNum.Size = new System.Drawing.Size(54, 16);
       this.lbl_MobileNum.TabIndex = 21;
@@ -638,28 +560,11 @@ namespace NoteView
       this.lbl_TelephoneNum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
       this.lbl_TelephoneNum.AutoSize = true;
       this.lbl_TelephoneNum.Font = new System.Drawing.Font("Verdana", 9.75F);
-      this.lbl_TelephoneNum.Location = new System.Drawing.Point(487, 44);
+      this.lbl_TelephoneNum.Location = new System.Drawing.Point(488, 44);
       this.lbl_TelephoneNum.Name = "lbl_TelephoneNum";
       this.lbl_TelephoneNum.Size = new System.Drawing.Size(74, 16);
       this.lbl_TelephoneNum.TabIndex = 20;
       this.lbl_TelephoneNum.Text = "Telephone";
-      // 
-      // tb_PONumber
-      // 
-      this.tb_PONumber.Location = new System.Drawing.Point(327, 179);
-      this.tb_PONumber.Name = "tb_PONumber";
-      this.tb_PONumber.Size = new System.Drawing.Size(121, 20);
-      this.tb_PONumber.TabIndex = 19;
-      // 
-      // lbl_PONumber
-      // 
-      this.lbl_PONumber.AutoSize = true;
-      this.lbl_PONumber.Font = new System.Drawing.Font("Verdana", 9.75F);
-      this.lbl_PONumber.Location = new System.Drawing.Point(243, 181);
-      this.lbl_PONumber.Name = "lbl_PONumber";
-      this.lbl_PONumber.Size = new System.Drawing.Size(85, 16);
-      this.lbl_PONumber.TabIndex = 18;
-      this.lbl_PONumber.Text = "P/O Number";
       // 
       // lbl_Province_State
       // 
@@ -808,22 +713,20 @@ namespace NoteView
       // Services
       // 
       this.Services.BackColor = System.Drawing.Color.LightGray;
-      this.Services.Controls.Add(this.btn_DeleteService);
-      this.Services.Controls.Add(this.btn_AddService);
-      this.Services.Controls.Add(this.listView1);
+      this.Services.Controls.Add(this.dataGridView2);
       this.Services.Controls.Add(this.lbl_ServiceTotalCost);
       this.Services.Controls.Add(this.lbl_SericeTaxesCost);
       this.Services.Controls.Add(this.lbl_ServiceChargeCost);
       this.Services.Controls.Add(this.lbl_ServiceTotal);
       this.Services.Controls.Add(this.lbl_ServiceTaxes);
       this.Services.Controls.Add(this.lbl_ServiceCharges);
-      this.Services.Controls.Add(this.lbl_FetchResID);
-      this.Services.Controls.Add(this.lbl_ResID);
       this.Services.Controls.Add(this.dataGridView1);
       this.Services.Controls.Add(this.cb_Grouping);
       this.Services.Controls.Add(this.lbl_Grouping);
       this.Services.Controls.Add(this.cb_Style);
       this.Services.Controls.Add(this.lbl_Style);
+      this.Services.Controls.Add(this.pictureButton3);
+      this.Services.Controls.Add(this.pictureButton2);
       this.Services.Location = new System.Drawing.Point(4, 22);
       this.Services.Name = "Services";
       this.Services.Padding = new System.Windows.Forms.Padding(3);
@@ -831,39 +734,35 @@ namespace NoteView
       this.Services.TabIndex = 2;
       this.Services.Text = "Services";
       // 
-      // btn_DeleteService
+      // dataGridView2
       // 
-      this.btn_DeleteService.Anchor = System.Windows.Forms.AnchorStyles.Right;
-      this.btn_DeleteService.BackColor = System.Drawing.Color.Black;
-      this.btn_DeleteService.Location = new System.Drawing.Point(669, 207);
-      this.btn_DeleteService.Name = "btn_DeleteService";
-      this.btn_DeleteService.Size = new System.Drawing.Size(25, 25);
-      this.btn_DeleteService.TabIndex = 16;
-      this.btn_DeleteService.TabStop = false;
+      this.dataGridView2.AllowUserToAddRows = false;
+      this.dataGridView2.AllowUserToDeleteRows = false;
+      this.dataGridView2.AllowUserToResizeColumns = false;
+      this.dataGridView2.AllowUserToResizeRows = false;
+      this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+      this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1});
+      this.dataGridView2.Location = new System.Drawing.Point(697, 40);
+      this.dataGridView2.Name = "dataGridView2";
+      this.dataGridView2.ReadOnly = true;
+      this.dataGridView2.Size = new System.Drawing.Size(213, 418);
+      this.dataGridView2.TabIndex = 15;
       // 
-      // btn_AddService
+      // dataGridViewTextBoxColumn1
       // 
-      this.btn_AddService.Anchor = System.Windows.Forms.AnchorStyles.Right;
-      this.btn_AddService.BackColor = System.Drawing.Color.Black;
-      this.btn_AddService.Location = new System.Drawing.Point(669, 165);
-      this.btn_AddService.Name = "btn_AddService";
-      this.btn_AddService.Size = new System.Drawing.Size(25, 25);
-      this.btn_AddService.TabIndex = 15;
-      this.btn_AddService.TabStop = false;
-      // 
-      // listView1
-      // 
-      this.listView1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-      this.listView1.HideSelection = false;
-      this.listView1.Location = new System.Drawing.Point(700, 40);
-      this.listView1.Name = "listView1";
-      this.listView1.Size = new System.Drawing.Size(213, 418);
-      this.listView1.TabIndex = 14;
-      this.listView1.UseCompatibleStateImageBehavior = false;
+      this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+      this.dataGridViewTextBoxColumn1.HeaderText = "Service Names";
+      this.dataGridViewTextBoxColumn1.MinimumWidth = 200;
+      this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+      this.dataGridViewTextBoxColumn1.ReadOnly = true;
+      this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+      this.dataGridViewTextBoxColumn1.Width = 200;
       // 
       // lbl_ServiceTotalCost
       // 
-      this.lbl_ServiceTotalCost.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+      this.lbl_ServiceTotalCost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
       this.lbl_ServiceTotalCost.AutoSize = true;
       this.lbl_ServiceTotalCost.Location = new System.Drawing.Point(625, 412);
       this.lbl_ServiceTotalCost.Name = "lbl_ServiceTotalCost";
@@ -875,7 +774,7 @@ namespace NoteView
       // 
       // lbl_SericeTaxesCost
       // 
-      this.lbl_SericeTaxesCost.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+      this.lbl_SericeTaxesCost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
       this.lbl_SericeTaxesCost.AutoSize = true;
       this.lbl_SericeTaxesCost.Location = new System.Drawing.Point(625, 390);
       this.lbl_SericeTaxesCost.Name = "lbl_SericeTaxesCost";
@@ -887,7 +786,7 @@ namespace NoteView
       // 
       // lbl_ServiceChargeCost
       // 
-      this.lbl_ServiceChargeCost.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+      this.lbl_ServiceChargeCost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
       this.lbl_ServiceChargeCost.AutoSize = true;
       this.lbl_ServiceChargeCost.Location = new System.Drawing.Point(625, 368);
       this.lbl_ServiceChargeCost.Name = "lbl_ServiceChargeCost";
@@ -899,10 +798,10 @@ namespace NoteView
       // 
       // lbl_ServiceTotal
       // 
-      this.lbl_ServiceTotal.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+      this.lbl_ServiceTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
       this.lbl_ServiceTotal.AutoSize = true;
       this.lbl_ServiceTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbl_ServiceTotal.Location = new System.Drawing.Point(506, 412);
+      this.lbl_ServiceTotal.Location = new System.Drawing.Point(560, 412);
       this.lbl_ServiceTotal.Name = "lbl_ServiceTotal";
       this.lbl_ServiceTotal.Size = new System.Drawing.Size(40, 13);
       this.lbl_ServiceTotal.TabIndex = 10;
@@ -910,10 +809,10 @@ namespace NoteView
       // 
       // lbl_ServiceTaxes
       // 
-      this.lbl_ServiceTaxes.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+      this.lbl_ServiceTaxes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
       this.lbl_ServiceTaxes.AutoSize = true;
       this.lbl_ServiceTaxes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbl_ServiceTaxes.Location = new System.Drawing.Point(501, 390);
+      this.lbl_ServiceTaxes.Location = new System.Drawing.Point(555, 390);
       this.lbl_ServiceTaxes.Name = "lbl_ServiceTaxes";
       this.lbl_ServiceTaxes.Size = new System.Drawing.Size(45, 13);
       this.lbl_ServiceTaxes.TabIndex = 9;
@@ -921,32 +820,14 @@ namespace NoteView
       // 
       // lbl_ServiceCharges
       // 
-      this.lbl_ServiceCharges.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+      this.lbl_ServiceCharges.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
       this.lbl_ServiceCharges.AutoSize = true;
       this.lbl_ServiceCharges.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbl_ServiceCharges.Location = new System.Drawing.Point(442, 368);
+      this.lbl_ServiceCharges.Location = new System.Drawing.Point(496, 368);
       this.lbl_ServiceCharges.Name = "lbl_ServiceCharges";
       this.lbl_ServiceCharges.Size = new System.Drawing.Size(104, 13);
       this.lbl_ServiceCharges.TabIndex = 8;
       this.lbl_ServiceCharges.Text = "Service Charges:";
-      // 
-      // lbl_FetchResID
-      // 
-      this.lbl_FetchResID.AutoSize = true;
-      this.lbl_FetchResID.Location = new System.Drawing.Point(45, 448);
-      this.lbl_FetchResID.Name = "lbl_FetchResID";
-      this.lbl_FetchResID.Size = new System.Drawing.Size(47, 13);
-      this.lbl_FetchResID.TabIndex = 7;
-      this.lbl_FetchResID.Text = "<res_id>";
-      // 
-      // lbl_ResID
-      // 
-      this.lbl_ResID.AutoSize = true;
-      this.lbl_ResID.Location = new System.Drawing.Point(3, 448);
-      this.lbl_ResID.Name = "lbl_ResID";
-      this.lbl_ResID.Size = new System.Drawing.Size(40, 13);
-      this.lbl_ResID.TabIndex = 6;
-      this.lbl_ResID.Text = "ResID:";
       // 
       // dataGridView1
       // 
@@ -954,7 +835,7 @@ namespace NoteView
       this.dataGridView1.AllowUserToDeleteRows = false;
       this.dataGridView1.AllowUserToResizeColumns = false;
       this.dataGridView1.AllowUserToResizeRows = false;
-      this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+      this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
       this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -964,7 +845,7 @@ namespace NoteView
       this.dataGridView1.Location = new System.Drawing.Point(4, 40);
       this.dataGridView1.Name = "dataGridView1";
       this.dataGridView1.ReadOnly = true;
-      this.dataGridView1.Size = new System.Drawing.Size(659, 315);
+      this.dataGridView1.Size = new System.Drawing.Size(646, 315);
       this.dataGridView1.TabIndex = 5;
       // 
       // clm_ServiceNames
@@ -1025,9 +906,54 @@ namespace NoteView
       this.lbl_Style.TabIndex = 0;
       this.lbl_Style.Text = "Style";
       // 
+      // pictureButton3
+      // 
+      this.pictureButton3.Anchor = System.Windows.Forms.AnchorStyles.Right;
+      this.pictureButton3.BackgroundImage = global::NoteView.Properties.Resources.right_arrow;
+      this.pictureButton3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+      this.pictureButton3.Location = new System.Drawing.Point(651, 160);
+      this.pictureButton3.Name = "pictureButton3";
+      this.pictureButton3.Size = new System.Drawing.Size(45, 41);
+      this.pictureButton3.TabIndex = 19;
+      this.pictureButton3.TabStop = false;
+      // 
+      // pictureButton2
+      // 
+      this.pictureButton2.Anchor = System.Windows.Forms.AnchorStyles.Right;
+      this.pictureButton2.BackgroundImage = global::NoteView.Properties.Resources.left_arrow;
+      this.pictureButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+      this.pictureButton2.Location = new System.Drawing.Point(650, 119);
+      this.pictureButton2.Name = "pictureButton2";
+      this.pictureButton2.Size = new System.Drawing.Size(45, 41);
+      this.pictureButton2.TabIndex = 18;
+      this.pictureButton2.TabStop = false;
+      // 
+      // lbl_FetchResID
+      // 
+      this.lbl_FetchResID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+      this.lbl_FetchResID.AutoSize = true;
+      this.lbl_FetchResID.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbl_FetchResID.Location = new System.Drawing.Point(59, 664);
+      this.lbl_FetchResID.Name = "lbl_FetchResID";
+      this.lbl_FetchResID.Size = new System.Drawing.Size(55, 13);
+      this.lbl_FetchResID.TabIndex = 7;
+      this.lbl_FetchResID.Text = "<res_id>";
+      // 
+      // lbl_ResID
+      // 
+      this.lbl_ResID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+      this.lbl_ResID.AutoSize = true;
+      this.lbl_ResID.Location = new System.Drawing.Point(17, 664);
+      this.lbl_ResID.Name = "lbl_ResID";
+      this.lbl_ResID.Size = new System.Drawing.Size(40, 13);
+      this.lbl_ResID.TabIndex = 6;
+      this.lbl_ResID.Text = "ResID:";
+      // 
       // TopPanel
       // 
       this.TopPanel.AutoSize = true;
+      this.TopPanel.Controls.Add(this.dtp_Departure);
+      this.TopPanel.Controls.Add(this.dtp_Arrival);
       this.TopPanel.Controls.Add(this.tb_Total);
       this.TopPanel.Controls.Add(this.tb_Other);
       this.TopPanel.Controls.Add(this.tb_Taxes);
@@ -1043,8 +969,6 @@ namespace NoteView
       this.TopPanel.Controls.Add(this.nud_Child);
       this.TopPanel.Controls.Add(this.lbl_Child);
       this.TopPanel.Controls.Add(this.nud_Adult);
-      this.TopPanel.Controls.Add(this.cb_Departure);
-      this.TopPanel.Controls.Add(this.cb_Arrival);
       this.TopPanel.Controls.Add(this.cb_RoomCharge);
       this.TopPanel.Controls.Add(this.cb_ClientType);
       this.TopPanel.Controls.Add(this.cb_WaitList);
@@ -1162,7 +1086,7 @@ namespace NoteView
       // 
       this.nud_Nights.AutoSize = true;
       this.nud_Nights.BackColor = System.Drawing.Color.WhiteSmoke;
-      this.nud_Nights.Location = new System.Drawing.Point(306, 83);
+      this.nud_Nights.Location = new System.Drawing.Point(300, 73);
       this.nud_Nights.Name = "nud_Nights";
       this.nud_Nights.Size = new System.Drawing.Size(41, 20);
       this.nud_Nights.TabIndex = 21;
@@ -1171,7 +1095,7 @@ namespace NoteView
       // 
       this.lbl_Nights.AutoSize = true;
       this.lbl_Nights.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold);
-      this.lbl_Nights.Location = new System.Drawing.Point(250, 77);
+      this.lbl_Nights.Location = new System.Drawing.Point(240, 74);
       this.lbl_Nights.Name = "lbl_Nights";
       this.lbl_Nights.Size = new System.Drawing.Size(53, 16);
       this.lbl_Nights.TabIndex = 20;
@@ -1204,22 +1128,6 @@ namespace NoteView
       this.nud_Adult.Name = "nud_Adult";
       this.nud_Adult.Size = new System.Drawing.Size(41, 20);
       this.nud_Adult.TabIndex = 17;
-      // 
-      // cb_Departure
-      // 
-      this.cb_Departure.FormattingEnabled = true;
-      this.cb_Departure.Location = new System.Drawing.Point(136, 106);
-      this.cb_Departure.Name = "cb_Departure";
-      this.cb_Departure.Size = new System.Drawing.Size(86, 21);
-      this.cb_Departure.TabIndex = 16;
-      // 
-      // cb_Arrival
-      // 
-      this.cb_Arrival.FormattingEnabled = true;
-      this.cb_Arrival.Location = new System.Drawing.Point(136, 76);
-      this.cb_Arrival.Name = "cb_Arrival";
-      this.cb_Arrival.Size = new System.Drawing.Size(86, 21);
-      this.cb_Arrival.TabIndex = 15;
       // 
       // cb_RoomCharge
       // 
@@ -1296,7 +1204,7 @@ namespace NoteView
       // 
       this.lbl_Arrival.AutoSize = true;
       this.lbl_Arrival.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold);
-      this.lbl_Arrival.Location = new System.Drawing.Point(59, 76);
+      this.lbl_Arrival.Location = new System.Drawing.Point(59, 75);
       this.lbl_Arrival.Name = "lbl_Arrival";
       this.lbl_Arrival.Size = new System.Drawing.Size(55, 16);
       this.lbl_Arrival.TabIndex = 3;
@@ -1324,40 +1232,47 @@ namespace NoteView
       // 
       // RightSidePanel
       // 
-      this.RightSidePanel.AutoSize = true;
+      this.RightSidePanel.Controls.Add(this.cb_RoomNumber);
       this.RightSidePanel.Controls.Add(this.btn_submit);
       this.RightSidePanel.Controls.Add(this.btn_Cancel);
       this.RightSidePanel.Controls.Add(this.cb_LockOff);
       this.RightSidePanel.Controls.Add(this.cb_EnableAssignment);
-      this.RightSidePanel.Controls.Add(this.cb_RoomNumber);
       this.RightSidePanel.Controls.Add(this.lbl_RoomNumber);
       this.RightSidePanel.Dock = System.Windows.Forms.DockStyle.Right;
-      this.RightSidePanel.Location = new System.Drawing.Point(950, 166);
+      this.RightSidePanel.Location = new System.Drawing.Point(939, 166);
       this.RightSidePanel.Name = "RightSidePanel";
       this.RightSidePanel.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
-      this.RightSidePanel.Size = new System.Drawing.Size(214, 515);
+      this.RightSidePanel.Size = new System.Drawing.Size(225, 515);
       this.RightSidePanel.TabIndex = 2;
+      // 
+      // cb_RoomNumber
+      // 
+      this.cb_RoomNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.cb_RoomNumber.FormattingEnabled = true;
+      this.cb_RoomNumber.Location = new System.Drawing.Point(34, 35);
+      this.cb_RoomNumber.Name = "cb_RoomNumber";
+      this.cb_RoomNumber.Size = new System.Drawing.Size(161, 21);
+      this.cb_RoomNumber.TabIndex = 8;
       // 
       // btn_submit
       // 
-      this.btn_submit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+      this.btn_submit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
       this.btn_submit.Font = new System.Drawing.Font("Verdana", 9.75F);
-      this.btn_submit.Location = new System.Drawing.Point(28, 908);
+      this.btn_submit.Location = new System.Drawing.Point(34, 415);
       this.btn_submit.Name = "btn_submit";
-      this.btn_submit.Size = new System.Drawing.Size(156, 38);
+      this.btn_submit.Size = new System.Drawing.Size(161, 38);
       this.btn_submit.TabIndex = 12;
       this.btn_submit.Text = "OK";
       this.btn_submit.UseVisualStyleBackColor = true;
       // 
       // btn_Cancel
       // 
-      this.btn_Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+      this.btn_Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
       this.btn_Cancel.Font = new System.Drawing.Font("Verdana", 9.75F);
-      this.btn_Cancel.Location = new System.Drawing.Point(28, 952);
+      this.btn_Cancel.Location = new System.Drawing.Point(34, 459);
       this.btn_Cancel.Name = "btn_Cancel";
-      this.btn_Cancel.Size = new System.Drawing.Size(156, 38);
+      this.btn_Cancel.Size = new System.Drawing.Size(161, 38);
       this.btn_Cancel.TabIndex = 11;
       this.btn_Cancel.Text = "Cancel";
       this.btn_Cancel.UseVisualStyleBackColor = true;
@@ -1389,16 +1304,6 @@ namespace NoteView
       this.cb_EnableAssignment.Text = "Enable Assignment";
       this.cb_EnableAssignment.UseVisualStyleBackColor = true;
       // 
-      // cb_RoomNumber
-      // 
-      this.cb_RoomNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.cb_RoomNumber.FormattingEnabled = true;
-      this.cb_RoomNumber.Location = new System.Drawing.Point(34, 26);
-      this.cb_RoomNumber.Name = "cb_RoomNumber";
-      this.cb_RoomNumber.Size = new System.Drawing.Size(157, 21);
-      this.cb_RoomNumber.TabIndex = 8;
-      // 
       // lbl_RoomNumber
       // 
       this.lbl_RoomNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -1411,14 +1316,63 @@ namespace NoteView
       this.lbl_RoomNumber.TabIndex = 7;
       this.lbl_RoomNumber.Text = "Room Number:";
       // 
+      // label1
+      // 
+      this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+      this.label1.AutoSize = true;
+      this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label1.Location = new System.Drawing.Point(225, 664);
+      this.label1.Name = "label1";
+      this.label1.Size = new System.Drawing.Size(55, 13);
+      this.label1.TabIndex = 9;
+      this.label1.Text = "<res_id>";
+      // 
+      // label2
+      // 
+      this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+      this.label2.AutoSize = true;
+      this.label2.Location = new System.Drawing.Point(157, 664);
+      this.label2.Name = "label2";
+      this.label2.Size = new System.Drawing.Size(62, 13);
+      this.label2.TabIndex = 8;
+      this.label2.Text = "Created By:";
+      // 
+      // dtp_Arrival
+      // 
+      this.dtp_Arrival.CustomFormat = "MM-DD-YYYY";
+      this.dtp_Arrival.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+      this.dtp_Arrival.ImeMode = System.Windows.Forms.ImeMode.Off;
+      this.dtp_Arrival.Location = new System.Drawing.Point(136, 73);
+      this.dtp_Arrival.MinDate = new System.DateTime(2023, 6, 9, 0, 0, 0, 0);
+      this.dtp_Arrival.Name = "dtp_Arrival";
+      this.dtp_Arrival.Size = new System.Drawing.Size(91, 20);
+      this.dtp_Arrival.TabIndex = 15;
+      this.dtp_Arrival.Value = new System.DateTime(2023, 6, 9, 0, 0, 0, 0);
+      // 
+      // dtp_Departure
+      // 
+      this.dtp_Departure.CustomFormat = "";
+      this.dtp_Departure.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+      this.dtp_Departure.ImeMode = System.Windows.Forms.ImeMode.Off;
+      this.dtp_Departure.Location = new System.Drawing.Point(136, 106);
+      this.dtp_Departure.MinDate = new System.DateTime(2023, 6, 9, 0, 0, 0, 0);
+      this.dtp_Departure.Name = "dtp_Departure";
+      this.dtp_Departure.Size = new System.Drawing.Size(91, 20);
+      this.dtp_Departure.TabIndex = 32;
+      this.dtp_Departure.Value = new System.DateTime(2023, 6, 9, 0, 0, 0, 0);
+      // 
       // NewReservation
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(1164, 681);
       this.Controls.Add(this.RightSidePanel);
+      this.Controls.Add(this.label1);
+      this.Controls.Add(this.label2);
       this.Controls.Add(this.TopPanel);
       this.Controls.Add(this.tb_Info);
+      this.Controls.Add(this.lbl_FetchResID);
+      this.Controls.Add(this.lbl_ResID);
       this.MinimumSize = new System.Drawing.Size(1180, 720);
       this.Name = "NewReservation";
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1426,16 +1380,17 @@ namespace NoteView
       this.tb_Info.ResumeLayout(false);
       this.GuestInfoPage.ResumeLayout(false);
       this.GuestInfoPage.PerformLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.pictureButton1)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.pictureButton4)).EndInit();
       this.gb_PaymentMethod.ResumeLayout(false);
       this.gb_PaymentMethod.PerformLayout();
       this.gb_Vehicle.ResumeLayout(false);
       this.gb_Vehicle.PerformLayout();
       this.Services.ResumeLayout(false);
       this.Services.PerformLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.btn_DeleteService)).EndInit();
-      ((System.ComponentModel.ISupportInitialize)(this.btn_AddService)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.pictureButton3)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.pictureButton2)).EndInit();
       this.TopPanel.ResumeLayout(false);
       this.TopPanel.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(this.nud_Nights)).EndInit();
@@ -1464,8 +1419,6 @@ namespace NoteView
     private Label lbl_RoomNumber;
     private Label lbl_Child;
     private NumericUpDown nud_Adult;
-    private ComboBox cb_Departure;
-    private ComboBox cb_Arrival;
     private ComboBox cb_RoomCharge;
     private ComboBox cb_ClientType;
     private CheckBox cb_WaitList;
@@ -1500,15 +1453,12 @@ namespace NoteView
     private Label lbl_Nationality;
     private TextBox tb_City;
     private Label lbl_City;
-    private Label lbl_PONumber;
-    private TextBox tb_PONumber;
     private TextBox tb_Email;
     private Label lbl_Email;
     private TextBox tb_TelephoneNum;
     private TextBox tb_MobileNum;
     private Label lbl_MobileNum;
     private Label lbl_TelephoneNum;
-    private Label lbl_Sob;
     private Label lbl_GuestNote;
     private TextBox tb_GuestNote;
     private GroupBox gb_Vehicle;
@@ -1517,10 +1467,6 @@ namespace NoteView
     private Label lbl_Model;
     private Label lbl_License;
     private TextBox tb_License;
-    private TextBox tb_VIP;
-    private CheckBox cb_VIP;
-    private CheckBox cb_AGE;
-    private CheckBox cb_Opt;
     private GroupBox gb_PaymentMethod;
     private TextBox tb_ExpiryDate;
     private Label lbl_ExpiryDate;
@@ -1543,7 +1489,6 @@ namespace NoteView
     private TextBox tb_Brand;
     private TextBox tb_Model;
     private Label lbl_Province_State;
-    private TextBox tb_SoB;
     private Button btn_Refresh;
     private PictureButton pictureButton1;
     private ComboBox cb_Style;
@@ -1552,7 +1497,6 @@ namespace NoteView
     private ComboBox cb_Grouping;
     private Label lbl_Grouping;
     private Label lbl_ResID;
-    private ListView listView1;
     private Label lbl_ServiceTotalCost;
     private Label lbl_SericeTaxesCost;
     private Label lbl_ServiceChargeCost;
@@ -1565,5 +1509,14 @@ namespace NoteView
     private DataGridViewTextBoxColumn clm_Voucher;
     private PictureButton btn_DeleteService;
     private PictureButton btn_AddService;
+    private Label label1;
+    private Label label2;
+    private DataGridView dataGridView2;
+    private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+    private PictureButton pictureButton2;
+    private PictureButton pictureButton3;
+    private PictureButton pictureButton4;
+    private DateTimePicker dtp_Arrival;
+    private DateTimePicker dtp_Departure;
   }
 }
