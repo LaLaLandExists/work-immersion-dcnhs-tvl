@@ -35,8 +35,8 @@ namespace NoteView
         Application.EnableVisualStyles();
         Application.SetCompatibleTextRenderingDefault(false);
         // TODO: Implement correct form flow
-        Application.Run(new NewReservation());
-        return;
+       /* Application.Run(new NewReservation());
+        return;*/
         Application.Run(new SetupDB());
         if (!dbConnOk) return;
           Application.Run(new UserLogin());

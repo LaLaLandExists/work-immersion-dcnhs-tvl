@@ -93,6 +93,16 @@ namespace NoteView.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap close {
+            get {
+                object obj = ResourceManager.GetObject("close", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap left_arrow {
             get {
                 object obj = ResourceManager.GetObject("left_arrow", resourceCulture);
@@ -147,6 +157,25 @@ namespace NoteView.Properties {
             get {
                 object obj = ResourceManager.GetObject("right_arrow", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CREATE TABLE IF NOT EXISTS Room (
+        ///	id INT NOT NULL AUTO_INCREMENT,
+        ///	-- TODO: implement supplemental data
+        ///	roomNumber TEXT NOT NULL,
+        ///	roomType TEXT NOT NULL,
+        ///	rate INT NOT NULL,
+        ///	capacity INT NOT NULL
+        ///	
+        ///	PRIMARY KEY (id)
+        ///);
+        ///.
+        /// </summary>
+        internal static string room {
+            get {
+                return ResourceManager.GetString("room", resourceCulture);
             }
         }
         

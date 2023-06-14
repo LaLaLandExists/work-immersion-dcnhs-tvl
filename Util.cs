@@ -221,7 +221,8 @@ namespace NoteView
     // README! Make sure the SQL schemas are in order
     public static readonly TableInfo[] tableOrder =
     {
-      new TableInfo("UserInfo", Properties.Resources.user_info)
+      new TableInfo("UserInfo", Properties.Resources.user_info),
+      new TableInfo("Roon", Properties.Resources.room)
     };
 
   }

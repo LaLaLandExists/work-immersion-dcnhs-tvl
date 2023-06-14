@@ -239,5 +239,10 @@ namespace NoteView
     {
      new NewReservation().ShowDialog();
     }
+
+    private void systemConfigurationToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      new SystemConfiguration().ShowDialog();
+    }
   }
 }
