@@ -38,5 +38,44 @@ namespace NoteView
       if (cb_PostDepo.Checked == true) tb_Amount.Enabled = true;
       else tb_Amount.Enabled = false; tb_Amount.Text = "";
     }
-  }
+
+        private void GuestInfoPage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Refresh_Click(object sender, EventArgs e)
+        {
+            btn_Clear_Click(sender, e);
+            cb_ClientType.Text = "";
+            cb_RoomCharge.Text = "";
+
+        }
+
+        private void NewReservation_Load(object sender, EventArgs e)
+        {
+            dtp_Arrival.Value = DateTime.Today;
+            dtp_Departure.Value = DateTime.Today;
+        }
+
+        private void dtp_Departure_ValueChanged(object sender, EventArgs e)
+        {
+            int Arrival = dtp_Arrival.Value.Day;
+            int departure = dtp_Departure.Value.Day;
+
+            if (departure > Arrival)
+            {
+                nud_Nights.Value = 0;
+                for (int today = Arrival; today < departure; ++today)
+                {
+                    nud_Nights.Value += 1;
+                }
+            }
+            if (departure <= Arrival)
+                nud_Nights.Value = 0;   
+        }
+        private void nud_Nights_ValueChanged(object sender, EventArgs e)
+        {
+        }
+    }
 }
