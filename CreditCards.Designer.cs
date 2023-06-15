@@ -32,6 +32,13 @@
             this.btn_edit = new System.Windows.Forms.Button();
             this.btn_delete = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.type_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.number_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.expiry_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cardHolder_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.reservationID_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastUsed_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tokenized_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbl_type = new System.Windows.Forms.Label();
             this.lbl_number = new System.Windows.Forms.Label();
             this.lbl_expiryDate = new System.Windows.Forms.Label();
@@ -42,13 +49,6 @@
             this.dtp_expiryDate = new System.Windows.Forms.DateTimePicker();
             this.btn_save = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
-            this.type_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.number_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.expiry_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cardHolder_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reservationID_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastUsed_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tokenized_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,6 +94,48 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(742, 211);
             this.dataGridView1.TabIndex = 3;
+            // 
+            // type_col
+            // 
+            this.type_col.HeaderText = "Type";
+            this.type_col.Name = "type_col";
+            this.type_col.ReadOnly = true;
+            // 
+            // number_col
+            // 
+            this.number_col.HeaderText = "Number";
+            this.number_col.Name = "number_col";
+            this.number_col.ReadOnly = true;
+            // 
+            // expiry_col
+            // 
+            this.expiry_col.HeaderText = "Exp.";
+            this.expiry_col.Name = "expiry_col";
+            this.expiry_col.ReadOnly = true;
+            // 
+            // cardHolder_col
+            // 
+            this.cardHolder_col.HeaderText = "Name on Card";
+            this.cardHolder_col.Name = "cardHolder_col";
+            this.cardHolder_col.ReadOnly = true;
+            // 
+            // reservationID_col
+            // 
+            this.reservationID_col.HeaderText = "Reservation";
+            this.reservationID_col.Name = "reservationID_col";
+            this.reservationID_col.ReadOnly = true;
+            // 
+            // lastUsed_col
+            // 
+            this.lastUsed_col.HeaderText = "Last Used";
+            this.lastUsed_col.Name = "lastUsed_col";
+            this.lastUsed_col.ReadOnly = true;
+            // 
+            // tokenized_col
+            // 
+            this.tokenized_col.HeaderText = "Tokenized";
+            this.tokenized_col.Name = "tokenized_col";
+            this.tokenized_col.ReadOnly = true;
             // 
             // lbl_type
             // 
@@ -186,48 +228,7 @@
             this.btn_cancel.TabIndex = 35;
             this.btn_cancel.Text = "Cancel";
             this.btn_cancel.UseVisualStyleBackColor = true;
-            // 
-            // type_col
-            // 
-            this.type_col.HeaderText = "Type";
-            this.type_col.Name = "type_col";
-            this.type_col.ReadOnly = true;
-            // 
-            // number_col
-            // 
-            this.number_col.HeaderText = "Number";
-            this.number_col.Name = "number_col";
-            this.number_col.ReadOnly = true;
-            // 
-            // expiry_col
-            // 
-            this.expiry_col.HeaderText = "Exp.";
-            this.expiry_col.Name = "expiry_col";
-            this.expiry_col.ReadOnly = true;
-            // 
-            // cardHolder_col
-            // 
-            this.cardHolder_col.HeaderText = "Name on Card";
-            this.cardHolder_col.Name = "cardHolder_col";
-            this.cardHolder_col.ReadOnly = true;
-            // 
-            // reservationID_col
-            // 
-            this.reservationID_col.HeaderText = "Reservation";
-            this.reservationID_col.Name = "reservationID_col";
-            this.reservationID_col.ReadOnly = true;
-            // 
-            // lastUsed_col
-            // 
-            this.lastUsed_col.HeaderText = "Last Used";
-            this.lastUsed_col.Name = "lastUsed_col";
-            this.lastUsed_col.ReadOnly = true;
-            // 
-            // tokenized_col
-            // 
-            this.tokenized_col.HeaderText = "Tokenized";
-            this.tokenized_col.Name = "tokenized_col";
-            this.tokenized_col.ReadOnly = true;
+            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
             // CreditCards
             // 
@@ -248,7 +249,9 @@
             this.Controls.Add(this.btn_delete);
             this.Controls.Add(this.btn_edit);
             this.Controls.Add(this.btn_new);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "CreditCards";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Credit Cards";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

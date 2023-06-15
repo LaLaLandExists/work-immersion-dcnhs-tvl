@@ -39,11 +39,6 @@ namespace NoteView
       else tb_Amount.Enabled = false; tb_Amount.Text = "";
     }
 
-        private void GuestInfoPage_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btn_Refresh_Click(object sender, EventArgs e)
         {
             btn_Clear_Click(sender, e);
@@ -74,8 +69,24 @@ namespace NoteView
             if (departure <= Arrival)
                 nud_Nights.Value = 0;   
         }
-        private void nud_Nights_ValueChanged(object sender, EventArgs e)
+
+        private void btn_search_Click(object sender, EventArgs e)
         {
+            GuestSearch guestSearch = new GuestSearch();
+            guestSearch.ShowDialog();
+            
         }
+
+        private void btn_Cancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btn_CreditCards_Click(object sender, EventArgs e)
+        {
+            CreditCards creditCards = new CreditCards();
+            creditCards.ShowDialog();
+        }
+
     }
 }
