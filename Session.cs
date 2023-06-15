@@ -16,6 +16,7 @@ namespace NoteView
     public readonly int userId;
     public readonly string password;
 
+    public readonly DateTime dateTime;
     public const string AdminUType = "ADMIN";
     public const string UserUType = "USER";
 
@@ -113,6 +114,8 @@ namespace NoteView
       this.firstName = firstName;
       this.lastName = lastName;
       this.password = password;
+
+      dateTime = DateTime.Now;
     }
 
     // Constructor when adding new account for authentication

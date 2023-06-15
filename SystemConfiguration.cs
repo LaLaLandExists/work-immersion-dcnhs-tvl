@@ -11,6 +11,9 @@ namespace NoteView
 {
   public partial class SystemConfiguration : Form
   {
+    private static readonly Regex RealNumRegex = new Regex("^[0-9]*(\\.[0-9]+)?$");
+    private static readonly Regex IntNumRegex = new Regex("^[0-9]*$");
+
     private const string RoomSearchInactiveStringHeader = "Existing Rooms";
     private const string RoomSearchActiveStringHeader = "Searching for rooms..";
     private const string ServiceSearchInactiveStringHeader = "Existing Services";
@@ -22,7 +25,10 @@ namespace NoteView
     private readonly string[] activeSelectionTexts;
     private readonly Font inactiveSelectionFont = new Font("Verdana", 9, FontStyle.Regular);
     private readonly Font activeSelectionFont = new Font("Verdana", 10, FontStyle.Bold);
+    private Label currentlySelected;
 
+    private delegate void DataFetcher(string sought);
+    private readonly DataFetcher[] fetchers;
 
     public SystemConfiguration()
     {
@@ -52,10 +58,17 @@ namespace NoteView
       {
         activeSelectionTexts[i] = $"▶ {inactiveSelectionTexts[i]}";
       }
+
+      fetchers = new DataFetcher[]
+      {
+        FetchRooms, FetchServices
+      };
     }
 
     private void SelectControlPanel(Label selected)
     {
+      if (currentlySelected == selected) return;
+      currentlySelected = selected;
       int found = -1;
       // Disabler loop
       for (int i = 0; i < selectionLabels.Length; ++i)
@@ -75,7 +88,10 @@ namespace NoteView
       controlPanels[found].Dock = DockStyle.Fill;
       selected.Font = activeSelectionFont;
       selected.ForeColor = Color.Navy;
+      fetchers[found](null);
     }
+
+    // Room configuration
 
     private void SetRoomConfigControls(bool state)
     {
@@ -163,7 +179,6 @@ namespace NoteView
     private void SystemConfiguration_Load(object sender, EventArgs e)
     {
       SelectControlPanel(lbl_Room);
-      FetchRooms();
     }
 
     private void pcmd_RoomSearch_Click(object sender, EventArgs e)
@@ -229,9 +244,6 @@ namespace NoteView
       }
       return true;
     }
-
-    private static readonly Regex RealNumRegex = new Regex("^[0-9]*(\\.[0-9]+)?$");
-    private static readonly Regex IntNumRegex = new Regex("^[0-9]*$");
 
     private void cmd_RoomAdd_Click(object sender, EventArgs e)
     {
@@ -307,7 +319,6 @@ namespace NoteView
       {
         MessageBox.Show("Room added successfully");
         txt_RoomNo.Text = string.Empty;
-        txt_RoomType.Text = string.Empty;
         txt_RoomRate.Text = string.Empty;
         txt_RoomCapacity.Text = string.Empty;
       }
@@ -330,9 +341,218 @@ namespace NoteView
       SelectControlPanel(lbl_Room);
     }
 
+    // Service config
+
     private void lbl_Service_Click(object sender, EventArgs e)
     {
       SelectControlPanel(lbl_Service);
+    }
+
+    private void cmd_ServiceAdd_Click(object sender, EventArgs e)
+    {
+      if (!AllFilled(txt_ServiceName, txt_ServiceGroup, txt_ServiceRate, txt_ServiceCapacity))
+      {
+        MessageBox.Show("Missing service information", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        return;
+      }
+
+      if (!RealNumRegex.IsMatch(txt_ServiceRate.Text))
+      {
+        MessageBox.Show("Rate must be a real number", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        return;
+      }
+
+      if (!IntNumRegex.IsMatch(txt_ServiceCapacity.Text))
+      {
+        MessageBox.Show("Capacity must be an integer", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        return;
+      }
+
+      bool abort = MessageBox.Show("Are you sure? You cannot change service info later", "Confirm Room Addition", MessageBoxButtons.YesNo) == DialogResult.No;
+      if (abort) return;
+
+      SetControls(false, txt_ServiceName, txt_ServiceGroup, txt_ServiceRate, txt_ServiceCapacity, cmd_ServiceAdd);
+      bwork_ServiceAdder.RunWorkerAsync();
+    }
+
+    private void bwork_ServiceAdder_DoWork(object sender, DoWorkEventArgs e)
+    {
+      UseWaitCursor = true;
+
+      string servName = txt_ServiceName.Text;
+      string servGroup = txt_ServiceGroup.Text;
+      string rate = txt_ServiceRate.Text;
+      string capacity = txt_ServiceCapacity.Text;
+
+      using (MySqlCommand cmd = Session.conn.CreateCommand())
+      {
+        // Verify if data is original
+        cmd.CommandText = $"SELECT * FROM Service WHERE serviceName = '{servName}';";
+        using (MySqlDataReader dr = cmd.ExecuteReader())
+        {
+          if (dr.HasRows)
+          {
+            throw new ArgumentException("Duplicate service found, cannot add this service.");
+          }
+        }
+
+        cmd.CommandText = $"INSERT INTO Service (serviceName, serviceGroup, rate, quantity) VALUES ('{servName}', '{servGroup}', {rate}, {capacity});";
+        cmd.ExecuteNonQuery();
+      }
+    }
+
+    private void SetServiceConfigControls(bool state)
+    {
+      dgv_Services.Enabled = state;
+      pcmd_ServiceSearch.Enabled = state;
+      txt_ServiceSearch.Enabled = state;
+    }
+
+    private void FetchServices(string keyword = null)
+    {
+      SetRoomConfigControls(false);
+      UseWaitCursor = true;
+      dgv_Services.Rows.Clear();
+      gb_ServiceTable.Text = RoomSearchActiveStringHeader;
+      bwork_ServiceFetcher.RunWorkerAsync(keyword);
+    }
+
+    private void bwork_ServiceFetcher_DoWork(object sender, DoWorkEventArgs e)
+    {
+      string query;
+
+      if (e.Argument == null)
+      {
+        query = $"SELECT * FROM Service;";
+      }
+      else
+      {
+        string sought = (string)e.Argument;
+        query = $"SELECT * FROM Service WHERE serviceName LIKE '%{sought}%' OR serviceGroup LIKE '%{sought}%';";
+      }
+
+      Session.AssertConnection();
+
+      RoomFetchRow row = new RoomFetchRow();
+
+      using (MySqlCommand cmd = Session.conn.CreateCommand())
+      {
+        cmd.CommandText = query;
+        using (MySqlDataReader reader = cmd.ExecuteReader())
+        {
+          while (reader.Read())
+          {
+            row.id = $"{reader.GetInt32("id")}";
+            row.roomNo = reader.GetString("serviceName");
+            row.roomType = reader.GetString("serviceGroup");
+            row.rate = $"{reader.GetFloat("rate")}";
+            row.capacity = $"{reader.GetInt32("quantity")}";
+
+            bwork_ServiceFetcher.ReportProgress(0, row);
+          }
+        }
+      }
+    }
+
+    private void bwork_ServiceAdder_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+    {
+      if (e.Error != null)
+      {
+        switch (e.Error)
+        {
+          case ArgumentException exc:
+            MessageBox.Show(e.Error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            break;
+          case MySqlException exc:
+            MessageBox.Show("Cannot add service to database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            break;
+          default:
+            MessageBox.Show($"An error occured. {e.Error.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            break;
+        }
+      }
+      else
+      {
+        MessageBox.Show("Service added successfully");
+        txt_ServiceName.Text = string.Empty;
+        txt_ServiceRate.Text = string.Empty;
+        txt_ServiceCapacity.Text = string.Empty;
+      }
+
+      SetControls(true, txt_ServiceName, txt_ServiceGroup, txt_ServiceRate, txt_ServiceCapacity, cmd_ServiceAdd);
+      UseWaitCursor = false;
+      FetchServices();
+    }
+
+    private void bwork_ServiceFetcher_ProgressChanged(object sender, ProgressChangedEventArgs e)
+    {
+      RoomFetchRow row = (RoomFetchRow) e.UserState;
+
+      dgv_Services.Rows.Add(row.id, row.roomNo, row.roomType, row.rate, row.capacity);
+    }
+
+    private void bwork_ServiceFetcher_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+    {
+      SetServiceConfigControls(true);
+      UseWaitCursor = false;
+      if (e.Error == null)
+      {
+        gb_ServiceTable.Text = ServiceSearchInactiveStringHeader;
+      }
+      else
+      {
+        MessageBox.Show("Cannot fetch services", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+
+      cmd_ServiceRemove.Enabled = dgv_Services.CurrentRow != null;
+    }
+
+    private void pcmd_ServiceSearch_Click(object sender, EventArgs e)
+    {
+      FetchServices(string.IsNullOrWhiteSpace(txt_ServiceSearch.Text) ? null : txt_ServiceSearch.Text);
+    }
+
+    private void pcmd_ServiceClear_Click(object sender, EventArgs e)
+    {
+      txt_ServiceName.Text = string.Empty;
+      txt_ServiceGroup.Text = string.Empty;
+      txt_ServiceRate.Text = string.Empty;
+      txt_ServiceCapacity.Text = string.Empty;
+    }
+
+    private void cmd_ServiceRemove_Click(object sender, EventArgs e)
+    {
+      if (MessageBox.Show("Are you sure?", "Confirm Removal", MessageBoxButtons.YesNo) == DialogResult.Yes)
+      {
+        bwork_ServiceDeleter.RunWorkerAsync(dgv_Services.SelectedRows);
+      }
+    }
+
+    private void bwork_ServiceDeleter_DoWork(object sender, DoWorkEventArgs e)
+    {
+      DataGridViewSelectedRowCollection rows = (DataGridViewSelectedRowCollection)e.Argument;
+      Session.AssertConnection();
+
+      using (MySqlCommand cmd = Session.conn.CreateCommand())
+      {
+        foreach (DataGridViewRow row in rows)
+        {
+          cmd.CommandText = $"DELETE FROM Service WHERE id = {row.Cells[0].Value};";
+          cmd.ExecuteNonQuery();
+        }
+      }
+    }
+
+    private void bwork_ServiceDeleter_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+    {
+      if (e.Error == null)
+      {
+        FetchServices(txt_ServiceSearch.Text);
+      }
+      else
+      {
+        MessageBox.Show("Cannot delete service", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
     }
   }
 }

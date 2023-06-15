@@ -222,7 +222,10 @@ namespace NoteView
     public static readonly TableInfo[] tableOrder =
     {
       new TableInfo("UserInfo", Properties.Resources.user_info),
-      new TableInfo("Roon", Properties.Resources.room)
+      new TableInfo("Room", Properties.Resources.room),
+      new TableInfo("Service", Properties.Resources.service),
+      new TableInfo("Client", Properties.Resources.client),
+      new TableInfo("Reservation", Properties.Resources.reservation)
     };
 
   }

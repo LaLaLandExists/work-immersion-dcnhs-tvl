@@ -86,6 +86,9 @@
       this.pnl_Room = new System.Windows.Forms.Panel();
       this.bwork_RoomAdder = new System.ComponentModel.BackgroundWorker();
       this.ttip_Tip = new System.Windows.Forms.ToolTip(this.components);
+      this.bwork_ServiceAdder = new System.ComponentModel.BackgroundWorker();
+      this.bwork_ServiceFetcher = new System.ComponentModel.BackgroundWorker();
+      this.bwork_ServiceDeleter = new System.ComponentModel.BackgroundWorker();
       this.groupBox1.SuspendLayout();
       this.panel1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.pcmd_RoomClear)).BeginInit();
@@ -117,9 +120,9 @@
       this.groupBox1.Controls.Add(this.gb_RoomTable);
       this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
       this.groupBox1.Location = new System.Drawing.Point(0, 0);
-      this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
       this.groupBox1.Name = "groupBox1";
-      this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
       this.groupBox1.Size = new System.Drawing.Size(145, 91);
       this.groupBox1.TabIndex = 0;
       this.groupBox1.TabStop = false;
@@ -138,7 +141,7 @@
       this.panel1.Controls.Add(this.label2);
       this.panel1.Controls.Add(this.label1);
       this.panel1.Location = new System.Drawing.Point(16, 23);
-      this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.panel1.Margin = new System.Windows.Forms.Padding(4);
       this.panel1.Name = "panel1";
       this.panel1.Size = new System.Drawing.Size(285, 188);
       this.panel1.TabIndex = 5;
@@ -148,7 +151,7 @@
       this.pcmd_RoomClear.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pcmd_RoomClear.BackgroundImage")));
       this.pcmd_RoomClear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
       this.pcmd_RoomClear.Location = new System.Drawing.Point(19, 153);
-      this.pcmd_RoomClear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.pcmd_RoomClear.Margin = new System.Windows.Forms.Padding(4);
       this.pcmd_RoomClear.Name = "pcmd_RoomClear";
       this.pcmd_RoomClear.Size = new System.Drawing.Size(29, 27);
       this.pcmd_RoomClear.TabIndex = 9;
@@ -159,7 +162,7 @@
       // cmd_RoomAdd
       // 
       this.cmd_RoomAdd.Location = new System.Drawing.Point(93, 153);
-      this.cmd_RoomAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.cmd_RoomAdd.Margin = new System.Windows.Forms.Padding(4);
       this.cmd_RoomAdd.Name = "cmd_RoomAdd";
       this.cmd_RoomAdd.Size = new System.Drawing.Size(100, 28);
       this.cmd_RoomAdd.TabIndex = 8;
@@ -170,7 +173,7 @@
       // txt_RoomCapacity
       // 
       this.txt_RoomCapacity.Location = new System.Drawing.Point(105, 108);
-      this.txt_RoomCapacity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.txt_RoomCapacity.Margin = new System.Windows.Forms.Padding(4);
       this.txt_RoomCapacity.Name = "txt_RoomCapacity";
       this.txt_RoomCapacity.Size = new System.Drawing.Size(160, 22);
       this.txt_RoomCapacity.TabIndex = 7;
@@ -188,7 +191,7 @@
       // txt_RoomRate
       // 
       this.txt_RoomRate.Location = new System.Drawing.Point(105, 76);
-      this.txt_RoomRate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.txt_RoomRate.Margin = new System.Windows.Forms.Padding(4);
       this.txt_RoomRate.Name = "txt_RoomRate";
       this.txt_RoomRate.Size = new System.Drawing.Size(160, 22);
       this.txt_RoomRate.TabIndex = 5;
@@ -196,7 +199,7 @@
       // txt_RoomType
       // 
       this.txt_RoomType.Location = new System.Drawing.Point(105, 44);
-      this.txt_RoomType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.txt_RoomType.Margin = new System.Windows.Forms.Padding(4);
       this.txt_RoomType.Name = "txt_RoomType";
       this.txt_RoomType.Size = new System.Drawing.Size(160, 22);
       this.txt_RoomType.TabIndex = 4;
@@ -204,7 +207,7 @@
       // txt_RoomNo
       // 
       this.txt_RoomNo.Location = new System.Drawing.Point(105, 11);
-      this.txt_RoomNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.txt_RoomNo.Margin = new System.Windows.Forms.Padding(4);
       this.txt_RoomNo.Name = "txt_RoomNo";
       this.txt_RoomNo.Size = new System.Drawing.Size(160, 22);
       this.txt_RoomNo.TabIndex = 3;
@@ -243,7 +246,7 @@
       // 
       this.cmd_RoomRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
       this.cmd_RoomRemove.Location = new System.Drawing.Point(-220, -326);
-      this.cmd_RoomRemove.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.cmd_RoomRemove.Margin = new System.Windows.Forms.Padding(4);
       this.cmd_RoomRemove.Name = "cmd_RoomRemove";
       this.cmd_RoomRemove.Size = new System.Drawing.Size(100, 28);
       this.cmd_RoomRemove.TabIndex = 9;
@@ -257,9 +260,9 @@
       this.groupBox2.Controls.Add(this.pcmd_RoomSearch);
       this.groupBox2.Controls.Add(this.txt_RoomSearch);
       this.groupBox2.Location = new System.Drawing.Point(-111, -341);
-      this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
       this.groupBox2.Name = "groupBox2";
-      this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
       this.groupBox2.Size = new System.Drawing.Size(248, 50);
       this.groupBox2.TabIndex = 4;
       this.groupBox2.TabStop = false;
@@ -270,7 +273,7 @@
       this.pcmd_RoomSearch.BackgroundImage = global::NoteView.Properties.Resources.search;
       this.pcmd_RoomSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
       this.pcmd_RoomSearch.Location = new System.Drawing.Point(15, 23);
-      this.pcmd_RoomSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.pcmd_RoomSearch.Margin = new System.Windows.Forms.Padding(4);
       this.pcmd_RoomSearch.Name = "pcmd_RoomSearch";
       this.pcmd_RoomSearch.Size = new System.Drawing.Size(24, 22);
       this.pcmd_RoomSearch.TabIndex = 3;
@@ -280,7 +283,7 @@
       // txt_RoomSearch
       // 
       this.txt_RoomSearch.Location = new System.Drawing.Point(47, 21);
-      this.txt_RoomSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.txt_RoomSearch.Margin = new System.Windows.Forms.Padding(4);
       this.txt_RoomSearch.Name = "txt_RoomSearch";
       this.txt_RoomSearch.Size = new System.Drawing.Size(192, 22);
       this.txt_RoomSearch.TabIndex = 2;
@@ -290,9 +293,9 @@
       this.gb_RoomTable.Controls.Add(this.dgv_Rooms);
       this.gb_RoomTable.Dock = System.Windows.Forms.DockStyle.Bottom;
       this.gb_RoomTable.Location = new System.Drawing.Point(4, -288);
-      this.gb_RoomTable.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.gb_RoomTable.Margin = new System.Windows.Forms.Padding(4);
       this.gb_RoomTable.Name = "gb_RoomTable";
-      this.gb_RoomTable.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.gb_RoomTable.Padding = new System.Windows.Forms.Padding(4);
       this.gb_RoomTable.Size = new System.Drawing.Size(137, 375);
       this.gb_RoomTable.TabIndex = 1;
       this.gb_RoomTable.TabStop = false;
@@ -315,7 +318,7 @@
             this.roomCapacity});
       this.dgv_Rooms.Dock = System.Windows.Forms.DockStyle.Fill;
       this.dgv_Rooms.Location = new System.Drawing.Point(4, 19);
-      this.dgv_Rooms.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.dgv_Rooms.Margin = new System.Windows.Forms.Padding(4);
       this.dgv_Rooms.Name = "dgv_Rooms";
       this.dgv_Rooms.ReadOnly = true;
       this.dgv_Rooms.RowHeadersWidth = 51;
@@ -380,7 +383,7 @@
       this.sc_SysConfig.Dock = System.Windows.Forms.DockStyle.Fill;
       this.sc_SysConfig.IsSplitterFixed = true;
       this.sc_SysConfig.Location = new System.Drawing.Point(0, 0);
-      this.sc_SysConfig.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.sc_SysConfig.Margin = new System.Windows.Forms.Padding(4);
       this.sc_SysConfig.Name = "sc_SysConfig";
       // 
       // sc_SysConfig.Panel1
@@ -405,7 +408,7 @@
       this.fpnl_SysConfigChooser.Controls.Add(this.lbl_Service);
       this.fpnl_SysConfigChooser.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
       this.fpnl_SysConfigChooser.Location = new System.Drawing.Point(0, 34);
-      this.fpnl_SysConfigChooser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.fpnl_SysConfigChooser.Margin = new System.Windows.Forms.Padding(4);
       this.fpnl_SysConfigChooser.Name = "fpnl_SysConfigChooser";
       this.fpnl_SysConfigChooser.Size = new System.Drawing.Size(186, 574);
       this.fpnl_SysConfigChooser.TabIndex = 0;
@@ -441,10 +444,10 @@
       // pnl_Service
       // 
       this.pnl_Service.Controls.Add(this.gb_Services);
-      this.pnl_Service.Location = new System.Drawing.Point(11, 7);
-      this.pnl_Service.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.pnl_Service.Location = new System.Drawing.Point(321, 9);
+      this.pnl_Service.Margin = new System.Windows.Forms.Padding(4);
       this.pnl_Service.Name = "pnl_Service";
-      this.pnl_Service.Size = new System.Drawing.Size(149, 91);
+      this.pnl_Service.Size = new System.Drawing.Size(145, 91);
       this.pnl_Service.TabIndex = 5;
       // 
       // gb_Services
@@ -455,10 +458,10 @@
       this.gb_Services.Controls.Add(this.gb_ServiceTable);
       this.gb_Services.Dock = System.Windows.Forms.DockStyle.Fill;
       this.gb_Services.Location = new System.Drawing.Point(0, 0);
-      this.gb_Services.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.gb_Services.Margin = new System.Windows.Forms.Padding(4);
       this.gb_Services.Name = "gb_Services";
-      this.gb_Services.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-      this.gb_Services.Size = new System.Drawing.Size(149, 91);
+      this.gb_Services.Padding = new System.Windows.Forms.Padding(4);
+      this.gb_Services.Size = new System.Drawing.Size(145, 91);
       this.gb_Services.TabIndex = 0;
       this.gb_Services.TabStop = false;
       this.gb_Services.Text = "Service";
@@ -476,7 +479,7 @@
       this.panel2.Controls.Add(this.label7);
       this.panel2.Controls.Add(this.label8);
       this.panel2.Location = new System.Drawing.Point(16, 23);
-      this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.panel2.Margin = new System.Windows.Forms.Padding(4);
       this.panel2.Name = "panel2";
       this.panel2.Size = new System.Drawing.Size(284, 188);
       this.panel2.TabIndex = 5;
@@ -486,26 +489,28 @@
       this.pcmd_ServiceClear.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pcmd_ServiceClear.BackgroundImage")));
       this.pcmd_ServiceClear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
       this.pcmd_ServiceClear.Location = new System.Drawing.Point(27, 153);
-      this.pcmd_ServiceClear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.pcmd_ServiceClear.Margin = new System.Windows.Forms.Padding(4);
       this.pcmd_ServiceClear.Name = "pcmd_ServiceClear";
       this.pcmd_ServiceClear.Size = new System.Drawing.Size(29, 27);
       this.pcmd_ServiceClear.TabIndex = 9;
       this.pcmd_ServiceClear.TabStop = false;
+      this.pcmd_ServiceClear.Click += new System.EventHandler(this.pcmd_ServiceClear_Click);
       // 
       // cmd_ServiceAdd
       // 
       this.cmd_ServiceAdd.Location = new System.Drawing.Point(101, 153);
-      this.cmd_ServiceAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.cmd_ServiceAdd.Margin = new System.Windows.Forms.Padding(4);
       this.cmd_ServiceAdd.Name = "cmd_ServiceAdd";
       this.cmd_ServiceAdd.Size = new System.Drawing.Size(100, 28);
       this.cmd_ServiceAdd.TabIndex = 8;
       this.cmd_ServiceAdd.Text = "Add Service";
       this.cmd_ServiceAdd.UseVisualStyleBackColor = true;
+      this.cmd_ServiceAdd.Click += new System.EventHandler(this.cmd_ServiceAdd_Click);
       // 
       // txt_ServiceCapacity
       // 
       this.txt_ServiceCapacity.Location = new System.Drawing.Point(113, 108);
-      this.txt_ServiceCapacity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.txt_ServiceCapacity.Margin = new System.Windows.Forms.Padding(4);
       this.txt_ServiceCapacity.Name = "txt_ServiceCapacity";
       this.txt_ServiceCapacity.Size = new System.Drawing.Size(160, 22);
       this.txt_ServiceCapacity.TabIndex = 7;
@@ -523,7 +528,7 @@
       // txt_ServiceRate
       // 
       this.txt_ServiceRate.Location = new System.Drawing.Point(113, 76);
-      this.txt_ServiceRate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.txt_ServiceRate.Margin = new System.Windows.Forms.Padding(4);
       this.txt_ServiceRate.Name = "txt_ServiceRate";
       this.txt_ServiceRate.Size = new System.Drawing.Size(160, 22);
       this.txt_ServiceRate.TabIndex = 5;
@@ -531,7 +536,7 @@
       // txt_ServiceGroup
       // 
       this.txt_ServiceGroup.Location = new System.Drawing.Point(113, 44);
-      this.txt_ServiceGroup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.txt_ServiceGroup.Margin = new System.Windows.Forms.Padding(4);
       this.txt_ServiceGroup.Name = "txt_ServiceGroup";
       this.txt_ServiceGroup.Size = new System.Drawing.Size(160, 22);
       this.txt_ServiceGroup.TabIndex = 4;
@@ -539,7 +544,7 @@
       // txt_ServiceName
       // 
       this.txt_ServiceName.Location = new System.Drawing.Point(113, 11);
-      this.txt_ServiceName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.txt_ServiceName.Margin = new System.Windows.Forms.Padding(4);
       this.txt_ServiceName.Name = "txt_ServiceName";
       this.txt_ServiceName.Size = new System.Drawing.Size(160, 22);
       this.txt_ServiceName.TabIndex = 3;
@@ -577,23 +582,24 @@
       // cmd_ServiceRemove
       // 
       this.cmd_ServiceRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-      this.cmd_ServiceRemove.Location = new System.Drawing.Point(-216, -326);
-      this.cmd_ServiceRemove.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.cmd_ServiceRemove.Location = new System.Drawing.Point(-220, -326);
+      this.cmd_ServiceRemove.Margin = new System.Windows.Forms.Padding(4);
       this.cmd_ServiceRemove.Name = "cmd_ServiceRemove";
       this.cmd_ServiceRemove.Size = new System.Drawing.Size(100, 28);
       this.cmd_ServiceRemove.TabIndex = 9;
       this.cmd_ServiceRemove.Text = "Remove";
       this.cmd_ServiceRemove.UseVisualStyleBackColor = true;
+      this.cmd_ServiceRemove.Click += new System.EventHandler(this.cmd_ServiceRemove_Click);
       // 
       // groupBox3
       // 
       this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
       this.groupBox3.Controls.Add(this.pcmd_ServiceSearch);
       this.groupBox3.Controls.Add(this.txt_ServiceSearch);
-      this.groupBox3.Location = new System.Drawing.Point(-107, -341);
-      this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.groupBox3.Location = new System.Drawing.Point(-111, -341);
+      this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
       this.groupBox3.Name = "groupBox3";
-      this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
       this.groupBox3.Size = new System.Drawing.Size(248, 50);
       this.groupBox3.TabIndex = 4;
       this.groupBox3.TabStop = false;
@@ -604,16 +610,17 @@
       this.pcmd_ServiceSearch.BackgroundImage = global::NoteView.Properties.Resources.search;
       this.pcmd_ServiceSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
       this.pcmd_ServiceSearch.Location = new System.Drawing.Point(15, 23);
-      this.pcmd_ServiceSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.pcmd_ServiceSearch.Margin = new System.Windows.Forms.Padding(4);
       this.pcmd_ServiceSearch.Name = "pcmd_ServiceSearch";
       this.pcmd_ServiceSearch.Size = new System.Drawing.Size(24, 22);
       this.pcmd_ServiceSearch.TabIndex = 3;
       this.pcmd_ServiceSearch.TabStop = false;
+      this.pcmd_ServiceSearch.Click += new System.EventHandler(this.pcmd_ServiceSearch_Click);
       // 
       // txt_ServiceSearch
       // 
       this.txt_ServiceSearch.Location = new System.Drawing.Point(47, 21);
-      this.txt_ServiceSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.txt_ServiceSearch.Margin = new System.Windows.Forms.Padding(4);
       this.txt_ServiceSearch.Name = "txt_ServiceSearch";
       this.txt_ServiceSearch.Size = new System.Drawing.Size(192, 22);
       this.txt_ServiceSearch.TabIndex = 2;
@@ -623,10 +630,10 @@
       this.gb_ServiceTable.Controls.Add(this.dgv_Services);
       this.gb_ServiceTable.Dock = System.Windows.Forms.DockStyle.Bottom;
       this.gb_ServiceTable.Location = new System.Drawing.Point(4, -288);
-      this.gb_ServiceTable.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.gb_ServiceTable.Margin = new System.Windows.Forms.Padding(4);
       this.gb_ServiceTable.Name = "gb_ServiceTable";
-      this.gb_ServiceTable.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-      this.gb_ServiceTable.Size = new System.Drawing.Size(141, 375);
+      this.gb_ServiceTable.Padding = new System.Windows.Forms.Padding(4);
+      this.gb_ServiceTable.Size = new System.Drawing.Size(137, 375);
       this.gb_ServiceTable.TabIndex = 1;
       this.gb_ServiceTable.TabStop = false;
       this.gb_ServiceTable.Text = "<service_table>";
@@ -648,12 +655,12 @@
             this.ServiceQuantity});
       this.dgv_Services.Dock = System.Windows.Forms.DockStyle.Fill;
       this.dgv_Services.Location = new System.Drawing.Point(4, 19);
-      this.dgv_Services.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.dgv_Services.Margin = new System.Windows.Forms.Padding(4);
       this.dgv_Services.Name = "dgv_Services";
       this.dgv_Services.ReadOnly = true;
       this.dgv_Services.RowHeadersWidth = 51;
       this.dgv_Services.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.dgv_Services.Size = new System.Drawing.Size(133, 352);
+      this.dgv_Services.Size = new System.Drawing.Size(129, 352);
       this.dgv_Services.TabIndex = 0;
       // 
       // ServiceID
@@ -700,7 +707,7 @@
       // 
       this.pnl_Room.Controls.Add(this.groupBox1);
       this.pnl_Room.Location = new System.Drawing.Point(168, 9);
-      this.pnl_Room.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.pnl_Room.Margin = new System.Windows.Forms.Padding(4);
       this.pnl_Room.Name = "pnl_Room";
       this.pnl_Room.Size = new System.Drawing.Size(145, 91);
       this.pnl_Room.TabIndex = 1;
@@ -710,6 +717,23 @@
       this.bwork_RoomAdder.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwork_RoomAdder_DoWork);
       this.bwork_RoomAdder.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwork_RoomAdder_RunWorkerCompleted);
       // 
+      // bwork_ServiceAdder
+      // 
+      this.bwork_ServiceAdder.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwork_ServiceAdder_DoWork);
+      this.bwork_ServiceAdder.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwork_ServiceAdder_RunWorkerCompleted);
+      // 
+      // bwork_ServiceFetcher
+      // 
+      this.bwork_ServiceFetcher.WorkerReportsProgress = true;
+      this.bwork_ServiceFetcher.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwork_ServiceFetcher_DoWork);
+      this.bwork_ServiceFetcher.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bwork_ServiceFetcher_ProgressChanged);
+      this.bwork_ServiceFetcher.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwork_ServiceFetcher_RunWorkerCompleted);
+      // 
+      // bwork_ServiceDeleter
+      // 
+      this.bwork_ServiceDeleter.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwork_ServiceDeleter_DoWork);
+      this.bwork_ServiceDeleter.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwork_ServiceDeleter_RunWorkerCompleted);
+      // 
       // SystemConfiguration
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -718,7 +742,7 @@
       this.Controls.Add(this.sc_SysConfig);
       this.DoubleBuffered = true;
       this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-      this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.Margin = new System.Windows.Forms.Padding(4);
       this.Name = "SystemConfiguration";
       this.Text = "Configure System";
       this.Load += new System.EventHandler(this.SystemConfiguration_Load);
@@ -811,5 +835,8 @@
     private System.Windows.Forms.DataGridViewTextBoxColumn ServiceGroup;
     private System.Windows.Forms.DataGridViewTextBoxColumn ServiceRate;
     private System.Windows.Forms.DataGridViewTextBoxColumn ServiceQuantity;
+    private System.ComponentModel.BackgroundWorker bwork_ServiceAdder;
+    private System.ComponentModel.BackgroundWorker bwork_ServiceFetcher;
+    private System.ComponentModel.BackgroundWorker bwork_ServiceDeleter;
   }
 }

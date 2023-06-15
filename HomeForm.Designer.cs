@@ -30,13 +30,13 @@
     {
       this.pnl_Top = new System.Windows.Forms.Panel();
       this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-      this.pcmd_NewBooking = new NoteView.PictureButton();
       this.label17 = new System.Windows.Forms.Label();
       this.pictureBox1 = new System.Windows.Forms.PictureBox();
       this.mainMenu = new System.Windows.Forms.MenuStrip();
       this.frontDeskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.systemConfigurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.pnl_Bottom = new System.Windows.Forms.Panel();
       this.fpnl_UserInfoDisplay = new System.Windows.Forms.FlowLayoutPanel();
       this.lbl_UserFullName = new System.Windows.Forms.Label();
@@ -102,10 +102,12 @@
       this.lbl_WaitList = new System.Windows.Forms.Label();
       this.label8 = new System.Windows.Forms.Label();
       this.spc_TableContainer = new System.Windows.Forms.SplitContainer();
-      this.systemConfigurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.lbl_DateTimeIndicator = new System.Windows.Forms.Label();
+      this.pcmd_NewBooking = new NoteView.PictureButton();
+      this.bwork_TableFetcher = new System.ComponentModel.BackgroundWorker();
+      this.bwork_TableResolver = new System.ComponentModel.BackgroundWorker();
       this.pnl_Top.SuspendLayout();
       this.flowLayoutPanel2.SuspendLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.pcmd_NewBooking)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
       this.mainMenu.SuspendLayout();
       this.pnl_Bottom.SuspendLayout();
@@ -129,6 +131,7 @@
       this.spc_TableContainer.Panel1.SuspendLayout();
       this.spc_TableContainer.Panel2.SuspendLayout();
       this.spc_TableContainer.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.pcmd_NewBooking)).BeginInit();
       this.SuspendLayout();
       // 
       // pnl_Top
@@ -140,7 +143,7 @@
       this.pnl_Top.Controls.Add(this.mainMenu);
       this.pnl_Top.Dock = System.Windows.Forms.DockStyle.Top;
       this.pnl_Top.Location = new System.Drawing.Point(0, 0);
-      this.pnl_Top.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.pnl_Top.Margin = new System.Windows.Forms.Padding(4);
       this.pnl_Top.Name = "pnl_Top";
       this.pnl_Top.Size = new System.Drawing.Size(1792, 163);
       this.pnl_Top.TabIndex = 0;
@@ -150,22 +153,10 @@
       this.flowLayoutPanel2.Controls.Add(this.pcmd_NewBooking);
       this.flowLayoutPanel2.Controls.Add(this.label17);
       this.flowLayoutPanel2.Location = new System.Drawing.Point(13, 38);
-      this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
       this.flowLayoutPanel2.Name = "flowLayoutPanel2";
       this.flowLayoutPanel2.Size = new System.Drawing.Size(104, 117);
       this.flowLayoutPanel2.TabIndex = 2;
-      // 
-      // pcmd_NewBooking
-      // 
-      this.pcmd_NewBooking.BackgroundImage = global::NoteView.Properties.Resources.new_booking;
-      this.pcmd_NewBooking.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-      this.pcmd_NewBooking.Location = new System.Drawing.Point(4, 4);
-      this.pcmd_NewBooking.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-      this.pcmd_NewBooking.Name = "pcmd_NewBooking";
-      this.pcmd_NewBooking.Size = new System.Drawing.Size(96, 89);
-      this.pcmd_NewBooking.TabIndex = 3;
-      this.pcmd_NewBooking.TabStop = false;
-      this.pcmd_NewBooking.Click += new System.EventHandler(this.pcmd_NewBooking_Click);
       // 
       // label17
       // 
@@ -200,7 +191,7 @@
       this.mainMenu.Location = new System.Drawing.Point(0, 0);
       this.mainMenu.Name = "mainMenu";
       this.mainMenu.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-      this.mainMenu.Size = new System.Drawing.Size(1790, 28);
+      this.mainMenu.Size = new System.Drawing.Size(1790, 30);
       this.mainMenu.TabIndex = 0;
       this.mainMenu.Text = "menuStrip1";
       // 
@@ -210,7 +201,7 @@
             this.changePasswordToolStripMenuItem,
             this.exitToolStripMenuItem});
       this.frontDeskToolStripMenuItem.Name = "frontDeskToolStripMenuItem";
-      this.frontDeskToolStripMenuItem.Size = new System.Drawing.Size(93, 24);
+      this.frontDeskToolStripMenuItem.Size = new System.Drawing.Size(93, 26);
       this.frontDeskToolStripMenuItem.Text = "Front Desk";
       // 
       // changePasswordToolStripMenuItem
@@ -227,6 +218,13 @@
       this.exitToolStripMenuItem.Text = "Exit";
       this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
       // 
+      // systemConfigurationToolStripMenuItem
+      // 
+      this.systemConfigurationToolStripMenuItem.Name = "systemConfigurationToolStripMenuItem";
+      this.systemConfigurationToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
+      this.systemConfigurationToolStripMenuItem.Text = "System Configuration";
+      this.systemConfigurationToolStripMenuItem.Click += new System.EventHandler(this.systemConfigurationToolStripMenuItem_Click);
+      // 
       // pnl_Bottom
       // 
       this.pnl_Bottom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(110)))), ((int)(((byte)(164)))), ((int)(((byte)(191)))));
@@ -235,7 +233,7 @@
       this.pnl_Bottom.Controls.Add(this.tc_GuestTabs);
       this.pnl_Bottom.Dock = System.Windows.Forms.DockStyle.Bottom;
       this.pnl_Bottom.Location = new System.Drawing.Point(0, 531);
-      this.pnl_Bottom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.pnl_Bottom.Margin = new System.Windows.Forms.Padding(4);
       this.pnl_Bottom.Name = "pnl_Bottom";
       this.pnl_Bottom.Size = new System.Drawing.Size(1792, 356);
       this.pnl_Bottom.TabIndex = 1;
@@ -244,9 +242,10 @@
       // 
       this.fpnl_UserInfoDisplay.Controls.Add(this.lbl_UserFullName);
       this.fpnl_UserInfoDisplay.Controls.Add(this.lbl_Username);
+      this.fpnl_UserInfoDisplay.Controls.Add(this.lbl_DateTimeIndicator);
       this.fpnl_UserInfoDisplay.Dock = System.Windows.Forms.DockStyle.Bottom;
       this.fpnl_UserInfoDisplay.Location = new System.Drawing.Point(0, 331);
-      this.fpnl_UserInfoDisplay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.fpnl_UserInfoDisplay.Margin = new System.Windows.Forms.Padding(4);
       this.fpnl_UserInfoDisplay.Name = "fpnl_UserInfoDisplay";
       this.fpnl_UserInfoDisplay.Size = new System.Drawing.Size(1790, 23);
       this.fpnl_UserInfoDisplay.TabIndex = 1;
@@ -280,7 +279,7 @@
       this.tc_GuestTabs.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.tc_GuestTabs.HotTrack = true;
       this.tc_GuestTabs.Location = new System.Drawing.Point(0, 0);
-      this.tc_GuestTabs.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.tc_GuestTabs.Margin = new System.Windows.Forms.Padding(4);
       this.tc_GuestTabs.MinimumSize = new System.Drawing.Size(1, 1);
       this.tc_GuestTabs.Name = "tc_GuestTabs";
       this.tc_GuestTabs.SelectedIndex = 0;
@@ -294,9 +293,9 @@
       this.tab_GuestInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(191)))), ((int)(((byte)(172)))));
       this.tab_GuestInfo.Controls.Add(this.sc_GuestInfo);
       this.tab_GuestInfo.Location = new System.Drawing.Point(4, 4);
-      this.tab_GuestInfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.tab_GuestInfo.Margin = new System.Windows.Forms.Padding(4);
       this.tab_GuestInfo.Name = "tab_GuestInfo";
-      this.tab_GuestInfo.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.tab_GuestInfo.Padding = new System.Windows.Forms.Padding(4);
       this.tab_GuestInfo.Size = new System.Drawing.Size(1782, 297);
       this.tab_GuestInfo.TabIndex = 0;
       this.tab_GuestInfo.Text = "Guest Info";
@@ -320,7 +319,7 @@
       this.sc_GuestInfo.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(171)))), ((int)(((byte)(152)))));
       this.sc_GuestInfo.Panel2.Controls.Add(this.pnl_NotesBorder);
       this.sc_GuestInfo.Size = new System.Drawing.Size(1774, 289);
-      this.sc_GuestInfo.SplitterDistance = 1513;
+      this.sc_GuestInfo.SplitterDistance = 1516;
       this.sc_GuestInfo.SplitterWidth = 1;
       this.sc_GuestInfo.TabIndex = 0;
       // 
@@ -337,7 +336,7 @@
       this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
       this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-      this.flowLayoutPanel1.Size = new System.Drawing.Size(1513, 289);
+      this.flowLayoutPanel1.Size = new System.Drawing.Size(1516, 289);
       this.flowLayoutPanel1.TabIndex = 1;
       // 
       // groupBox4
@@ -888,7 +887,7 @@
       this.pnl_NotesBorder.Location = new System.Drawing.Point(0, 0);
       this.pnl_NotesBorder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.pnl_NotesBorder.Name = "pnl_NotesBorder";
-      this.pnl_NotesBorder.Size = new System.Drawing.Size(260, 289);
+      this.pnl_NotesBorder.Size = new System.Drawing.Size(257, 289);
       this.pnl_NotesBorder.TabIndex = 0;
       // 
       // rtxt_Notes
@@ -899,7 +898,7 @@
       this.rtxt_Notes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.rtxt_Notes.Name = "rtxt_Notes";
       this.rtxt_Notes.ReadOnly = true;
-      this.rtxt_Notes.Size = new System.Drawing.Size(256, 254);
+      this.rtxt_Notes.Size = new System.Drawing.Size(253, 254);
       this.rtxt_Notes.TabIndex = 1;
       this.rtxt_Notes.Text = "";
       this.rtxt_Notes.WordWrap = false;
@@ -917,10 +916,10 @@
       // 
       this.tab_GuestFolio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(191)))), ((int)(((byte)(172)))));
       this.tab_GuestFolio.Location = new System.Drawing.Point(4, 4);
-      this.tab_GuestFolio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.tab_GuestFolio.Margin = new System.Windows.Forms.Padding(4);
       this.tab_GuestFolio.Name = "tab_GuestFolio";
-      this.tab_GuestFolio.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-      this.tab_GuestFolio.Size = new System.Drawing.Size(1781, 297);
+      this.tab_GuestFolio.Padding = new System.Windows.Forms.Padding(4);
+      this.tab_GuestFolio.Size = new System.Drawing.Size(1782, 297);
       this.tab_GuestFolio.TabIndex = 1;
       this.tab_GuestFolio.Text = "Guest Folio";
       // 
@@ -934,13 +933,13 @@
       this.dgv_DataTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
       this.dgv_DataTable.Dock = System.Windows.Forms.DockStyle.Fill;
       this.dgv_DataTable.Location = new System.Drawing.Point(0, 0);
-      this.dgv_DataTable.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.dgv_DataTable.Margin = new System.Windows.Forms.Padding(4);
       this.dgv_DataTable.Name = "dgv_DataTable";
       this.dgv_DataTable.ReadOnly = true;
       this.dgv_DataTable.RowHeadersWidth = 51;
       this.dgv_DataTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
       this.dgv_DataTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.dgv_DataTable.Size = new System.Drawing.Size(1614, 368);
+      this.dgv_DataTable.Size = new System.Drawing.Size(1617, 368);
       this.dgv_DataTable.TabIndex = 0;
       // 
       // fpnl_TableSelectView
@@ -960,10 +959,10 @@
       this.fpnl_TableSelectView.Dock = System.Windows.Forms.DockStyle.Fill;
       this.fpnl_TableSelectView.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
       this.fpnl_TableSelectView.Location = new System.Drawing.Point(0, 0);
-      this.fpnl_TableSelectView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.fpnl_TableSelectView.Margin = new System.Windows.Forms.Padding(4);
       this.fpnl_TableSelectView.Name = "fpnl_TableSelectView";
       this.fpnl_TableSelectView.Padding = new System.Windows.Forms.Padding(20, 25, 27, 25);
-      this.fpnl_TableSelectView.Size = new System.Drawing.Size(177, 368);
+      this.fpnl_TableSelectView.Size = new System.Drawing.Size(174, 368);
       this.fpnl_TableSelectView.TabIndex = 0;
       this.fpnl_TableSelectView.WrapContents = false;
       // 
@@ -975,7 +974,7 @@
       this.lbl_InHouse.Margin = new System.Windows.Forms.Padding(4, 0, 4, 12);
       this.lbl_InHouse.Name = "lbl_InHouse";
       this.lbl_InHouse.Padding = new System.Windows.Forms.Padding(0, 6, 0, 6);
-      this.lbl_InHouse.Size = new System.Drawing.Size(101, 52);
+      this.lbl_InHouse.Size = new System.Drawing.Size(91, 52);
       this.lbl_InHouse.TabIndex = 0;
       this.lbl_InHouse.Text = "<in_house>";
       this.lbl_InHouse.Click += new System.EventHandler(this.lbl_InHouse_Click);
@@ -983,12 +982,13 @@
       // lbl_Arrivals
       // 
       this.lbl_Arrivals.AutoSize = true;
+      this.lbl_Arrivals.Enabled = false;
       this.lbl_Arrivals.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbl_Arrivals.Location = new System.Drawing.Point(24, 89);
       this.lbl_Arrivals.Margin = new System.Windows.Forms.Padding(4, 0, 4, 12);
       this.lbl_Arrivals.Name = "lbl_Arrivals";
       this.lbl_Arrivals.Padding = new System.Windows.Forms.Padding(0, 6, 0, 6);
-      this.lbl_Arrivals.Size = new System.Drawing.Size(100, 32);
+      this.lbl_Arrivals.Size = new System.Drawing.Size(86, 52);
       this.lbl_Arrivals.TabIndex = 1;
       this.lbl_Arrivals.Text = "<arrivals>";
       this.lbl_Arrivals.Click += new System.EventHandler(this.lbl_Arrivals_Click);
@@ -997,7 +997,7 @@
       // 
       this.lbl_Departures.AutoSize = true;
       this.lbl_Departures.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbl_Departures.Location = new System.Drawing.Point(24, 133);
+      this.lbl_Departures.Location = new System.Drawing.Point(24, 153);
       this.lbl_Departures.Margin = new System.Windows.Forms.Padding(4, 0, 4, 12);
       this.lbl_Departures.Name = "lbl_Departures";
       this.lbl_Departures.Padding = new System.Windows.Forms.Padding(0, 6, 0, 6);
@@ -1010,7 +1010,7 @@
       // 
       this.lbl_Reservations.AutoSize = true;
       this.lbl_Reservations.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbl_Reservations.Location = new System.Drawing.Point(24, 197);
+      this.lbl_Reservations.Location = new System.Drawing.Point(24, 217);
       this.lbl_Reservations.Margin = new System.Windows.Forms.Padding(4, 0, 4, 12);
       this.lbl_Reservations.Name = "lbl_Reservations";
       this.lbl_Reservations.Padding = new System.Windows.Forms.Padding(0, 6, 0, 6);
@@ -1023,7 +1023,7 @@
       // 
       this.lbl_CheckedOut.AutoSize = true;
       this.lbl_CheckedOut.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbl_CheckedOut.Location = new System.Drawing.Point(24, 261);
+      this.lbl_CheckedOut.Location = new System.Drawing.Point(24, 281);
       this.lbl_CheckedOut.Margin = new System.Windows.Forms.Padding(4, 0, 4, 12);
       this.lbl_CheckedOut.Name = "lbl_CheckedOut";
       this.lbl_CheckedOut.Padding = new System.Windows.Forms.Padding(0, 6, 0, 6);
@@ -1036,11 +1036,11 @@
       // 
       this.lbl_NoShows.AutoSize = true;
       this.lbl_NoShows.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbl_NoShows.Location = new System.Drawing.Point(24, 325);
+      this.lbl_NoShows.Location = new System.Drawing.Point(24, 345);
       this.lbl_NoShows.Margin = new System.Windows.Forms.Padding(4, 0, 4, 12);
       this.lbl_NoShows.Name = "lbl_NoShows";
       this.lbl_NoShows.Padding = new System.Windows.Forms.Padding(0, 6, 0, 6);
-      this.lbl_NoShows.Size = new System.Drawing.Size(99, 52);
+      this.lbl_NoShows.Size = new System.Drawing.Size(85, 52);
       this.lbl_NoShows.TabIndex = 5;
       this.lbl_NoShows.Text = "<no_shows>";
       this.lbl_NoShows.Click += new System.EventHandler(this.lbl_NoShows_Click);
@@ -1049,7 +1049,7 @@
       // 
       this.lbl_Cancelled.AutoSize = true;
       this.lbl_Cancelled.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbl_Cancelled.Location = new System.Drawing.Point(24, 389);
+      this.lbl_Cancelled.Location = new System.Drawing.Point(24, 409);
       this.lbl_Cancelled.Margin = new System.Windows.Forms.Padding(4, 0, 4, 12);
       this.lbl_Cancelled.Name = "lbl_Cancelled";
       this.lbl_Cancelled.Padding = new System.Windows.Forms.Padding(0, 6, 0, 6);
@@ -1062,7 +1062,7 @@
       // 
       this.lbl_WaitList.AutoSize = true;
       this.lbl_WaitList.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbl_WaitList.Location = new System.Drawing.Point(24, 453);
+      this.lbl_WaitList.Location = new System.Drawing.Point(24, 473);
       this.lbl_WaitList.Margin = new System.Windows.Forms.Padding(4, 0, 4, 12);
       this.lbl_WaitList.Name = "lbl_WaitList";
       this.lbl_WaitList.Padding = new System.Windows.Forms.Padding(0, 6, 0, 6);
@@ -1074,7 +1074,7 @@
       // label8
       // 
       this.label8.AutoSize = true;
-      this.label8.Location = new System.Drawing.Point(24, 517);
+      this.label8.Location = new System.Drawing.Point(24, 537);
       this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.label8.Name = "label8";
       this.label8.Padding = new System.Windows.Forms.Padding(0, 0, 0, 25);
@@ -1087,7 +1087,7 @@
       this.spc_TableContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
       this.spc_TableContainer.IsSplitterFixed = true;
       this.spc_TableContainer.Location = new System.Drawing.Point(0, 163);
-      this.spc_TableContainer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.spc_TableContainer.Margin = new System.Windows.Forms.Padding(4);
       this.spc_TableContainer.Name = "spc_TableContainer";
       // 
       // spc_TableContainer.Panel1
@@ -1100,16 +1100,44 @@
       this.spc_TableContainer.Panel2.Controls.Add(this.fpnl_TableSelectView);
       this.spc_TableContainer.Panel2MinSize = 1;
       this.spc_TableContainer.Size = new System.Drawing.Size(1792, 368);
-      this.spc_TableContainer.SplitterDistance = 1614;
+      this.spc_TableContainer.SplitterDistance = 1617;
       this.spc_TableContainer.SplitterWidth = 1;
       this.spc_TableContainer.TabIndex = 3;
       // 
-      // systemConfigurationToolStripMenuItem
+      // lbl_DateTimeIndicator
       // 
-      this.systemConfigurationToolStripMenuItem.Name = "systemConfigurationToolStripMenuItem";
-      this.systemConfigurationToolStripMenuItem.Size = new System.Drawing.Size(165, 24);
-      this.systemConfigurationToolStripMenuItem.Text = "System Configuration";
-      this.systemConfigurationToolStripMenuItem.Click += new System.EventHandler(this.systemConfigurationToolStripMenuItem_Click);
+      this.lbl_DateTimeIndicator.AutoSize = true;
+      this.lbl_DateTimeIndicator.Location = new System.Drawing.Point(186, 0);
+      this.lbl_DateTimeIndicator.Name = "lbl_DateTimeIndicator";
+      this.lbl_DateTimeIndicator.Size = new System.Drawing.Size(126, 16);
+      this.lbl_DateTimeIndicator.TabIndex = 3;
+      this.lbl_DateTimeIndicator.Text = "<session date time>";
+      // 
+      // pcmd_NewBooking
+      // 
+      this.pcmd_NewBooking.BackgroundImage = global::NoteView.Properties.Resources.new_booking;
+      this.pcmd_NewBooking.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+      this.pcmd_NewBooking.Location = new System.Drawing.Point(4, 4);
+      this.pcmd_NewBooking.Margin = new System.Windows.Forms.Padding(4);
+      this.pcmd_NewBooking.Name = "pcmd_NewBooking";
+      this.pcmd_NewBooking.Size = new System.Drawing.Size(96, 89);
+      this.pcmd_NewBooking.TabIndex = 3;
+      this.pcmd_NewBooking.TabStop = false;
+      this.pcmd_NewBooking.Click += new System.EventHandler(this.pcmd_NewBooking_Click);
+      // 
+      // bwork_TableFetcher
+      // 
+      this.bwork_TableFetcher.WorkerReportsProgress = true;
+      this.bwork_TableFetcher.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwork_TableFetcher_DoWork);
+      this.bwork_TableFetcher.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bwork_TableFetcher_ProgressChanged);
+      this.bwork_TableFetcher.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwork_TableFetcher_RunWorkerCompleted);
+      // 
+      // bwork_TableResolver
+      // 
+      this.bwork_TableResolver.WorkerReportsProgress = true;
+      this.bwork_TableResolver.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwork_TableResolver_DoWork);
+      this.bwork_TableResolver.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bwork_TableResolver_ProgressChanged);
+      this.bwork_TableResolver.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwork_TableResolver_RunWorkerCompleted);
       // 
       // HomeForm
       // 
@@ -1120,7 +1148,7 @@
       this.Controls.Add(this.spc_TableContainer);
       this.Controls.Add(this.pnl_Bottom);
       this.Controls.Add(this.pnl_Top);
-      this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.Margin = new System.Windows.Forms.Padding(4);
       this.MinimumSize = new System.Drawing.Size(1363, 724);
       this.Name = "HomeForm";
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1131,7 +1159,6 @@
       this.pnl_Top.ResumeLayout(false);
       this.pnl_Top.PerformLayout();
       this.flowLayoutPanel2.ResumeLayout(false);
-      ((System.ComponentModel.ISupportInitialize)(this.pcmd_NewBooking)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
       this.mainMenu.ResumeLayout(false);
       this.mainMenu.PerformLayout();
@@ -1167,6 +1194,7 @@
       this.spc_TableContainer.Panel2.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(this.spc_TableContainer)).EndInit();
       this.spc_TableContainer.ResumeLayout(false);
+      ((System.ComponentModel.ISupportInitialize)(this.pcmd_NewBooking)).EndInit();
       this.ResumeLayout(false);
 
     }
@@ -1248,5 +1276,8 @@
     private System.Windows.Forms.Label label17;
     private PictureButton pcmd_NewBooking;
     private System.Windows.Forms.ToolStripMenuItem systemConfigurationToolStripMenuItem;
+    private System.Windows.Forms.Label lbl_DateTimeIndicator;
+    private System.ComponentModel.BackgroundWorker bwork_TableFetcher;
+    private System.ComponentModel.BackgroundWorker bwork_TableResolver;
   }
 }
