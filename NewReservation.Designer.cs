@@ -43,6 +43,11 @@ namespace NoteView
             this.dateTom_column = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nextTom_column = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GuestInfoPage = new System.Windows.Forms.TabPage();
+            this.tb_nameTitle = new System.Windows.Forms.TextBox();
+            this.lbl_nameTitle = new System.Windows.Forms.Label();
+            this.tb_middleName = new System.Windows.Forms.TextBox();
+            this.lbl_middleName = new System.Windows.Forms.Label();
+            this.btn_search = new System.Windows.Forms.Button();
             this.tb_State_Province = new System.Windows.Forms.TextBox();
             this.btn_Clear = new System.Windows.Forms.Button();
             this.tb_Amount = new System.Windows.Forms.TextBox();
@@ -85,13 +90,15 @@ namespace NoteView
             this.lbl_Country = new System.Windows.Forms.Label();
             this.tb_ZipCode = new System.Windows.Forms.TextBox();
             this.lbl_ZipCode = new System.Windows.Forms.Label();
-            this.tb_Address = new System.Windows.Forms.TextBox();
+            this.tb_address = new System.Windows.Forms.TextBox();
             this.tb_LastName = new System.Windows.Forms.TextBox();
             this.tb_FirstName = new System.Windows.Forms.TextBox();
             this.lbl_Address = new System.Windows.Forms.Label();
             this.lbl_LastName = new System.Windows.Forms.Label();
             this.lbl_FirstName = new System.Windows.Forms.Label();
             this.Services = new System.Windows.Forms.TabPage();
+            this.btn_remove = new System.Windows.Forms.Button();
+            this.btn_add = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbl_ServiceTotalCost = new System.Windows.Forms.Label();
@@ -106,8 +113,6 @@ namespace NoteView
             this.clm_Voucher = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cb_Grouping = new System.Windows.Forms.ComboBox();
             this.lbl_Grouping = new System.Windows.Forms.Label();
-            this.lbl_FetchResID = new System.Windows.Forms.Label();
-            this.lbl_ResID = new System.Windows.Forms.Label();
             this.TopPanel = new System.Windows.Forms.Panel();
             this.dtp_coTime = new System.Windows.Forms.DateTimePicker();
             this.dtp_Departure = new System.Windows.Forms.DateTimePicker();
@@ -143,13 +148,9 @@ namespace NoteView
             this.cb_LockOff = new System.Windows.Forms.CheckBox();
             this.cb_EnableAssignment = new System.Windows.Forms.CheckBox();
             this.lbl_RoomNumber = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btn_search = new System.Windows.Forms.Button();
-            this.btn_add = new System.Windows.Forms.Button();
-            this.btn_remove = new System.Windows.Forms.Button();
-            this.lbl_middleName = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lbl_issuedName = new System.Windows.Forms.Label();
+            this.lbl_issuedBy = new System.Windows.Forms.Label();
+            this.bWork_Client = new System.ComponentModel.BackgroundWorker();
             this.tb_Info.SuspendLayout();
             this.tp_Calendar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_calendar)).BeginInit();
@@ -271,7 +272,9 @@ namespace NoteView
             // 
             // GuestInfoPage
             // 
-            this.GuestInfoPage.Controls.Add(this.textBox1);
+            this.GuestInfoPage.Controls.Add(this.tb_nameTitle);
+            this.GuestInfoPage.Controls.Add(this.lbl_nameTitle);
+            this.GuestInfoPage.Controls.Add(this.tb_middleName);
             this.GuestInfoPage.Controls.Add(this.lbl_middleName);
             this.GuestInfoPage.Controls.Add(this.btn_search);
             this.GuestInfoPage.Controls.Add(this.tb_State_Province);
@@ -298,7 +301,7 @@ namespace NoteView
             this.GuestInfoPage.Controls.Add(this.lbl_Country);
             this.GuestInfoPage.Controls.Add(this.tb_ZipCode);
             this.GuestInfoPage.Controls.Add(this.lbl_ZipCode);
-            this.GuestInfoPage.Controls.Add(this.tb_Address);
+            this.GuestInfoPage.Controls.Add(this.tb_address);
             this.GuestInfoPage.Controls.Add(this.tb_LastName);
             this.GuestInfoPage.Controls.Add(this.tb_FirstName);
             this.GuestInfoPage.Controls.Add(this.lbl_Address);
@@ -312,9 +315,56 @@ namespace NoteView
             this.GuestInfoPage.Text = "Guest Info";
             this.GuestInfoPage.UseVisualStyleBackColor = true;
             // 
+            // tb_nameTitle
+            // 
+            this.tb_nameTitle.Location = new System.Drawing.Point(104, 13);
+            this.tb_nameTitle.Name = "tb_nameTitle";
+            this.tb_nameTitle.Size = new System.Drawing.Size(355, 20);
+            this.tb_nameTitle.TabIndex = 57;
+            // 
+            // lbl_nameTitle
+            // 
+            this.lbl_nameTitle.AutoSize = true;
+            this.lbl_nameTitle.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.lbl_nameTitle.Location = new System.Drawing.Point(13, 15);
+            this.lbl_nameTitle.Name = "lbl_nameTitle";
+            this.lbl_nameTitle.Size = new System.Drawing.Size(77, 16);
+            this.lbl_nameTitle.TabIndex = 56;
+            this.lbl_nameTitle.Text = "Name Title";
+            // 
+            // tb_middleName
+            // 
+            this.tb_middleName.Location = new System.Drawing.Point(104, 94);
+            this.tb_middleName.Name = "tb_middleName";
+            this.tb_middleName.Size = new System.Drawing.Size(355, 20);
+            this.tb_middleName.TabIndex = 55;
+            // 
+            // lbl_middleName
+            // 
+            this.lbl_middleName.AutoSize = true;
+            this.lbl_middleName.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.lbl_middleName.Location = new System.Drawing.Point(10, 95);
+            this.lbl_middleName.Name = "lbl_middleName";
+            this.lbl_middleName.Size = new System.Drawing.Size(89, 16);
+            this.lbl_middleName.TabIndex = 54;
+            this.lbl_middleName.Text = "Middle Name";
+            // 
+            // btn_search
+            // 
+            this.btn_search.AutoSize = true;
+            this.btn_search.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.btn_search.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.btn_search.Location = new System.Drawing.Point(846, 6);
+            this.btn_search.Name = "btn_search";
+            this.btn_search.Size = new System.Drawing.Size(63, 34);
+            this.btn_search.TabIndex = 48;
+            this.btn_search.Text = "Search";
+            this.btn_search.UseVisualStyleBackColor = true;
+            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
+            // 
             // tb_State_Province
             // 
-            this.tb_State_Province.Location = new System.Drawing.Point(331, 175);
+            this.tb_State_Province.Location = new System.Drawing.Point(331, 204);
             this.tb_State_Province.Name = "tb_State_Province";
             this.tb_State_Province.Size = new System.Drawing.Size(121, 20);
             this.tb_State_Province.TabIndex = 53;
@@ -336,11 +386,12 @@ namespace NoteView
             // tb_Amount
             // 
             this.tb_Amount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.tb_Amount.Enabled = false;
             this.tb_Amount.Location = new System.Drawing.Point(669, 201);
             this.tb_Amount.Name = "tb_Amount";
+            this.tb_Amount.ReadOnly = true;
             this.tb_Amount.Size = new System.Drawing.Size(111, 20);
             this.tb_Amount.TabIndex = 50;
+            this.tb_Amount.Text = "0";
             // 
             // cb_PostDepo
             // 
@@ -494,7 +545,7 @@ namespace NoteView
             this.gb_Vehicle.Controls.Add(this.tb_License);
             this.gb_Vehicle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.gb_Vehicle.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.gb_Vehicle.Location = new System.Drawing.Point(42, 314);
+            this.gb_Vehicle.Location = new System.Drawing.Point(42, 343);
             this.gb_Vehicle.Name = "gb_Vehicle";
             this.gb_Vehicle.Size = new System.Drawing.Size(409, 85);
             this.gb_Vehicle.TabIndex = 43;
@@ -572,7 +623,7 @@ namespace NoteView
             // tb_GuestNote
             // 
             this.tb_GuestNote.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.tb_GuestNote.Location = new System.Drawing.Point(97, 234);
+            this.tb_GuestNote.Location = new System.Drawing.Point(97, 263);
             this.tb_GuestNote.Multiline = true;
             this.tb_GuestNote.Name = "tb_GuestNote";
             this.tb_GuestNote.Size = new System.Drawing.Size(355, 63);
@@ -582,7 +633,7 @@ namespace NoteView
             // 
             this.lbl_GuestNote.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbl_GuestNote.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.lbl_GuestNote.Location = new System.Drawing.Point(17, 240);
+            this.lbl_GuestNote.Location = new System.Drawing.Point(17, 269);
             this.lbl_GuestNote.Name = "lbl_GuestNote";
             this.lbl_GuestNote.Size = new System.Drawing.Size(91, 21);
             this.lbl_GuestNote.TabIndex = 28;
@@ -649,7 +700,7 @@ namespace NoteView
             // 
             this.lbl_Province_State.AutoSize = true;
             this.lbl_Province_State.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.lbl_Province_State.Location = new System.Drawing.Point(226, 178);
+            this.lbl_Province_State.Location = new System.Drawing.Point(226, 207);
             this.lbl_Province_State.Name = "lbl_Province_State";
             this.lbl_Province_State.Size = new System.Drawing.Size(106, 16);
             this.lbl_Province_State.TabIndex = 16;
@@ -657,7 +708,7 @@ namespace NoteView
             // 
             // tb_City
             // 
-            this.tb_City.Location = new System.Drawing.Point(331, 150);
+            this.tb_City.Location = new System.Drawing.Point(331, 179);
             this.tb_City.Name = "tb_City";
             this.tb_City.Size = new System.Drawing.Size(121, 20);
             this.tb_City.TabIndex = 15;
@@ -666,7 +717,7 @@ namespace NoteView
             // 
             this.lbl_City.AutoSize = true;
             this.lbl_City.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.lbl_City.Location = new System.Drawing.Point(297, 152);
+            this.lbl_City.Location = new System.Drawing.Point(297, 181);
             this.lbl_City.Name = "lbl_City";
             this.lbl_City.Size = new System.Drawing.Size(33, 16);
             this.lbl_City.TabIndex = 14;
@@ -681,7 +732,7 @@ namespace NoteView
             "eut3",
             "eut4",
             "eut5"});
-            this.cb_Nationality.Location = new System.Drawing.Point(97, 200);
+            this.cb_Nationality.Location = new System.Drawing.Point(97, 229);
             this.cb_Nationality.Name = "cb_Nationality";
             this.cb_Nationality.Size = new System.Drawing.Size(121, 21);
             this.cb_Nationality.TabIndex = 13;
@@ -690,7 +741,7 @@ namespace NoteView
             // 
             this.lbl_Nationality.AutoSize = true;
             this.lbl_Nationality.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.lbl_Nationality.Location = new System.Drawing.Point(22, 202);
+            this.lbl_Nationality.Location = new System.Drawing.Point(22, 231);
             this.lbl_Nationality.Name = "lbl_Nationality";
             this.lbl_Nationality.Size = new System.Drawing.Size(77, 16);
             this.lbl_Nationality.TabIndex = 12;
@@ -705,7 +756,7 @@ namespace NoteView
             "eut3",
             "eut4",
             "eut5"});
-            this.cb_Country.Location = new System.Drawing.Point(97, 175);
+            this.cb_Country.Location = new System.Drawing.Point(97, 204);
             this.cb_Country.Name = "cb_Country";
             this.cb_Country.Size = new System.Drawing.Size(121, 21);
             this.cb_Country.TabIndex = 11;
@@ -714,7 +765,7 @@ namespace NoteView
             // 
             this.lbl_Country.AutoSize = true;
             this.lbl_Country.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.lbl_Country.Location = new System.Drawing.Point(39, 177);
+            this.lbl_Country.Location = new System.Drawing.Point(39, 206);
             this.lbl_Country.Name = "lbl_Country";
             this.lbl_Country.Size = new System.Drawing.Size(59, 16);
             this.lbl_Country.TabIndex = 10;
@@ -722,7 +773,7 @@ namespace NoteView
             // 
             // tb_ZipCode
             // 
-            this.tb_ZipCode.Location = new System.Drawing.Point(97, 150);
+            this.tb_ZipCode.Location = new System.Drawing.Point(97, 179);
             this.tb_ZipCode.Name = "tb_ZipCode";
             this.tb_ZipCode.Size = new System.Drawing.Size(121, 20);
             this.tb_ZipCode.TabIndex = 9;
@@ -731,30 +782,30 @@ namespace NoteView
             // 
             this.lbl_ZipCode.AutoSize = true;
             this.lbl_ZipCode.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold);
-            this.lbl_ZipCode.Location = new System.Drawing.Point(65, 152);
+            this.lbl_ZipCode.Location = new System.Drawing.Point(65, 181);
             this.lbl_ZipCode.Name = "lbl_ZipCode";
             this.lbl_ZipCode.Size = new System.Drawing.Size(29, 16);
             this.lbl_ZipCode.TabIndex = 8;
             this.lbl_ZipCode.Text = "Zip";
             // 
-            // tb_Address
+            // tb_address
             // 
-            this.tb_Address.Location = new System.Drawing.Point(104, 98);
-            this.tb_Address.Multiline = true;
-            this.tb_Address.Name = "tb_Address";
-            this.tb_Address.Size = new System.Drawing.Size(355, 35);
-            this.tb_Address.TabIndex = 7;
+            this.tb_address.Location = new System.Drawing.Point(104, 127);
+            this.tb_address.Multiline = true;
+            this.tb_address.Name = "tb_address";
+            this.tb_address.Size = new System.Drawing.Size(355, 35);
+            this.tb_address.TabIndex = 7;
             // 
             // tb_LastName
             // 
-            this.tb_LastName.Location = new System.Drawing.Point(104, 40);
+            this.tb_LastName.Location = new System.Drawing.Point(104, 69);
             this.tb_LastName.Name = "tb_LastName";
             this.tb_LastName.Size = new System.Drawing.Size(355, 20);
             this.tb_LastName.TabIndex = 6;
             // 
             // tb_FirstName
             // 
-            this.tb_FirstName.Location = new System.Drawing.Point(104, 14);
+            this.tb_FirstName.Location = new System.Drawing.Point(104, 43);
             this.tb_FirstName.Name = "tb_FirstName";
             this.tb_FirstName.Size = new System.Drawing.Size(355, 20);
             this.tb_FirstName.TabIndex = 5;
@@ -763,7 +814,7 @@ namespace NoteView
             // 
             this.lbl_Address.AutoSize = true;
             this.lbl_Address.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.lbl_Address.Location = new System.Drawing.Point(44, 98);
+            this.lbl_Address.Location = new System.Drawing.Point(44, 127);
             this.lbl_Address.Name = "lbl_Address";
             this.lbl_Address.Size = new System.Drawing.Size(59, 16);
             this.lbl_Address.TabIndex = 4;
@@ -773,7 +824,7 @@ namespace NoteView
             // 
             this.lbl_LastName.AutoSize = true;
             this.lbl_LastName.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold);
-            this.lbl_LastName.Location = new System.Drawing.Point(15, 44);
+            this.lbl_LastName.Location = new System.Drawing.Point(15, 73);
             this.lbl_LastName.Name = "lbl_LastName";
             this.lbl_LastName.Size = new System.Drawing.Size(84, 16);
             this.lbl_LastName.TabIndex = 3;
@@ -783,7 +834,7 @@ namespace NoteView
             // 
             this.lbl_FirstName.AutoSize = true;
             this.lbl_FirstName.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold);
-            this.lbl_FirstName.Location = new System.Drawing.Point(13, 18);
+            this.lbl_FirstName.Location = new System.Drawing.Point(13, 45);
             this.lbl_FirstName.Name = "lbl_FirstName";
             this.lbl_FirstName.Size = new System.Drawing.Size(86, 16);
             this.lbl_FirstName.TabIndex = 2;
@@ -810,6 +861,28 @@ namespace NoteView
             this.Services.Size = new System.Drawing.Size(919, 464);
             this.Services.TabIndex = 2;
             this.Services.Text = "Services";
+            // 
+            // btn_remove
+            // 
+            this.btn_remove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btn_remove.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btn_remove.Location = new System.Drawing.Point(653, 176);
+            this.btn_remove.Name = "btn_remove";
+            this.btn_remove.Size = new System.Drawing.Size(38, 41);
+            this.btn_remove.TabIndex = 17;
+            this.btn_remove.Text = ">";
+            this.btn_remove.UseVisualStyleBackColor = true;
+            // 
+            // btn_add
+            // 
+            this.btn_add.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btn_add.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btn_add.Location = new System.Drawing.Point(653, 129);
+            this.btn_add.Name = "btn_add";
+            this.btn_add.Size = new System.Drawing.Size(38, 41);
+            this.btn_add.TabIndex = 16;
+            this.btn_add.Text = "<";
+            this.btn_add.UseVisualStyleBackColor = true;
             // 
             // dataGridView2
             // 
@@ -964,27 +1037,6 @@ namespace NoteView
             this.lbl_Grouping.Size = new System.Drawing.Size(50, 13);
             this.lbl_Grouping.TabIndex = 3;
             this.lbl_Grouping.Text = "Grouping";
-            // 
-            // lbl_FetchResID
-            // 
-            this.lbl_FetchResID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lbl_FetchResID.AutoSize = true;
-            this.lbl_FetchResID.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_FetchResID.Location = new System.Drawing.Point(59, 664);
-            this.lbl_FetchResID.Name = "lbl_FetchResID";
-            this.lbl_FetchResID.Size = new System.Drawing.Size(55, 13);
-            this.lbl_FetchResID.TabIndex = 7;
-            this.lbl_FetchResID.Text = "<res_id>";
-            // 
-            // lbl_ResID
-            // 
-            this.lbl_ResID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lbl_ResID.AutoSize = true;
-            this.lbl_ResID.Location = new System.Drawing.Point(17, 664);
-            this.lbl_ResID.Name = "lbl_ResID";
-            this.lbl_ResID.Size = new System.Drawing.Size(40, 13);
-            this.lbl_ResID.TabIndex = 6;
-            this.lbl_ResID.Text = "ResID:";
             // 
             // TopPanel
             // 
@@ -1349,6 +1401,7 @@ namespace NoteView
             this.btn_submit.TabIndex = 12;
             this.btn_submit.Text = "OK";
             this.btn_submit.UseVisualStyleBackColor = true;
+            this.btn_submit.Click += new System.EventHandler(this.btn_submit_Click);
             // 
             // btn_Cancel
             // 
@@ -1401,78 +1454,31 @@ namespace NoteView
             this.lbl_RoomNumber.TabIndex = 7;
             this.lbl_RoomNumber.Text = "Room Number:";
             // 
-            // label1
+            // lbl_issuedName
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(225, 664);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "<res_id>";
+            this.lbl_issuedName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lbl_issuedName.AutoSize = true;
+            this.lbl_issuedName.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_issuedName.Location = new System.Drawing.Point(91, 664);
+            this.lbl_issuedName.Name = "lbl_issuedName";
+            this.lbl_issuedName.Size = new System.Drawing.Size(60, 13);
+            this.lbl_issuedName.TabIndex = 9;
+            this.lbl_issuedName.Text = "<res_id>";
             // 
-            // label2
+            // lbl_issuedBy
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(157, 664);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 13);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Created By:";
+            this.lbl_issuedBy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lbl_issuedBy.AutoSize = true;
+            this.lbl_issuedBy.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_issuedBy.Location = new System.Drawing.Point(17, 664);
+            this.lbl_issuedBy.Name = "lbl_issuedBy";
+            this.lbl_issuedBy.Size = new System.Drawing.Size(75, 13);
+            this.lbl_issuedBy.TabIndex = 8;
+            this.lbl_issuedBy.Text = "Issued By:";
             // 
-            // btn_search
+            // bWork_Client
             // 
-            this.btn_search.AutoSize = true;
-            this.btn_search.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.btn_search.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.btn_search.Location = new System.Drawing.Point(846, 6);
-            this.btn_search.Name = "btn_search";
-            this.btn_search.Size = new System.Drawing.Size(63, 34);
-            this.btn_search.TabIndex = 48;
-            this.btn_search.Text = "Search";
-            this.btn_search.UseVisualStyleBackColor = true;
-            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
-            // 
-            // btn_add
-            // 
-            this.btn_add.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btn_add.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btn_add.Location = new System.Drawing.Point(653, 129);
-            this.btn_add.Name = "btn_add";
-            this.btn_add.Size = new System.Drawing.Size(38, 41);
-            this.btn_add.TabIndex = 16;
-            this.btn_add.Text = "<";
-            this.btn_add.UseVisualStyleBackColor = true;
-            // 
-            // btn_remove
-            // 
-            this.btn_remove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btn_remove.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btn_remove.Location = new System.Drawing.Point(653, 176);
-            this.btn_remove.Name = "btn_remove";
-            this.btn_remove.Size = new System.Drawing.Size(38, 41);
-            this.btn_remove.TabIndex = 17;
-            this.btn_remove.Text = ">";
-            this.btn_remove.UseVisualStyleBackColor = true;
-            // 
-            // lbl_middleName
-            // 
-            this.lbl_middleName.AutoSize = true;
-            this.lbl_middleName.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.lbl_middleName.Location = new System.Drawing.Point(10, 66);
-            this.lbl_middleName.Name = "lbl_middleName";
-            this.lbl_middleName.Size = new System.Drawing.Size(89, 16);
-            this.lbl_middleName.TabIndex = 54;
-            this.lbl_middleName.Text = "Middle Name";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(104, 65);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(355, 20);
-            this.textBox1.TabIndex = 55;
+            this.bWork_Client.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bWork_Client_DoWork);
             // 
             // NewReservation
             // 
@@ -1481,12 +1487,10 @@ namespace NoteView
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.ClientSize = new System.Drawing.Size(1164, 681);
             this.Controls.Add(this.RightSidePanel);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lbl_issuedName);
+            this.Controls.Add(this.lbl_issuedBy);
             this.Controls.Add(this.TopPanel);
             this.Controls.Add(this.tb_Info);
-            this.Controls.Add(this.lbl_FetchResID);
-            this.Controls.Add(this.lbl_ResID);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.MinimumSize = new System.Drawing.Size(1180, 720);
             this.Name = "NewReservation";
@@ -1558,7 +1562,7 @@ namespace NoteView
     private Label lbl_Country;
     private TextBox tb_ZipCode;
     private Label lbl_ZipCode;
-    private TextBox tb_Address;
+    private TextBox tb_address;
     private TextBox tb_LastName;
     private TextBox tb_FirstName;
     private Label lbl_Address;
@@ -1609,21 +1613,19 @@ namespace NoteView
     private DataGridView dataGridView1;
     private ComboBox cb_Grouping;
     private Label lbl_Grouping;
-    private Label lbl_ResID;
     private Label lbl_ServiceTotalCost;
     private Label lbl_SericeTaxesCost;
     private Label lbl_ServiceChargeCost;
     private Label lbl_ServiceTotal;
     private Label lbl_ServiceTaxes;
     private Label lbl_ServiceCharges;
-    private Label lbl_FetchResID;
     private DataGridViewTextBoxColumn clm_ServiceNames;
     private DataGridViewTextBoxColumn clm_Price;
     private DataGridViewTextBoxColumn clm_Voucher;
     private PictureButton btn_DeleteService;
     private PictureButton btn_AddService;
-    private Label label1;
-    private Label label2;
+    private Label lbl_issuedName;
+    private Label lbl_issuedBy;
     private DataGridView dataGridView2;
     private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
     private PictureButton pictureButton2;
@@ -1644,7 +1646,10 @@ namespace NoteView
         private Button btn_search;
         private Button btn_remove;
         private Button btn_add;
-        private TextBox textBox1;
+        private TextBox tb_middleName;
         private Label lbl_middleName;
+        private System.ComponentModel.BackgroundWorker bWork_Client;
+        private TextBox tb_nameTitle;
+        private Label lbl_nameTitle;
     }
 }
