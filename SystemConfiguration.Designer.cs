@@ -126,7 +126,7 @@
       this.groupBox1.Size = new System.Drawing.Size(145, 91);
       this.groupBox1.TabIndex = 0;
       this.groupBox1.TabStop = false;
-      this.groupBox1.Text = "Room";
+      this.groupBox1.Text = "Add Room";
       // 
       // panel1
       // 
@@ -464,7 +464,7 @@
       this.gb_Services.Size = new System.Drawing.Size(145, 91);
       this.gb_Services.TabIndex = 0;
       this.gb_Services.TabStop = false;
-      this.gb_Services.Text = "Service";
+      this.gb_Services.Text = "Add Service";
       // 
       // panel2
       // 

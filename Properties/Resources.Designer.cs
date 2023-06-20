@@ -93,6 +93,66 @@ namespace NoteView.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap check_in {
+            get {
+                object obj = ResourceManager.GetObject("check_in", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap check_out {
+            get {
+                object obj = ResourceManager.GetObject("check_out", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///CREATE TABLE IF NOT EXISTS Client (
+        ///	id INT NOT NULL AUTO_INCREMENT,
+        ///	
+        ///	nameTitle TEXT,
+        ///	firstName TEXT NOT NULL,
+        ///	middleName TEXT,
+        ///	lastName TEXT NOT NULL,
+        ///	
+        ///	streetAd TEXT,
+        ///	zipCode TEXT NOT NULL,
+        ///	cityAd TEXT,
+        ///	countryAd TEXT,
+        ///	stateProvinceAd TEXT,
+        ///	nationality TEXT,
+        ///
+        ///	guestNote TEXT,
+        ///	
+        ///	telephone TEXT,
+        ///	mobile TEXT NOT NULL,
+        ///	email TEXT,
+        ///	
+        ///	amount INT,
+        ///		
+        ///	vehicleBrand TEXT,
+        ///	vehicleModel TEXT,
+        ///	vehicleColor TEXT,
+        ///	license TEXT,
+        ///	
+        ///	PRIMARY KEY (id)
+        ///);
+        ///.
+        /// </summary>
+        internal static string client {
+            get {
+                return ResourceManager.GetString("client", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap close {
             get {
                 object obj = ResourceManager.GetObject("close", resourceCulture);
@@ -153,6 +213,41 @@ namespace NoteView.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap post_charges {
+            get {
+                object obj = ResourceManager.GetObject("post_charges", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///CREATE TABLE IF NOT EXISTS Reservation (
+        ///	id INT NOT NULL AUTO_INCREMENT,
+        ///	clientId INT NOT NULL,
+        ///	roomId INT NOT NULL,
+        ///	arrival DATE NOT NULL,
+        ///	-- From spec, &quot;nights&quot; can be calculated in the client not in the database
+        ///	departure DATE NOT NULL,
+        ///	adultCount INT NOT NULL,
+        ///	childCount INT NOT NULL,
+        ///	issuer INT NOT NULL,
+        ///	issuedDate DATE NOT NULL,
+        ///	state TEXT NOT NULL, -- Can be &apos;WAITING&apos;, &apos;IN_HOUSE&apos;, &apos;CHECKED_OUT&apos;
+        ///	
+        ///	PRIMARY KEY (id),
+        ///	FOREIGN KEY (clientId) REFERENCES Client(id),
+        ///	FOREIGN KE [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string reservation {
+            get {
+                return ResourceManager.GetString("reservation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap right_arrow {
             get {
                 object obj = ResourceManager.GetObject("right_arrow", resourceCulture);
@@ -167,7 +262,7 @@ namespace NoteView.Properties {
         ///	roomNumber TEXT NOT NULL,
         ///	roomType TEXT NOT NULL,
         ///	rate INT NOT NULL,
-        ///	capacity INT NOT NULL
+        ///	capacity INT NOT NULL,
         ///	
         ///	PRIMARY KEY (id)
         ///);
@@ -196,6 +291,24 @@ namespace NoteView.Properties {
             get {
                 object obj = ResourceManager.GetObject("search1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CREATE TABLE IF NOT EXISTS Service (
+        ///  id INT NOT NULL AUTO_INCREMENT,
+        ///  
+        ///	serviceGroup TEXT NOT NULL,
+        ///	serviceName TEXT NOT NULL,
+        ///	rate DOUBLE NOT NULL,
+        ///	quantity INT NOT NULL,
+        ///	
+        ///	PRIMARY KEY (id)
+        ///);.
+        /// </summary>
+        internal static string service {
+            get {
+                return ResourceManager.GetString("service", resourceCulture);
             }
         }
         

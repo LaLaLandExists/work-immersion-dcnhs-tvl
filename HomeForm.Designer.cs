@@ -28,19 +28,12 @@
     /// </summary>
     private void InitializeComponent()
     {
-      this.pnl_Top = new System.Windows.Forms.Panel();
-      this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-      this.label17 = new System.Windows.Forms.Label();
-      this.pictureBox1 = new System.Windows.Forms.PictureBox();
-      this.mainMenu = new System.Windows.Forms.MenuStrip();
-      this.frontDeskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.systemConfigurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomeForm));
       this.pnl_Bottom = new System.Windows.Forms.Panel();
       this.fpnl_UserInfoDisplay = new System.Windows.Forms.FlowLayoutPanel();
       this.lbl_UserFullName = new System.Windows.Forms.Label();
       this.lbl_Username = new System.Windows.Forms.Label();
+      this.lbl_DateTimeIndicator = new System.Windows.Forms.Label();
       this.tc_GuestTabs = new System.Windows.Forms.TabControl();
       this.tab_GuestInfo = new System.Windows.Forms.TabPage();
       this.sc_GuestInfo = new System.Windows.Forms.SplitContainer();
@@ -53,43 +46,24 @@
       this.label3 = new System.Windows.Forms.Label();
       this.lbl_iTitle = new System.Windows.Forms.Label();
       this.groupBox2 = new System.Windows.Forms.GroupBox();
-      this.label20 = new System.Windows.Forms.Label();
+      this.lbl_iZip = new System.Windows.Forms.Label();
       this.label19 = new System.Windows.Forms.Label();
       this.label11 = new System.Windows.Forms.Label();
-      this.label12 = new System.Windows.Forms.Label();
+      this.lbl_iCountry = new System.Windows.Forms.Label();
       this.label13 = new System.Windows.Forms.Label();
-      this.label14 = new System.Windows.Forms.Label();
+      this.lbl_iCity = new System.Windows.Forms.Label();
       this.label15 = new System.Windows.Forms.Label();
-      this.label16 = new System.Windows.Forms.Label();
+      this.lbl_iStreet = new System.Windows.Forms.Label();
       this.groupBox1 = new System.Windows.Forms.GroupBox();
       this.label4 = new System.Windows.Forms.Label();
-      this.label5 = new System.Windows.Forms.Label();
+      this.lbl_iEmail = new System.Windows.Forms.Label();
       this.label6 = new System.Windows.Forms.Label();
-      this.label7 = new System.Windows.Forms.Label();
+      this.lbl_iMobile = new System.Windows.Forms.Label();
       this.label9 = new System.Windows.Forms.Label();
-      this.label10 = new System.Windows.Forms.Label();
-      this.groupBox3 = new System.Windows.Forms.GroupBox();
-      this.label21 = new System.Windows.Forms.Label();
-      this.label23 = new System.Windows.Forms.Label();
-      this.label24 = new System.Windows.Forms.Label();
-      this.label25 = new System.Windows.Forms.Label();
-      this.label26 = new System.Windows.Forms.Label();
-      this.label27 = new System.Windows.Forms.Label();
-      this.label28 = new System.Windows.Forms.Label();
-      this.label29 = new System.Windows.Forms.Label();
-      this.gb_Misc = new System.Windows.Forms.GroupBox();
-      this.label33 = new System.Windows.Forms.Label();
-      this.label34 = new System.Windows.Forms.Label();
-      this.label35 = new System.Windows.Forms.Label();
-      this.label36 = new System.Windows.Forms.Label();
-      this.label37 = new System.Windows.Forms.Label();
-      this.label30 = new System.Windows.Forms.Label();
-      this.label32 = new System.Windows.Forms.Label();
-      this.label38 = new System.Windows.Forms.Label();
+      this.lbl_iTelephone = new System.Windows.Forms.Label();
       this.pnl_NotesBorder = new System.Windows.Forms.Panel();
       this.rtxt_Notes = new System.Windows.Forms.RichTextBox();
       this.label18 = new System.Windows.Forms.Label();
-      this.tab_GuestFolio = new System.Windows.Forms.TabPage();
       this.dgv_DataTable = new System.Windows.Forms.DataGridView();
       this.fpnl_TableSelectView = new System.Windows.Forms.FlowLayoutPanel();
       this.lbl_InHouse = new System.Windows.Forms.Label();
@@ -102,14 +76,22 @@
       this.lbl_WaitList = new System.Windows.Forms.Label();
       this.label8 = new System.Windows.Forms.Label();
       this.spc_TableContainer = new System.Windows.Forms.SplitContainer();
-      this.lbl_DateTimeIndicator = new System.Windows.Forms.Label();
-      this.pcmd_NewBooking = new NoteView.PictureButton();
       this.bwork_TableFetcher = new System.ComponentModel.BackgroundWorker();
       this.bwork_TableResolver = new System.ComponentModel.BackgroundWorker();
-      this.pnl_Top.SuspendLayout();
-      this.flowLayoutPanel2.SuspendLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-      this.mainMenu.SuspendLayout();
+      this.bwork_InfoGetter = new System.ComponentModel.BackgroundWorker();
+      this.mainMenu = new System.Windows.Forms.MenuStrip();
+      this.frontDeskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.systemConfigurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.pictureBox1 = new System.Windows.Forms.PictureBox();
+      this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+      this.label17 = new System.Windows.Forms.Label();
+      this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+      this.label39 = new System.Windows.Forms.Label();
+      this.pnl_Top = new System.Windows.Forms.Panel();
+      this.pcmd_Charges = new NoteView.PictureButton();
+      this.pcmd_NewBooking = new NoteView.PictureButton();
       this.pnl_Bottom.SuspendLayout();
       this.fpnl_UserInfoDisplay.SuspendLayout();
       this.tc_GuestTabs.SuspendLayout();
@@ -122,8 +104,6 @@
       this.groupBox4.SuspendLayout();
       this.groupBox2.SuspendLayout();
       this.groupBox1.SuspendLayout();
-      this.groupBox3.SuspendLayout();
-      this.gb_Misc.SuspendLayout();
       this.pnl_NotesBorder.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dgv_DataTable)).BeginInit();
       this.fpnl_TableSelectView.SuspendLayout();
@@ -131,99 +111,14 @@
       this.spc_TableContainer.Panel1.SuspendLayout();
       this.spc_TableContainer.Panel2.SuspendLayout();
       this.spc_TableContainer.SuspendLayout();
+      this.mainMenu.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+      this.flowLayoutPanel2.SuspendLayout();
+      this.flowLayoutPanel5.SuspendLayout();
+      this.pnl_Top.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.pcmd_Charges)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.pcmd_NewBooking)).BeginInit();
       this.SuspendLayout();
-      // 
-      // pnl_Top
-      // 
-      this.pnl_Top.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(110)))), ((int)(((byte)(164)))), ((int)(((byte)(191)))));
-      this.pnl_Top.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.pnl_Top.Controls.Add(this.flowLayoutPanel2);
-      this.pnl_Top.Controls.Add(this.pictureBox1);
-      this.pnl_Top.Controls.Add(this.mainMenu);
-      this.pnl_Top.Dock = System.Windows.Forms.DockStyle.Top;
-      this.pnl_Top.Location = new System.Drawing.Point(0, 0);
-      this.pnl_Top.Margin = new System.Windows.Forms.Padding(4);
-      this.pnl_Top.Name = "pnl_Top";
-      this.pnl_Top.Size = new System.Drawing.Size(1792, 163);
-      this.pnl_Top.TabIndex = 0;
-      // 
-      // flowLayoutPanel2
-      // 
-      this.flowLayoutPanel2.Controls.Add(this.pcmd_NewBooking);
-      this.flowLayoutPanel2.Controls.Add(this.label17);
-      this.flowLayoutPanel2.Location = new System.Drawing.Point(13, 38);
-      this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
-      this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-      this.flowLayoutPanel2.Size = new System.Drawing.Size(104, 117);
-      this.flowLayoutPanel2.TabIndex = 2;
-      // 
-      // label17
-      // 
-      this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label17.ForeColor = System.Drawing.Color.Navy;
-      this.label17.Location = new System.Drawing.Point(4, 97);
-      this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-      this.label17.Name = "label17";
-      this.label17.Size = new System.Drawing.Size(96, 21);
-      this.label17.TabIndex = 1;
-      this.label17.Text = "New Booking";
-      this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      // 
-      // pictureBox1
-      // 
-      this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-      this.pictureBox1.BackgroundImage = global::NoteView.Properties.Resources.noteview_superlabel;
-      this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-      this.pictureBox1.Location = new System.Drawing.Point(1418, 48);
-      this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-      this.pictureBox1.Name = "pictureBox1";
-      this.pictureBox1.Size = new System.Drawing.Size(361, 97);
-      this.pictureBox1.TabIndex = 1;
-      this.pictureBox1.TabStop = false;
-      // 
-      // mainMenu
-      // 
-      this.mainMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
-      this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.frontDeskToolStripMenuItem,
-            this.systemConfigurationToolStripMenuItem});
-      this.mainMenu.Location = new System.Drawing.Point(0, 0);
-      this.mainMenu.Name = "mainMenu";
-      this.mainMenu.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-      this.mainMenu.Size = new System.Drawing.Size(1790, 30);
-      this.mainMenu.TabIndex = 0;
-      this.mainMenu.Text = "menuStrip1";
-      // 
-      // frontDeskToolStripMenuItem
-      // 
-      this.frontDeskToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.changePasswordToolStripMenuItem,
-            this.exitToolStripMenuItem});
-      this.frontDeskToolStripMenuItem.Name = "frontDeskToolStripMenuItem";
-      this.frontDeskToolStripMenuItem.Size = new System.Drawing.Size(93, 26);
-      this.frontDeskToolStripMenuItem.Text = "Front Desk";
-      // 
-      // changePasswordToolStripMenuItem
-      // 
-      this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
-      this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(207, 26);
-      this.changePasswordToolStripMenuItem.Text = "Change Password";
-      this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click);
-      // 
-      // exitToolStripMenuItem
-      // 
-      this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-      this.exitToolStripMenuItem.Size = new System.Drawing.Size(207, 26);
-      this.exitToolStripMenuItem.Text = "Exit";
-      this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-      // 
-      // systemConfigurationToolStripMenuItem
-      // 
-      this.systemConfigurationToolStripMenuItem.Name = "systemConfigurationToolStripMenuItem";
-      this.systemConfigurationToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
-      this.systemConfigurationToolStripMenuItem.Text = "System Configuration";
-      this.systemConfigurationToolStripMenuItem.Click += new System.EventHandler(this.systemConfigurationToolStripMenuItem_Click);
       // 
       // pnl_Bottom
       // 
@@ -270,11 +165,19 @@
       this.lbl_Username.TabIndex = 2;
       this.lbl_Username.Text = "(<username>)";
       // 
+      // lbl_DateTimeIndicator
+      // 
+      this.lbl_DateTimeIndicator.AutoSize = true;
+      this.lbl_DateTimeIndicator.Location = new System.Drawing.Point(186, 0);
+      this.lbl_DateTimeIndicator.Name = "lbl_DateTimeIndicator";
+      this.lbl_DateTimeIndicator.Size = new System.Drawing.Size(126, 16);
+      this.lbl_DateTimeIndicator.TabIndex = 3;
+      this.lbl_DateTimeIndicator.Text = "<session date time>";
+      // 
       // tc_GuestTabs
       // 
       this.tc_GuestTabs.Alignment = System.Windows.Forms.TabAlignment.Bottom;
       this.tc_GuestTabs.Controls.Add(this.tab_GuestInfo);
-      this.tc_GuestTabs.Controls.Add(this.tab_GuestFolio);
       this.tc_GuestTabs.Dock = System.Windows.Forms.DockStyle.Top;
       this.tc_GuestTabs.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.tc_GuestTabs.HotTrack = true;
@@ -319,7 +222,7 @@
       this.sc_GuestInfo.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(171)))), ((int)(((byte)(152)))));
       this.sc_GuestInfo.Panel2.Controls.Add(this.pnl_NotesBorder);
       this.sc_GuestInfo.Size = new System.Drawing.Size(1774, 289);
-      this.sc_GuestInfo.SplitterDistance = 1516;
+      this.sc_GuestInfo.SplitterDistance = 1546;
       this.sc_GuestInfo.SplitterWidth = 1;
       this.sc_GuestInfo.TabIndex = 0;
       // 
@@ -330,13 +233,11 @@
       this.flowLayoutPanel1.Controls.Add(this.groupBox4);
       this.flowLayoutPanel1.Controls.Add(this.groupBox2);
       this.flowLayoutPanel1.Controls.Add(this.groupBox1);
-      this.flowLayoutPanel1.Controls.Add(this.groupBox3);
-      this.flowLayoutPanel1.Controls.Add(this.gb_Misc);
       this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
       this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
       this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-      this.flowLayoutPanel1.Size = new System.Drawing.Size(1516, 289);
+      this.flowLayoutPanel1.Size = new System.Drawing.Size(1546, 289);
       this.flowLayoutPanel1.TabIndex = 1;
       // 
       // groupBox4
@@ -350,11 +251,11 @@
       this.groupBox4.Controls.Add(this.label3);
       this.groupBox4.Controls.Add(this.lbl_iTitle);
       this.groupBox4.ForeColor = System.Drawing.SystemColors.InfoText;
-      this.groupBox4.Location = new System.Drawing.Point(3, 15);
+      this.groupBox4.Location = new System.Drawing.Point(3, 14);
       this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.groupBox4.Name = "groupBox4";
       this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-      this.groupBox4.Size = new System.Drawing.Size(234, 133);
+      this.groupBox4.Size = new System.Drawing.Size(250, 133);
       this.groupBox4.TabIndex = 9;
       this.groupBox4.TabStop = false;
       this.groupBox4.Text = "Name";
@@ -379,9 +280,9 @@
       this.lbl_iLastName.Location = new System.Drawing.Point(131, 85);
       this.lbl_iLastName.Name = "lbl_iLastName";
       this.lbl_iLastName.Padding = new System.Windows.Forms.Padding(3, 5, 5, 5);
-      this.lbl_iLastName.Size = new System.Drawing.Size(97, 28);
+      this.lbl_iLastName.Size = new System.Drawing.Size(113, 28);
       this.lbl_iLastName.TabIndex = 5;
-      this.lbl_iLastName.Text = "<content>";
+      this.lbl_iLastName.Text = "Select a Row";
       // 
       // label2
       // 
@@ -403,9 +304,9 @@
       this.lbl_iFirstName.Location = new System.Drawing.Point(131, 58);
       this.lbl_iFirstName.Name = "lbl_iFirstName";
       this.lbl_iFirstName.Padding = new System.Windows.Forms.Padding(3, 5, 5, 5);
-      this.lbl_iFirstName.Size = new System.Drawing.Size(97, 28);
+      this.lbl_iFirstName.Size = new System.Drawing.Size(113, 28);
       this.lbl_iFirstName.TabIndex = 4;
-      this.lbl_iFirstName.Text = "<content>";
+      this.lbl_iFirstName.Text = "Select a Row";
       // 
       // label3
       // 
@@ -427,43 +328,43 @@
       this.lbl_iTitle.Location = new System.Drawing.Point(131, 33);
       this.lbl_iTitle.Name = "lbl_iTitle";
       this.lbl_iTitle.Padding = new System.Windows.Forms.Padding(3, 5, 5, 5);
-      this.lbl_iTitle.Size = new System.Drawing.Size(97, 28);
+      this.lbl_iTitle.Size = new System.Drawing.Size(113, 28);
       this.lbl_iTitle.TabIndex = 3;
-      this.lbl_iTitle.Text = "<content>";
+      this.lbl_iTitle.Text = "Select a Row";
       // 
       // groupBox2
       // 
       this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
       this.groupBox2.AutoSize = true;
-      this.groupBox2.Controls.Add(this.label20);
+      this.groupBox2.Controls.Add(this.lbl_iZip);
       this.groupBox2.Controls.Add(this.label19);
       this.groupBox2.Controls.Add(this.label11);
-      this.groupBox2.Controls.Add(this.label12);
+      this.groupBox2.Controls.Add(this.lbl_iCountry);
       this.groupBox2.Controls.Add(this.label13);
-      this.groupBox2.Controls.Add(this.label14);
+      this.groupBox2.Controls.Add(this.lbl_iCity);
       this.groupBox2.Controls.Add(this.label15);
-      this.groupBox2.Controls.Add(this.label16);
+      this.groupBox2.Controls.Add(this.lbl_iStreet);
       this.groupBox2.ForeColor = System.Drawing.SystemColors.InfoText;
-      this.groupBox2.Location = new System.Drawing.Point(243, 3);
+      this.groupBox2.Location = new System.Drawing.Point(259, 2);
       this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.groupBox2.Name = "groupBox2";
       this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-      this.groupBox2.Size = new System.Drawing.Size(207, 158);
+      this.groupBox2.Size = new System.Drawing.Size(223, 158);
       this.groupBox2.TabIndex = 11;
       this.groupBox2.TabStop = false;
       this.groupBox2.Text = "Address";
       // 
-      // label20
+      // lbl_iZip
       // 
-      this.label20.AutoSize = true;
-      this.label20.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label20.ForeColor = System.Drawing.SystemColors.ControlText;
-      this.label20.Location = new System.Drawing.Point(104, 111);
-      this.label20.Name = "label20";
-      this.label20.Padding = new System.Windows.Forms.Padding(3, 5, 5, 5);
-      this.label20.Size = new System.Drawing.Size(97, 28);
-      this.label20.TabIndex = 7;
-      this.label20.Text = "<content>";
+      this.lbl_iZip.AutoSize = true;
+      this.lbl_iZip.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbl_iZip.ForeColor = System.Drawing.SystemColors.ControlText;
+      this.lbl_iZip.Location = new System.Drawing.Point(104, 111);
+      this.lbl_iZip.Name = "lbl_iZip";
+      this.lbl_iZip.Padding = new System.Windows.Forms.Padding(3, 5, 5, 5);
+      this.lbl_iZip.Size = new System.Drawing.Size(113, 28);
+      this.lbl_iZip.TabIndex = 7;
+      this.lbl_iZip.Text = "Select a Row";
       // 
       // label19
       // 
@@ -489,17 +390,17 @@
       this.label11.TabIndex = 0;
       this.label11.Text = "Street:";
       // 
-      // label12
+      // lbl_iCountry
       // 
-      this.label12.AutoSize = true;
-      this.label12.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label12.ForeColor = System.Drawing.SystemColors.ControlText;
-      this.label12.Location = new System.Drawing.Point(104, 86);
-      this.label12.Name = "label12";
-      this.label12.Padding = new System.Windows.Forms.Padding(3, 5, 5, 5);
-      this.label12.Size = new System.Drawing.Size(97, 28);
-      this.label12.TabIndex = 5;
-      this.label12.Text = "<content>";
+      this.lbl_iCountry.AutoSize = true;
+      this.lbl_iCountry.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbl_iCountry.ForeColor = System.Drawing.SystemColors.ControlText;
+      this.lbl_iCountry.Location = new System.Drawing.Point(104, 86);
+      this.lbl_iCountry.Name = "lbl_iCountry";
+      this.lbl_iCountry.Padding = new System.Windows.Forms.Padding(3, 5, 5, 5);
+      this.lbl_iCountry.Size = new System.Drawing.Size(113, 28);
+      this.lbl_iCountry.TabIndex = 5;
+      this.lbl_iCountry.Text = "Select a Row";
       // 
       // label13
       // 
@@ -513,17 +414,17 @@
       this.label13.TabIndex = 1;
       this.label13.Text = "City:";
       // 
-      // label14
+      // lbl_iCity
       // 
-      this.label14.AutoSize = true;
-      this.label14.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label14.ForeColor = System.Drawing.SystemColors.ControlText;
-      this.label14.Location = new System.Drawing.Point(104, 60);
-      this.label14.Name = "label14";
-      this.label14.Padding = new System.Windows.Forms.Padding(3, 5, 5, 5);
-      this.label14.Size = new System.Drawing.Size(97, 28);
-      this.label14.TabIndex = 4;
-      this.label14.Text = "<content>";
+      this.lbl_iCity.AutoSize = true;
+      this.lbl_iCity.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbl_iCity.ForeColor = System.Drawing.SystemColors.ControlText;
+      this.lbl_iCity.Location = new System.Drawing.Point(104, 60);
+      this.lbl_iCity.Name = "lbl_iCity";
+      this.lbl_iCity.Padding = new System.Windows.Forms.Padding(3, 5, 5, 5);
+      this.lbl_iCity.Size = new System.Drawing.Size(113, 28);
+      this.lbl_iCity.TabIndex = 4;
+      this.lbl_iCity.Text = "Select a Row";
       // 
       // label15
       // 
@@ -537,34 +438,34 @@
       this.label15.TabIndex = 2;
       this.label15.Text = "Country:";
       // 
-      // label16
+      // lbl_iStreet
       // 
-      this.label16.AutoSize = true;
-      this.label16.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label16.ForeColor = System.Drawing.SystemColors.ControlText;
-      this.label16.Location = new System.Drawing.Point(104, 33);
-      this.label16.Name = "label16";
-      this.label16.Padding = new System.Windows.Forms.Padding(3, 5, 5, 5);
-      this.label16.Size = new System.Drawing.Size(97, 28);
-      this.label16.TabIndex = 3;
-      this.label16.Text = "<content>";
+      this.lbl_iStreet.AutoSize = true;
+      this.lbl_iStreet.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbl_iStreet.ForeColor = System.Drawing.SystemColors.ControlText;
+      this.lbl_iStreet.Location = new System.Drawing.Point(104, 33);
+      this.lbl_iStreet.Name = "lbl_iStreet";
+      this.lbl_iStreet.Padding = new System.Windows.Forms.Padding(3, 5, 5, 5);
+      this.lbl_iStreet.Size = new System.Drawing.Size(113, 28);
+      this.lbl_iStreet.TabIndex = 3;
+      this.lbl_iStreet.Text = "Select a Row";
       // 
       // groupBox1
       // 
       this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
       this.groupBox1.AutoSize = true;
       this.groupBox1.Controls.Add(this.label4);
-      this.groupBox1.Controls.Add(this.label5);
+      this.groupBox1.Controls.Add(this.lbl_iEmail);
       this.groupBox1.Controls.Add(this.label6);
-      this.groupBox1.Controls.Add(this.label7);
+      this.groupBox1.Controls.Add(this.lbl_iMobile);
       this.groupBox1.Controls.Add(this.label9);
-      this.groupBox1.Controls.Add(this.label10);
+      this.groupBox1.Controls.Add(this.lbl_iTelephone);
       this.groupBox1.ForeColor = System.Drawing.SystemColors.InfoText;
-      this.groupBox1.Location = new System.Drawing.Point(456, 16);
+      this.groupBox1.Location = new System.Drawing.Point(488, 15);
       this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.groupBox1.Name = "groupBox1";
       this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-      this.groupBox1.Size = new System.Drawing.Size(228, 132);
+      this.groupBox1.Size = new System.Drawing.Size(244, 132);
       this.groupBox1.TabIndex = 10;
       this.groupBox1.TabStop = false;
       this.groupBox1.Text = "Contact";
@@ -581,17 +482,17 @@
       this.label4.TabIndex = 0;
       this.label4.Text = "Telephone:";
       // 
-      // label5
+      // lbl_iEmail
       // 
-      this.label5.AutoSize = true;
-      this.label5.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
-      this.label5.Location = new System.Drawing.Point(125, 85);
-      this.label5.Name = "label5";
-      this.label5.Padding = new System.Windows.Forms.Padding(3, 5, 5, 5);
-      this.label5.Size = new System.Drawing.Size(97, 28);
-      this.label5.TabIndex = 5;
-      this.label5.Text = "<content>";
+      this.lbl_iEmail.AutoSize = true;
+      this.lbl_iEmail.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbl_iEmail.ForeColor = System.Drawing.SystemColors.ControlText;
+      this.lbl_iEmail.Location = new System.Drawing.Point(125, 85);
+      this.lbl_iEmail.Name = "lbl_iEmail";
+      this.lbl_iEmail.Padding = new System.Windows.Forms.Padding(3, 5, 5, 5);
+      this.lbl_iEmail.Size = new System.Drawing.Size(113, 28);
+      this.lbl_iEmail.TabIndex = 5;
+      this.lbl_iEmail.Text = "Select a Row";
       // 
       // label6
       // 
@@ -605,17 +506,17 @@
       this.label6.TabIndex = 1;
       this.label6.Text = "Mobile:";
       // 
-      // label7
+      // lbl_iMobile
       // 
-      this.label7.AutoSize = true;
-      this.label7.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label7.ForeColor = System.Drawing.SystemColors.ControlText;
-      this.label7.Location = new System.Drawing.Point(125, 58);
-      this.label7.Name = "label7";
-      this.label7.Padding = new System.Windows.Forms.Padding(3, 5, 5, 5);
-      this.label7.Size = new System.Drawing.Size(97, 28);
-      this.label7.TabIndex = 4;
-      this.label7.Text = "<content>";
+      this.lbl_iMobile.AutoSize = true;
+      this.lbl_iMobile.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbl_iMobile.ForeColor = System.Drawing.SystemColors.ControlText;
+      this.lbl_iMobile.Location = new System.Drawing.Point(125, 58);
+      this.lbl_iMobile.Name = "lbl_iMobile";
+      this.lbl_iMobile.Padding = new System.Windows.Forms.Padding(3, 5, 5, 5);
+      this.lbl_iMobile.Size = new System.Drawing.Size(113, 28);
+      this.lbl_iMobile.TabIndex = 4;
+      this.lbl_iMobile.Text = "Select a Row";
       // 
       // label9
       // 
@@ -629,254 +530,17 @@
       this.label9.TabIndex = 2;
       this.label9.Text = "E-mail:";
       // 
-      // label10
+      // lbl_iTelephone
       // 
-      this.label10.AutoSize = true;
-      this.label10.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label10.ForeColor = System.Drawing.SystemColors.ControlText;
-      this.label10.Location = new System.Drawing.Point(125, 31);
-      this.label10.Name = "label10";
-      this.label10.Padding = new System.Windows.Forms.Padding(3, 5, 5, 5);
-      this.label10.Size = new System.Drawing.Size(97, 28);
-      this.label10.TabIndex = 3;
-      this.label10.Text = "<content>";
-      // 
-      // groupBox3
-      // 
-      this.groupBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
-      this.groupBox3.AutoSize = true;
-      this.groupBox3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-      this.groupBox3.Controls.Add(this.label21);
-      this.groupBox3.Controls.Add(this.label23);
-      this.groupBox3.Controls.Add(this.label24);
-      this.groupBox3.Controls.Add(this.label25);
-      this.groupBox3.Controls.Add(this.label26);
-      this.groupBox3.Controls.Add(this.label27);
-      this.groupBox3.Controls.Add(this.label28);
-      this.groupBox3.Controls.Add(this.label29);
-      this.groupBox3.ForeColor = System.Drawing.SystemColors.InfoText;
-      this.groupBox3.Location = new System.Drawing.Point(690, 3);
-      this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-      this.groupBox3.Name = "groupBox3";
-      this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-      this.groupBox3.Size = new System.Drawing.Size(252, 158);
-      this.groupBox3.TabIndex = 12;
-      this.groupBox3.TabStop = false;
-      this.groupBox3.Text = "Card Info";
-      // 
-      // label21
-      // 
-      this.label21.AutoSize = true;
-      this.label21.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label21.ForeColor = System.Drawing.SystemColors.ControlText;
-      this.label21.Location = new System.Drawing.Point(149, 111);
-      this.label21.Name = "label21";
-      this.label21.Padding = new System.Windows.Forms.Padding(3, 5, 5, 5);
-      this.label21.Size = new System.Drawing.Size(97, 28);
-      this.label21.TabIndex = 7;
-      this.label21.Text = "<content>";
-      // 
-      // label23
-      // 
-      this.label23.AutoSize = true;
-      this.label23.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label23.ForeColor = System.Drawing.SystemColors.ControlText;
-      this.label23.Location = new System.Drawing.Point(16, 111);
-      this.label23.Name = "label23";
-      this.label23.Padding = new System.Windows.Forms.Padding(5, 5, 3, 5);
-      this.label23.Size = new System.Drawing.Size(118, 28);
-      this.label23.TabIndex = 6;
-      this.label23.Text = "Card Holder:";
-      // 
-      // label24
-      // 
-      this.label24.AutoSize = true;
-      this.label24.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label24.ForeColor = System.Drawing.SystemColors.ControlText;
-      this.label24.Location = new System.Drawing.Point(32, 31);
-      this.label24.Name = "label24";
-      this.label24.Padding = new System.Windows.Forms.Padding(5, 5, 3, 5);
-      this.label24.Size = new System.Drawing.Size(105, 28);
-      this.label24.TabIndex = 0;
-      this.label24.Text = "Card Type:";
-      // 
-      // label25
-      // 
-      this.label25.AutoSize = true;
-      this.label25.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label25.ForeColor = System.Drawing.SystemColors.ControlText;
-      this.label25.Location = new System.Drawing.Point(149, 85);
-      this.label25.Name = "label25";
-      this.label25.Padding = new System.Windows.Forms.Padding(3, 5, 5, 5);
-      this.label25.Size = new System.Drawing.Size(97, 28);
-      this.label25.TabIndex = 5;
-      this.label25.Text = "<content>";
-      // 
-      // label26
-      // 
-      this.label26.AutoSize = true;
-      this.label26.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label26.ForeColor = System.Drawing.SystemColors.ControlText;
-      this.label26.Location = new System.Drawing.Point(4, 58);
-      this.label26.Name = "label26";
-      this.label26.Padding = new System.Windows.Forms.Padding(5, 5, 3, 5);
-      this.label26.Size = new System.Drawing.Size(130, 28);
-      this.label26.TabIndex = 1;
-      this.label26.Text = "Expiry (m/y):";
-      // 
-      // label27
-      // 
-      this.label27.AutoSize = true;
-      this.label27.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label27.ForeColor = System.Drawing.SystemColors.ControlText;
-      this.label27.Location = new System.Drawing.Point(149, 58);
-      this.label27.Name = "label27";
-      this.label27.Padding = new System.Windows.Forms.Padding(3, 5, 5, 5);
-      this.label27.Size = new System.Drawing.Size(97, 28);
-      this.label27.TabIndex = 4;
-      this.label27.Text = "<content>";
-      // 
-      // label28
-      // 
-      this.label28.AutoSize = true;
-      this.label28.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label28.ForeColor = System.Drawing.SystemColors.ControlText;
-      this.label28.Location = new System.Drawing.Point(5, 85);
-      this.label28.Name = "label28";
-      this.label28.Padding = new System.Windows.Forms.Padding(5, 5, 3, 5);
-      this.label28.Size = new System.Drawing.Size(130, 28);
-      this.label28.TabIndex = 2;
-      this.label28.Text = "Card Number:";
-      // 
-      // label29
-      // 
-      this.label29.AutoSize = true;
-      this.label29.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label29.ForeColor = System.Drawing.SystemColors.ControlText;
-      this.label29.Location = new System.Drawing.Point(149, 31);
-      this.label29.Name = "label29";
-      this.label29.Padding = new System.Windows.Forms.Padding(3, 5, 5, 5);
-      this.label29.Size = new System.Drawing.Size(97, 28);
-      this.label29.TabIndex = 3;
-      this.label29.Text = "<content>";
-      // 
-      // gb_Misc
-      // 
-      this.gb_Misc.Anchor = System.Windows.Forms.AnchorStyles.None;
-      this.gb_Misc.AutoSize = true;
-      this.gb_Misc.Controls.Add(this.label33);
-      this.gb_Misc.Controls.Add(this.label34);
-      this.gb_Misc.Controls.Add(this.label35);
-      this.gb_Misc.Controls.Add(this.label36);
-      this.gb_Misc.Controls.Add(this.label37);
-      this.gb_Misc.Controls.Add(this.label30);
-      this.gb_Misc.Controls.Add(this.label32);
-      this.gb_Misc.Controls.Add(this.label38);
-      this.gb_Misc.ForeColor = System.Drawing.SystemColors.InfoText;
-      this.gb_Misc.Location = new System.Drawing.Point(948, 2);
-      this.gb_Misc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-      this.gb_Misc.Name = "gb_Misc";
-      this.gb_Misc.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-      this.gb_Misc.Size = new System.Drawing.Size(268, 160);
-      this.gb_Misc.TabIndex = 13;
-      this.gb_Misc.TabStop = false;
-      this.gb_Misc.Text = "Miscellaneous";
-      // 
-      // label33
-      // 
-      this.label33.AutoSize = true;
-      this.label33.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label33.ForeColor = System.Drawing.SystemColors.ControlText;
-      this.label33.Location = new System.Drawing.Point(43, 33);
-      this.label33.Name = "label33";
-      this.label33.Padding = new System.Windows.Forms.Padding(5, 5, 3, 5);
-      this.label33.Size = new System.Drawing.Size(113, 28);
-      this.label33.TabIndex = 0;
-      this.label33.Text = "Client Type:";
-      // 
-      // label34
-      // 
-      this.label34.AutoSize = true;
-      this.label34.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label34.ForeColor = System.Drawing.SystemColors.ControlText;
-      this.label34.Location = new System.Drawing.Point(165, 85);
-      this.label34.Name = "label34";
-      this.label34.Padding = new System.Windows.Forms.Padding(3, 5, 5, 5);
-      this.label34.Size = new System.Drawing.Size(97, 28);
-      this.label34.TabIndex = 5;
-      this.label34.Text = "<content>";
-      // 
-      // label35
-      // 
-      this.label35.AutoSize = true;
-      this.label35.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label35.ForeColor = System.Drawing.SystemColors.ControlText;
-      this.label35.Location = new System.Drawing.Point(52, 59);
-      this.label35.Name = "label35";
-      this.label35.Padding = new System.Windows.Forms.Padding(5, 5, 3, 5);
-      this.label35.Size = new System.Drawing.Size(107, 28);
-      this.label35.TabIndex = 1;
-      this.label35.Text = "Rate Code:";
-      // 
-      // label36
-      // 
-      this.label36.AutoSize = true;
-      this.label36.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label36.ForeColor = System.Drawing.SystemColors.ControlText;
-      this.label36.Location = new System.Drawing.Point(165, 60);
-      this.label36.Name = "label36";
-      this.label36.Padding = new System.Windows.Forms.Padding(3, 5, 5, 5);
-      this.label36.Size = new System.Drawing.Size(97, 28);
-      this.label36.TabIndex = 4;
-      this.label36.Text = "<content>";
-      // 
-      // label37
-      // 
-      this.label37.AutoSize = true;
-      this.label37.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label37.ForeColor = System.Drawing.SystemColors.ControlText;
-      this.label37.Location = new System.Drawing.Point(80, 85);
-      this.label37.Name = "label37";
-      this.label37.Padding = new System.Windows.Forms.Padding(5, 5, 3, 5);
-      this.label37.Size = new System.Drawing.Size(78, 28);
-      this.label37.TabIndex = 2;
-      this.label37.Text = "Source:";
-      // 
-      // label30
-      // 
-      this.label30.AutoSize = true;
-      this.label30.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label30.ForeColor = System.Drawing.SystemColors.ControlText;
-      this.label30.Location = new System.Drawing.Point(165, 112);
-      this.label30.Name = "label30";
-      this.label30.Padding = new System.Windows.Forms.Padding(3, 5, 5, 5);
-      this.label30.Size = new System.Drawing.Size(97, 28);
-      this.label30.TabIndex = 7;
-      this.label30.Text = "<content>";
-      // 
-      // label32
-      // 
-      this.label32.AutoSize = true;
-      this.label32.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label32.ForeColor = System.Drawing.SystemColors.ControlText;
-      this.label32.Location = new System.Drawing.Point(5, 113);
-      this.label32.Name = "label32";
-      this.label32.Padding = new System.Windows.Forms.Padding(5, 5, 3, 5);
-      this.label32.Size = new System.Drawing.Size(145, 28);
-      this.label32.TabIndex = 6;
-      this.label32.Text = "Vehicle License:";
-      // 
-      // label38
-      // 
-      this.label38.AutoSize = true;
-      this.label38.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label38.ForeColor = System.Drawing.SystemColors.ControlText;
-      this.label38.Location = new System.Drawing.Point(165, 33);
-      this.label38.Name = "label38";
-      this.label38.Padding = new System.Windows.Forms.Padding(3, 5, 5, 5);
-      this.label38.Size = new System.Drawing.Size(97, 28);
-      this.label38.TabIndex = 3;
-      this.label38.Text = "<content>";
+      this.lbl_iTelephone.AutoSize = true;
+      this.lbl_iTelephone.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbl_iTelephone.ForeColor = System.Drawing.SystemColors.ControlText;
+      this.lbl_iTelephone.Location = new System.Drawing.Point(125, 31);
+      this.lbl_iTelephone.Name = "lbl_iTelephone";
+      this.lbl_iTelephone.Padding = new System.Windows.Forms.Padding(3, 5, 5, 5);
+      this.lbl_iTelephone.Size = new System.Drawing.Size(113, 28);
+      this.lbl_iTelephone.TabIndex = 3;
+      this.lbl_iTelephone.Text = "Select a Row";
       // 
       // pnl_NotesBorder
       // 
@@ -887,7 +551,7 @@
       this.pnl_NotesBorder.Location = new System.Drawing.Point(0, 0);
       this.pnl_NotesBorder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.pnl_NotesBorder.Name = "pnl_NotesBorder";
-      this.pnl_NotesBorder.Size = new System.Drawing.Size(257, 289);
+      this.pnl_NotesBorder.Size = new System.Drawing.Size(227, 289);
       this.pnl_NotesBorder.TabIndex = 0;
       // 
       // rtxt_Notes
@@ -898,7 +562,7 @@
       this.rtxt_Notes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.rtxt_Notes.Name = "rtxt_Notes";
       this.rtxt_Notes.ReadOnly = true;
-      this.rtxt_Notes.Size = new System.Drawing.Size(253, 254);
+      this.rtxt_Notes.Size = new System.Drawing.Size(223, 254);
       this.rtxt_Notes.TabIndex = 1;
       this.rtxt_Notes.Text = "";
       this.rtxt_Notes.WordWrap = false;
@@ -911,17 +575,6 @@
       this.label18.Size = new System.Drawing.Size(52, 17);
       this.label18.TabIndex = 0;
       this.label18.Text = "Notes";
-      // 
-      // tab_GuestFolio
-      // 
-      this.tab_GuestFolio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(191)))), ((int)(((byte)(172)))));
-      this.tab_GuestFolio.Location = new System.Drawing.Point(4, 4);
-      this.tab_GuestFolio.Margin = new System.Windows.Forms.Padding(4);
-      this.tab_GuestFolio.Name = "tab_GuestFolio";
-      this.tab_GuestFolio.Padding = new System.Windows.Forms.Padding(4);
-      this.tab_GuestFolio.Size = new System.Drawing.Size(1782, 297);
-      this.tab_GuestFolio.TabIndex = 1;
-      this.tab_GuestFolio.Text = "Guest Folio";
       // 
       // dgv_DataTable
       // 
@@ -939,8 +592,9 @@
       this.dgv_DataTable.RowHeadersWidth = 51;
       this.dgv_DataTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
       this.dgv_DataTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.dgv_DataTable.Size = new System.Drawing.Size(1617, 368);
+      this.dgv_DataTable.Size = new System.Drawing.Size(1635, 368);
       this.dgv_DataTable.TabIndex = 0;
+      this.dgv_DataTable.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_DataTable_CellClick);
       // 
       // fpnl_TableSelectView
       // 
@@ -962,7 +616,7 @@
       this.fpnl_TableSelectView.Margin = new System.Windows.Forms.Padding(4);
       this.fpnl_TableSelectView.Name = "fpnl_TableSelectView";
       this.fpnl_TableSelectView.Padding = new System.Windows.Forms.Padding(20, 25, 27, 25);
-      this.fpnl_TableSelectView.Size = new System.Drawing.Size(174, 368);
+      this.fpnl_TableSelectView.Size = new System.Drawing.Size(156, 368);
       this.fpnl_TableSelectView.TabIndex = 0;
       this.fpnl_TableSelectView.WrapContents = false;
       // 
@@ -974,7 +628,7 @@
       this.lbl_InHouse.Margin = new System.Windows.Forms.Padding(4, 0, 4, 12);
       this.lbl_InHouse.Name = "lbl_InHouse";
       this.lbl_InHouse.Padding = new System.Windows.Forms.Padding(0, 6, 0, 6);
-      this.lbl_InHouse.Size = new System.Drawing.Size(91, 52);
+      this.lbl_InHouse.Size = new System.Drawing.Size(71, 52);
       this.lbl_InHouse.TabIndex = 0;
       this.lbl_InHouse.Text = "<in_house>";
       this.lbl_InHouse.Click += new System.EventHandler(this.lbl_InHouse_Click);
@@ -988,7 +642,7 @@
       this.lbl_Arrivals.Margin = new System.Windows.Forms.Padding(4, 0, 4, 12);
       this.lbl_Arrivals.Name = "lbl_Arrivals";
       this.lbl_Arrivals.Padding = new System.Windows.Forms.Padding(0, 6, 0, 6);
-      this.lbl_Arrivals.Size = new System.Drawing.Size(86, 52);
+      this.lbl_Arrivals.Size = new System.Drawing.Size(77, 52);
       this.lbl_Arrivals.TabIndex = 1;
       this.lbl_Arrivals.Text = "<arrivals>";
       this.lbl_Arrivals.Click += new System.EventHandler(this.lbl_Arrivals_Click);
@@ -1001,7 +655,7 @@
       this.lbl_Departures.Margin = new System.Windows.Forms.Padding(4, 0, 4, 12);
       this.lbl_Departures.Name = "lbl_Departures";
       this.lbl_Departures.Padding = new System.Windows.Forms.Padding(0, 6, 0, 6);
-      this.lbl_Departures.Size = new System.Drawing.Size(97, 52);
+      this.lbl_Departures.Size = new System.Drawing.Size(79, 52);
       this.lbl_Departures.TabIndex = 2;
       this.lbl_Departures.Text = "<departures>";
       this.lbl_Departures.Click += new System.EventHandler(this.lbl_Departures_Click);
@@ -1014,7 +668,7 @@
       this.lbl_Reservations.Margin = new System.Windows.Forms.Padding(4, 0, 4, 12);
       this.lbl_Reservations.Name = "lbl_Reservations";
       this.lbl_Reservations.Padding = new System.Windows.Forms.Padding(0, 6, 0, 6);
-      this.lbl_Reservations.Size = new System.Drawing.Size(98, 52);
+      this.lbl_Reservations.Size = new System.Drawing.Size(76, 52);
       this.lbl_Reservations.TabIndex = 3;
       this.lbl_Reservations.Text = "<reservations>";
       this.lbl_Reservations.Click += new System.EventHandler(this.lbl_Reservations_Click);
@@ -1027,54 +681,58 @@
       this.lbl_CheckedOut.Margin = new System.Windows.Forms.Padding(4, 0, 4, 12);
       this.lbl_CheckedOut.Name = "lbl_CheckedOut";
       this.lbl_CheckedOut.Padding = new System.Windows.Forms.Padding(0, 6, 0, 6);
-      this.lbl_CheckedOut.Size = new System.Drawing.Size(93, 52);
+      this.lbl_CheckedOut.Size = new System.Drawing.Size(72, 72);
       this.lbl_CheckedOut.TabIndex = 4;
       this.lbl_CheckedOut.Text = "<checked_out>";
+      this.lbl_CheckedOut.Visible = false;
       this.lbl_CheckedOut.Click += new System.EventHandler(this.lbl_CheckedOut_Click);
       // 
       // lbl_NoShows
       // 
       this.lbl_NoShows.AutoSize = true;
       this.lbl_NoShows.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbl_NoShows.Location = new System.Drawing.Point(24, 345);
+      this.lbl_NoShows.Location = new System.Drawing.Point(24, 365);
       this.lbl_NoShows.Margin = new System.Windows.Forms.Padding(4, 0, 4, 12);
       this.lbl_NoShows.Name = "lbl_NoShows";
       this.lbl_NoShows.Padding = new System.Windows.Forms.Padding(0, 6, 0, 6);
-      this.lbl_NoShows.Size = new System.Drawing.Size(85, 52);
+      this.lbl_NoShows.Size = new System.Drawing.Size(75, 52);
       this.lbl_NoShows.TabIndex = 5;
       this.lbl_NoShows.Text = "<no_shows>";
+      this.lbl_NoShows.Visible = false;
       this.lbl_NoShows.Click += new System.EventHandler(this.lbl_NoShows_Click);
       // 
       // lbl_Cancelled
       // 
       this.lbl_Cancelled.AutoSize = true;
       this.lbl_Cancelled.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbl_Cancelled.Location = new System.Drawing.Point(24, 409);
+      this.lbl_Cancelled.Location = new System.Drawing.Point(24, 429);
       this.lbl_Cancelled.Margin = new System.Windows.Forms.Padding(4, 0, 4, 12);
       this.lbl_Cancelled.Name = "lbl_Cancelled";
       this.lbl_Cancelled.Padding = new System.Windows.Forms.Padding(0, 6, 0, 6);
-      this.lbl_Cancelled.Size = new System.Drawing.Size(92, 52);
+      this.lbl_Cancelled.Size = new System.Drawing.Size(77, 52);
       this.lbl_Cancelled.TabIndex = 6;
       this.lbl_Cancelled.Text = "<cancelled>";
+      this.lbl_Cancelled.Visible = false;
       this.lbl_Cancelled.Click += new System.EventHandler(this.lbl_Cancelled_Click);
       // 
       // lbl_WaitList
       // 
       this.lbl_WaitList.AutoSize = true;
       this.lbl_WaitList.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbl_WaitList.Location = new System.Drawing.Point(24, 473);
+      this.lbl_WaitList.Location = new System.Drawing.Point(24, 493);
       this.lbl_WaitList.Margin = new System.Windows.Forms.Padding(4, 0, 4, 12);
       this.lbl_WaitList.Name = "lbl_WaitList";
       this.lbl_WaitList.Padding = new System.Windows.Forms.Padding(0, 6, 0, 6);
-      this.lbl_WaitList.Size = new System.Drawing.Size(96, 52);
+      this.lbl_WaitList.Size = new System.Drawing.Size(80, 52);
       this.lbl_WaitList.TabIndex = 7;
       this.lbl_WaitList.Text = "<wait_list>";
+      this.lbl_WaitList.Visible = false;
       this.lbl_WaitList.Click += new System.EventHandler(this.lbl_WaitList_Click);
       // 
       // label8
       // 
       this.label8.AutoSize = true;
-      this.label8.Location = new System.Drawing.Point(24, 537);
+      this.label8.Location = new System.Drawing.Point(24, 557);
       this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.label8.Name = "label8";
       this.label8.Padding = new System.Windows.Forms.Padding(0, 0, 0, 25);
@@ -1100,30 +758,9 @@
       this.spc_TableContainer.Panel2.Controls.Add(this.fpnl_TableSelectView);
       this.spc_TableContainer.Panel2MinSize = 1;
       this.spc_TableContainer.Size = new System.Drawing.Size(1792, 368);
-      this.spc_TableContainer.SplitterDistance = 1617;
+      this.spc_TableContainer.SplitterDistance = 1635;
       this.spc_TableContainer.SplitterWidth = 1;
       this.spc_TableContainer.TabIndex = 3;
-      // 
-      // lbl_DateTimeIndicator
-      // 
-      this.lbl_DateTimeIndicator.AutoSize = true;
-      this.lbl_DateTimeIndicator.Location = new System.Drawing.Point(186, 0);
-      this.lbl_DateTimeIndicator.Name = "lbl_DateTimeIndicator";
-      this.lbl_DateTimeIndicator.Size = new System.Drawing.Size(126, 16);
-      this.lbl_DateTimeIndicator.TabIndex = 3;
-      this.lbl_DateTimeIndicator.Text = "<session date time>";
-      // 
-      // pcmd_NewBooking
-      // 
-      this.pcmd_NewBooking.BackgroundImage = global::NoteView.Properties.Resources.new_booking;
-      this.pcmd_NewBooking.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-      this.pcmd_NewBooking.Location = new System.Drawing.Point(4, 4);
-      this.pcmd_NewBooking.Margin = new System.Windows.Forms.Padding(4);
-      this.pcmd_NewBooking.Name = "pcmd_NewBooking";
-      this.pcmd_NewBooking.Size = new System.Drawing.Size(96, 89);
-      this.pcmd_NewBooking.TabIndex = 3;
-      this.pcmd_NewBooking.TabStop = false;
-      this.pcmd_NewBooking.Click += new System.EventHandler(this.pcmd_NewBooking_Click);
       // 
       // bwork_TableFetcher
       // 
@@ -1138,6 +775,149 @@
       this.bwork_TableResolver.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwork_TableResolver_DoWork);
       this.bwork_TableResolver.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bwork_TableResolver_ProgressChanged);
       this.bwork_TableResolver.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwork_TableResolver_RunWorkerCompleted);
+      // 
+      // bwork_InfoGetter
+      // 
+      this.bwork_InfoGetter.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwork_InfoGetter_DoWork);
+      this.bwork_InfoGetter.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwork_InfoGetter_RunWorkerCompleted);
+      // 
+      // mainMenu
+      // 
+      this.mainMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
+      this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.frontDeskToolStripMenuItem,
+            this.systemConfigurationToolStripMenuItem});
+      this.mainMenu.Location = new System.Drawing.Point(0, 0);
+      this.mainMenu.Name = "mainMenu";
+      this.mainMenu.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+      this.mainMenu.Size = new System.Drawing.Size(1790, 30);
+      this.mainMenu.TabIndex = 0;
+      this.mainMenu.Text = "menuStrip1";
+      // 
+      // frontDeskToolStripMenuItem
+      // 
+      this.frontDeskToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.changePasswordToolStripMenuItem,
+            this.exitToolStripMenuItem});
+      this.frontDeskToolStripMenuItem.Name = "frontDeskToolStripMenuItem";
+      this.frontDeskToolStripMenuItem.Size = new System.Drawing.Size(93, 26);
+      this.frontDeskToolStripMenuItem.Text = "Front Desk";
+      // 
+      // changePasswordToolStripMenuItem
+      // 
+      this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
+      this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(207, 26);
+      this.changePasswordToolStripMenuItem.Text = "Change Password";
+      this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click);
+      // 
+      // exitToolStripMenuItem
+      // 
+      this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+      this.exitToolStripMenuItem.Size = new System.Drawing.Size(207, 26);
+      this.exitToolStripMenuItem.Text = "Exit";
+      this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+      // 
+      // systemConfigurationToolStripMenuItem
+      // 
+      this.systemConfigurationToolStripMenuItem.Name = "systemConfigurationToolStripMenuItem";
+      this.systemConfigurationToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
+      this.systemConfigurationToolStripMenuItem.Text = "System Configuration";
+      this.systemConfigurationToolStripMenuItem.Click += new System.EventHandler(this.systemConfigurationToolStripMenuItem_Click);
+      // 
+      // pictureBox1
+      // 
+      this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+      this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+      this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+      this.pictureBox1.Location = new System.Drawing.Point(1418, 48);
+      this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.pictureBox1.Name = "pictureBox1";
+      this.pictureBox1.Size = new System.Drawing.Size(361, 97);
+      this.pictureBox1.TabIndex = 1;
+      this.pictureBox1.TabStop = false;
+      // 
+      // flowLayoutPanel2
+      // 
+      this.flowLayoutPanel2.Controls.Add(this.pcmd_NewBooking);
+      this.flowLayoutPanel2.Controls.Add(this.label17);
+      this.flowLayoutPanel2.Location = new System.Drawing.Point(13, 38);
+      this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
+      this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+      this.flowLayoutPanel2.Size = new System.Drawing.Size(104, 117);
+      this.flowLayoutPanel2.TabIndex = 2;
+      // 
+      // label17
+      // 
+      this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label17.ForeColor = System.Drawing.Color.Navy;
+      this.label17.Location = new System.Drawing.Point(4, 97);
+      this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.label17.Name = "label17";
+      this.label17.Size = new System.Drawing.Size(96, 21);
+      this.label17.TabIndex = 1;
+      this.label17.Text = "New Booking";
+      this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // flowLayoutPanel5
+      // 
+      this.flowLayoutPanel5.Controls.Add(this.pcmd_Charges);
+      this.flowLayoutPanel5.Controls.Add(this.label39);
+      this.flowLayoutPanel5.Location = new System.Drawing.Point(125, 38);
+      this.flowLayoutPanel5.Margin = new System.Windows.Forms.Padding(4);
+      this.flowLayoutPanel5.Name = "flowLayoutPanel5";
+      this.flowLayoutPanel5.Size = new System.Drawing.Size(104, 117);
+      this.flowLayoutPanel5.TabIndex = 5;
+      // 
+      // label39
+      // 
+      this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label39.ForeColor = System.Drawing.Color.Navy;
+      this.label39.Location = new System.Drawing.Point(4, 97);
+      this.label39.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.label39.Name = "label39";
+      this.label39.Size = new System.Drawing.Size(96, 21);
+      this.label39.TabIndex = 1;
+      this.label39.Text = "Charges";
+      this.label39.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // pnl_Top
+      // 
+      this.pnl_Top.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(110)))), ((int)(((byte)(164)))), ((int)(((byte)(191)))));
+      this.pnl_Top.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.pnl_Top.Controls.Add(this.flowLayoutPanel5);
+      this.pnl_Top.Controls.Add(this.flowLayoutPanel2);
+      this.pnl_Top.Controls.Add(this.pictureBox1);
+      this.pnl_Top.Controls.Add(this.mainMenu);
+      this.pnl_Top.Dock = System.Windows.Forms.DockStyle.Top;
+      this.pnl_Top.Location = new System.Drawing.Point(0, 0);
+      this.pnl_Top.Margin = new System.Windows.Forms.Padding(4);
+      this.pnl_Top.Name = "pnl_Top";
+      this.pnl_Top.Size = new System.Drawing.Size(1792, 163);
+      this.pnl_Top.TabIndex = 0;
+      // 
+      // pcmd_Charges
+      // 
+      this.pcmd_Charges.BackgroundImage = global::NoteView.Properties.Resources.post_charges;
+      this.pcmd_Charges.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+      this.pcmd_Charges.Location = new System.Drawing.Point(4, 4);
+      this.pcmd_Charges.Margin = new System.Windows.Forms.Padding(4);
+      this.pcmd_Charges.Name = "pcmd_Charges";
+      this.pcmd_Charges.Size = new System.Drawing.Size(96, 89);
+      this.pcmd_Charges.TabIndex = 3;
+      this.pcmd_Charges.TabStop = false;
+      this.pcmd_Charges.Click += new System.EventHandler(this.pcmd_Charges_Click);
+      // 
+      // pcmd_NewBooking
+      // 
+      this.pcmd_NewBooking.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pcmd_NewBooking.BackgroundImage")));
+      this.pcmd_NewBooking.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+      this.pcmd_NewBooking.Location = new System.Drawing.Point(4, 4);
+      this.pcmd_NewBooking.Margin = new System.Windows.Forms.Padding(4);
+      this.pcmd_NewBooking.Name = "pcmd_NewBooking";
+      this.pcmd_NewBooking.Size = new System.Drawing.Size(96, 89);
+      this.pcmd_NewBooking.TabIndex = 3;
+      this.pcmd_NewBooking.TabStop = false;
+      this.pcmd_NewBooking.Click += new System.EventHandler(this.pcmd_NewBooking_Click);
       // 
       // HomeForm
       // 
@@ -1156,12 +936,6 @@
       this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HomeForm_FormClosing);
       this.Load += new System.EventHandler(this.HomeForm_Load);
-      this.pnl_Top.ResumeLayout(false);
-      this.pnl_Top.PerformLayout();
-      this.flowLayoutPanel2.ResumeLayout(false);
-      ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-      this.mainMenu.ResumeLayout(false);
-      this.mainMenu.PerformLayout();
       this.pnl_Bottom.ResumeLayout(false);
       this.fpnl_UserInfoDisplay.ResumeLayout(false);
       this.fpnl_UserInfoDisplay.PerformLayout();
@@ -1180,10 +954,6 @@
       this.groupBox2.PerformLayout();
       this.groupBox1.ResumeLayout(false);
       this.groupBox1.PerformLayout();
-      this.groupBox3.ResumeLayout(false);
-      this.groupBox3.PerformLayout();
-      this.gb_Misc.ResumeLayout(false);
-      this.gb_Misc.PerformLayout();
       this.pnl_NotesBorder.ResumeLayout(false);
       this.pnl_NotesBorder.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dgv_DataTable)).EndInit();
@@ -1194,14 +964,20 @@
       this.spc_TableContainer.Panel2.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(this.spc_TableContainer)).EndInit();
       this.spc_TableContainer.ResumeLayout(false);
+      this.mainMenu.ResumeLayout(false);
+      this.mainMenu.PerformLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+      this.flowLayoutPanel2.ResumeLayout(false);
+      this.flowLayoutPanel5.ResumeLayout(false);
+      this.pnl_Top.ResumeLayout(false);
+      this.pnl_Top.PerformLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.pcmd_Charges)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.pcmd_NewBooking)).EndInit();
       this.ResumeLayout(false);
 
     }
 
     #endregion
-
-    private System.Windows.Forms.Panel pnl_Top;
     private System.Windows.Forms.Panel pnl_Bottom;
     private System.Windows.Forms.DataGridView dgv_DataTable;
     private System.Windows.Forms.FlowLayoutPanel fpnl_TableSelectView;
@@ -1215,12 +991,13 @@
     private System.Windows.Forms.Label lbl_WaitList;
     private System.Windows.Forms.Label label8;
     private System.Windows.Forms.SplitContainer spc_TableContainer;
-    private System.Windows.Forms.TabControl tc_GuestTabs;
-    private System.Windows.Forms.TabPage tab_GuestFolio;
     private System.Windows.Forms.FlowLayoutPanel fpnl_UserInfoDisplay;
     private System.Windows.Forms.Label lbl_UserFullName;
     private System.Windows.Forms.Label lbl_Username;
-    private System.Windows.Forms.MenuStrip mainMenu;
+    private System.Windows.Forms.Label lbl_DateTimeIndicator;
+    private System.ComponentModel.BackgroundWorker bwork_TableFetcher;
+    private System.ComponentModel.BackgroundWorker bwork_TableResolver;
+    private System.Windows.Forms.TabControl tc_GuestTabs;
     private System.Windows.Forms.TabPage tab_GuestInfo;
     private System.Windows.Forms.SplitContainer sc_GuestInfo;
     private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
@@ -1232,52 +1009,37 @@
     private System.Windows.Forms.Label label3;
     private System.Windows.Forms.Label lbl_iTitle;
     private System.Windows.Forms.GroupBox groupBox2;
-    private System.Windows.Forms.Label label20;
+    private System.Windows.Forms.Label lbl_iZip;
     private System.Windows.Forms.Label label19;
     private System.Windows.Forms.Label label11;
-    private System.Windows.Forms.Label label12;
+    private System.Windows.Forms.Label lbl_iCountry;
     private System.Windows.Forms.Label label13;
-    private System.Windows.Forms.Label label14;
+    private System.Windows.Forms.Label lbl_iCity;
     private System.Windows.Forms.Label label15;
-    private System.Windows.Forms.Label label16;
+    private System.Windows.Forms.Label lbl_iStreet;
     private System.Windows.Forms.GroupBox groupBox1;
     private System.Windows.Forms.Label label4;
-    private System.Windows.Forms.Label label5;
+    private System.Windows.Forms.Label lbl_iEmail;
     private System.Windows.Forms.Label label6;
-    private System.Windows.Forms.Label label7;
+    private System.Windows.Forms.Label lbl_iMobile;
     private System.Windows.Forms.Label label9;
-    private System.Windows.Forms.Label label10;
+    private System.Windows.Forms.Label lbl_iTelephone;
     private System.Windows.Forms.Panel pnl_NotesBorder;
-    private System.Windows.Forms.Label label18;
-    private System.Windows.Forms.GroupBox groupBox3;
-    private System.Windows.Forms.Label label21;
-    private System.Windows.Forms.Label label23;
-    private System.Windows.Forms.Label label24;
-    private System.Windows.Forms.Label label25;
-    private System.Windows.Forms.Label label26;
-    private System.Windows.Forms.Label label27;
-    private System.Windows.Forms.Label label28;
-    private System.Windows.Forms.Label label29;
     private System.Windows.Forms.RichTextBox rtxt_Notes;
-    private System.Windows.Forms.PictureBox pictureBox1;
+    private System.Windows.Forms.Label label18;
+    private System.ComponentModel.BackgroundWorker bwork_InfoGetter;
+    private System.Windows.Forms.MenuStrip mainMenu;
     private System.Windows.Forms.ToolStripMenuItem frontDeskToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-    private System.Windows.Forms.GroupBox gb_Misc;
-    private System.Windows.Forms.Label label30;
-    private System.Windows.Forms.Label label32;
-    private System.Windows.Forms.Label label33;
-    private System.Windows.Forms.Label label34;
-    private System.Windows.Forms.Label label35;
-    private System.Windows.Forms.Label label36;
-    private System.Windows.Forms.Label label37;
-    private System.Windows.Forms.Label label38;
-    private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-    private System.Windows.Forms.Label label17;
-    private PictureButton pcmd_NewBooking;
     private System.Windows.Forms.ToolStripMenuItem systemConfigurationToolStripMenuItem;
-    private System.Windows.Forms.Label lbl_DateTimeIndicator;
-    private System.ComponentModel.BackgroundWorker bwork_TableFetcher;
-    private System.ComponentModel.BackgroundWorker bwork_TableResolver;
+    private System.Windows.Forms.PictureBox pictureBox1;
+    private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+    private PictureButton pcmd_NewBooking;
+    private System.Windows.Forms.Label label17;
+    private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
+    private PictureButton pcmd_Charges;
+    private System.Windows.Forms.Label label39;
+    private System.Windows.Forms.Panel pnl_Top;
   }
 }
